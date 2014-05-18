@@ -42,6 +42,24 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/viewport_displayDraw3d.png</property>
   </object>
+  <object class="GtkImage" id="viewport_drawModelsIn2DViews">
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_drawModelsIn2DViews.png</property>
+  </object>
+  <object class="GtkImage" id="viewport_facealignment_toggle">
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_facealignment_toggle.png</property>
+  </object>
+  <object class="GtkImage" id="viewport_grid_larger">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_grid_larger.png</property>
+  </object>
+  <object class="GtkImage" id="viewport_grid_smaller">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_grid_smaller.png</property>
+  </object>
   <object class="GtkImage" id="viewport_group_ignore">
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/viewport_group_ignore.png</property>
@@ -50,9 +68,21 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/viewport_helpers_show.png</property>
   </object>
+  <object class="GtkImage" id="viewport_hide_deselected">
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_hide_deselected.png</property>
+  </object>
   <object class="GtkImage" id="viewport_mask_displayWalkable">
     <property name="can_focus">False</property>
     <property name="pixbuf">icons/viewport_mask_displayWalkable.png</property>
+  </object>
+  <object class="GtkImage" id="viewport_mask_displaysolid">
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_mask_displaysolid.png</property>
+  </object>
+  <object class="GtkImage" id="viewport_material_drawDetail">
+    <property name="can_focus">False</property>
+    <property name="pixbuf">icons/viewport_material_drawDetail.png</property>
   </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="can_focus">False</property>
@@ -1175,7 +1205,7 @@
                           <object class="GtkImage" id="image1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="stock">gtk-close</property>
+                            <property name="pixbuf">icons/window-close.svg</property>
                           </object>
                         </child>
                       </object>
@@ -1236,36 +1266,6 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="viewport_drawModelsIn2DViews">
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_drawModelsIn2DViews.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_facealignment_toggle">
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_facealignment_toggle.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_grid_larger">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_grid_larger.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_grid_smaller">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_grid_smaller.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_hide_deselected">
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_hide_deselected.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_mask_displaysolid">
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_mask_displaysolid.png</property>
-  </object>
-  <object class="GtkImage" id="viewport_material_drawDetail">
-    <property name="can_focus">False</property>
-    <property name="pixbuf">icons/viewport_material_drawDetail.png</property>
   </object>
   <object class="GtkImage" id="viewport_material_drawNodraw">
     <property name="can_focus">False</property>
