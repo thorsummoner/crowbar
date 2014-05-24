@@ -60,6 +60,7 @@
   <object class="GtkHandleBox" id="MapTools">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="hexpand">True</property>
     <child>
       <object class="GtkToolbar" id="Map Tools">
         <property name="visible">True</property>

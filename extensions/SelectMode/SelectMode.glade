@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
-  <object class="GtkHandleBox" id="SelectionModes">
+  <object class="GtkHandleBox" id="SelectMode">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

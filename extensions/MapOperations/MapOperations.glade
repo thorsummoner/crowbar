@@ -149,6 +149,7 @@
   <object class="GtkHandleBox" id="MapOperations">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="hexpand">True</property>
     <child>
       <object class="GtkToolbar" id="Map Operations">
         <property name="visible">True</property>
