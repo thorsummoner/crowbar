@@ -1,13 +1,14 @@
 
-from gi.repository import Gtk, Gdk
 import signal
-from lib.Extensions import Extensions
 import json
+from gi.repository import Gtk, Gdk
+from lib.Extensions import Extensions
+from importlib import import_module
 
 class crowbar(object):
 	"""docstring for crowbar"""
 
-	extensions = []
+	extensions = {}
 
 	def __init__(self):
 		super(crowbar, self).__init__()
@@ -38,17 +39,20 @@ class crowbar(object):
 		from pprint import pprint
 		for mountpoint, extensions in self.mountpoints.items():
 			for extension in extensions:
-				mount_box = Extensions(extension['extension'])
+				self.extensions[extension['extension']] = mount_box = Extensions(extension['extension'])
 
 				# Correct Orientations.
-				# if 'GTK_ORIENTATION_VERTICAL' == self.builder.get_object(mountpoint).get_orientation().value_name \
-				# 	and type(mount_box.gui.get_children()[0]) is Gtk.Toolbar:
-				# 	# Mount point is vertical, orient content vertically.
-				# 	mount_box.gui.get_children()[0].set_orientation(Gtk.Orientation.VERTICAL)
-				# 	mount_box.gui.get_children()[0].set_vexpand(True)
-				# else:
-				# 	mount_box.gui.get_children()[0].set_orientation(Gtk.Orientation.HORIZONTAL)
-				# 	mount_box.gui.get_children()[0].set_vexpand(False)
+				if type(mount_box.gui.get_children()[0]) is Gtk.Toolbar:
+
+					if 'GTK_ORIENTATION_VERTICAL' == self.builder.get_object(mountpoint).get_orientation().value_name:
+						# Mount point is vertical, orient content vertically.
+						mount_box.gui.get_children()[0].set_orientation(Gtk.Orientation.VERTICAL)
+						mount_box.gui.get_children()[0].set_vexpand(True)
+						mount_box.gui.get_children()[0].set_hexpand(False)
+					else:
+						mount_box.gui.get_children()[0].set_orientation(Gtk.Orientation.HORIZONTAL)
+						mount_box.gui.get_children()[0].set_vexpand(False)
+						mount_box.gui.get_children()[0].set_hexpand(True)
 
 				# Distiguish between toolbars and frames
 				# # ???
