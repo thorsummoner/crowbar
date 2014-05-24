@@ -1,0 +1,70 @@
+{
+	"mount_foating": {
+
+	},
+	"mount_top": {
+		0: {
+			"extension": "MapView",
+			"visible": true,
+			"settings": {
+
+			}
+		},
+		1: {
+			"extension": "Undo",
+			"visible": true,
+			"settings": {
+
+			}
+		},
+		2: {
+			"extension": "MapOperations",
+			"visible": true,
+			"settings": {
+
+			}
+		}
+	},
+	"mount_bottom": {
+		0: {
+			"extension": "StatusBar",
+			"settings": {
+
+			}
+		}
+	},
+	"mount_left": {
+		0: {
+			"extension": "MapOeprations",
+			"settings": {
+
+			}
+		}
+	},
+	"mount_right": {
+		0: {
+			"extension": "SelectionModes",
+			"settings": {
+
+			}
+		},
+		1: {
+			"extension": "Textures",
+			"settings": {
+
+			}
+		},
+		2: {
+			"extension": "NewObjects",
+			"settings": {
+
+			}
+		},
+		3: {
+			"extension": "FilterControl",
+			"settings": {
+
+			}
+		}
+	}
+}
