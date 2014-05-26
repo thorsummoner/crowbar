@@ -241,7 +241,8 @@
                               <object class="GtkImage" id="image3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="pixbuf">icons/text-x-readme.svg</property>
+                                <property name="pixel_size">22</property>
+                                <property name="icon_name">text-x-readme</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -267,137 +268,344 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkGrid" id="viewport">
+                          <object class="GtkNotebook" id="notebook2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="border_width">3</property>
-                            <property name="row_homogeneous">True</property>
-                            <property name="column_homogeneous">True</property>
                             <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow1">
+                              <object class="GtkBox" id="box5">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">always</property>
-                                <property name="vscrollbar_policy">always</property>
-                                <property name="shadow_type">in</property>
+                                <property name="can_focus">False</property>
+                                <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkViewport" id="viewport1">
+                                  <object class="GtkTextView" id="textview2">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="button1">
+                                    <property name="label" translatable="yes">Copy To Clipboard</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="receives_default">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="tab">
+                              <object class="GtkBox" id="box6">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <child>
+                                  <object class="GtkImage" id="image8">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="icon_name">text-x-readme</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="map_sum1_compile_tab">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="margin_left">5</property>
+                                    <property name="label" translatable="yes">Compile</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="map_sum1_compile_options">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="receives_default">True</property>
                                     <child>
-                                      <object class="GtkDrawingArea" id="drawingarea2">
+                                      <object class="GtkImage" id="image1">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <property name="icon_name">gtk-preferences</property>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="map_sum1_compile_go">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="receives_default">True</property>
+                                    <child>
+                                      <object class="GtkImage" id="image2">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="icon_name">mapoperation-run</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">0</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
+                                <property name="tab_fill">False</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow2">
+                              <object class="GtkViewport" id="viewport5">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">always</property>
-                                <property name="vscrollbar_policy">always</property>
-                                <property name="shadow_type">in</property>
+                                <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkViewport" id="viewport2">
+                                  <object class="GtkTextView" id="textview1">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <child>
-                                      <object class="GtkDrawingArea" id="drawingarea3">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                      </object>
-                                    </child>
                                   </object>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">1</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child type="tab">
+                              <object class="GtkBox" id="box7">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <child>
+                                  <object class="GtkImage" id="image9">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="icon_name">application-script-blank</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="map_sum1_text_tab">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="margin_left">5</property>
+                                    <property name="label" translatable="yes">VMF Raw</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                                <property name="tab_fill">False</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                              <object class="GtkGrid" id="viewport">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">always</property>
-                                <property name="vscrollbar_policy">always</property>
-                                <property name="shadow_type">in</property>
+                                <property name="can_focus">False</property>
+                                <property name="border_width">3</property>
+                                <property name="row_homogeneous">True</property>
+                                <property name="column_homogeneous">True</property>
                                 <child>
-                                  <object class="GtkViewport" id="viewport3">
+                                  <object class="GtkScrolledWindow" id="scrolledwindow1">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="hscrollbar_policy">always</property>
+                                    <property name="vscrollbar_policy">always</property>
+                                    <property name="shadow_type">in</property>
                                     <child>
-                                      <object class="GtkDrawingArea" id="drawingarea4">
+                                      <object class="GtkViewport" id="viewport1">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkDrawingArea" id="drawingarea2">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
+                                    <property name="top_attach">0</property>
+                                    <property name="width">1</property>
+                                    <property name="height">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScrolledWindow" id="scrolledwindow2">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="hscrollbar_policy">always</property>
+                                    <property name="vscrollbar_policy">always</property>
+                                    <property name="shadow_type">in</property>
+                                    <child>
+                                      <object class="GtkViewport" id="viewport2">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkDrawingArea" id="drawingarea3">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
+                                    <property name="top_attach">1</property>
+                                    <property name="width">1</property>
+                                    <property name="height">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScrolledWindow" id="scrolledwindow3">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="hscrollbar_policy">always</property>
+                                    <property name="vscrollbar_policy">always</property>
+                                    <property name="shadow_type">in</property>
+                                    <child>
+                                      <object class="GtkViewport" id="viewport3">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkDrawingArea" id="drawingarea4">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">1</property>
+                                    <property name="width">1</property>
+                                    <property name="height">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScrolledWindow" id="scrolledwindow4">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="hscrollbar_policy">never</property>
+                                    <property name="vscrollbar_policy">never</property>
+                                    <property name="shadow_type">in</property>
+                                    <child>
+                                      <object class="GtkViewport" id="viewport4">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkDrawingArea" id="drawingarea1">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">0</property>
+                                    <property name="width">1</property>
+                                    <property name="height">1</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">1</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow4">
+                            <child type="tab">
+                              <object class="GtkBox" id="box8">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">never</property>
-                                <property name="vscrollbar_policy">never</property>
-                                <property name="shadow_type">in</property>
+                                <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkViewport" id="viewport4">
+                                  <object class="GtkImage" id="image10">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <child>
-                                      <object class="GtkDrawingArea" id="drawingarea1">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                      </object>
-                                    </child>
+                                    <property name="icon_name">text-valvemapfile</property>
                                   </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="map_sum1_3d_tab">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="margin_left">5</property>
+                                    <property name="label" translatable="yes">Hammer</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">0</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
+                                <property name="position">2</property>
+                                <property name="tab_fill">False</property>
                               </packing>
                             </child>
                           </object>
                           <packing>
                             <property name="position">1</property>
-                            <property name="reorderable">True</property>
-                            <property name="detachable">True</property>
                           </packing>
                         </child>
                         <child type="tab">
-                          <object class="GtkBox" id="map_tab">
+                          <object class="GtkBox" id="box3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="spacing">5</property>
                             <child>
-                              <object class="GtkImage" id="image2">
+                              <object class="GtkRadioButton" id="map_sum1_compile">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="pixbuf">icons/application-script-blank.svg</property>
+                                <property name="receives_default">False</property>
+                                <property name="relief">none</property>
+                                <property name="xalign">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">False</property>
+                                <property name="group">map_sum1_text</property>
+                                <child>
+                                  <object class="GtkImage" id="image7">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="pixel_size">22</property>
+                                    <property name="icon_name">text-x-readme</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -406,10 +614,22 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="map_name">
+                              <object class="GtkRadioButton" id="map_sum1_text">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">unnamed.vmf</property>
+                                <property name="receives_default">False</property>
+                                <property name="relief">none</property>
+                                <property name="xalign">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">False</property>
+                                <child>
+                                  <object class="GtkImage" id="image4">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="pixel_size">22</property>
+                                    <property name="icon_name">application-script-blank</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -418,17 +638,21 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button1">
+                              <object class="GtkRadioButton" id="map_sum1_3d">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">False</property>
                                 <property name="relief">none</property>
-                                <property name="focus_on_click">False</property>
+                                <property name="xalign">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">False</property>
+                                <property name="group">map_sum1_text</property>
                                 <child>
-                                  <object class="GtkImage" id="image1">
+                                  <object class="GtkImage" id="image5">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="pixbuf">icons/window-close.svg</property>
+                                    <property name="pixel_size">22</property>
+                                    <property name="icon_name">text-valvemapfile</property>
                                   </object>
                                 </child>
                               </object>
@@ -438,12 +662,45 @@
                                 <property name="position">2</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkLabel" id="map_sum1_name">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_left">5</property>
+                                <property name="margin_right">5</property>
+                                <property name="label" translatable="yes">gmod_flatgrass.vmf</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="map_sum1_close">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">True</property>
+                                <property name="relief">none</property>
+                                <child>
+                                  <object class="GtkImage" id="image6">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="pixel_size">22</property>
+                                    <property name="icon_name">dialog-close</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">4</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="position">1</property>
                             <property name="tab_fill">False</property>
-                            <property name="reorderable">True</property>
-                            <property name="detachable">True</property>
                           </packing>
                         </child>
                       </object>
