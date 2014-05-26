@@ -1,6 +1,672 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
+  <object class="GtkToolbar" id="MapOperations">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="toolbar_style">icons</property>
+    <property name="icon_size">24</property>
+    <child>
+      <object class="GtkToolButton" id="Carve">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Carve
+When the Carve button is pressed, the selected brush will subtract its shape from the non-selected brushes around it. See Carve, under the Tools Menu, for more information.</property>
+        <property name="tooltip_text" translatable="yes">Carve
+When the Carve button is pressed, the selected brush will subtract its shape from the non-selected brushes around it. See Carve, under the Tools Menu, for more information.</property>
+        <property name="action_name">MapOperations.Carve</property>
+        <property name="label" translatable="yes">Carve</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">carve.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Group">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Group
+Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
+        <property name="tooltip_text" translatable="yes">Group
+Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
+        <property name="action_name">MapOperations.Group</property>
+        <property name="label" translatable="yes">Group</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">group.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Ungroup">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Ungroup
+Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
+        <property name="tooltip_text" translatable="yes">Ungroup
+Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
+        <property name="action_name">MapOperations.Ungroup</property>
+        <property name="label" translatable="yes">Ungroup</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">ungroup.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Group Ignore ">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Group Ignore [Ctrl+W]
+Group Ignore allows you to modify individual brushes that are part of a group or entity by temporarily bypassing all object groups. All selection commands work as if there are no groups defined. The Group and Ungroup commands may or may not function while in this mode, depending on how the Allow grouping/ungrouping while Ignore Groups is checked. This option is set in the General Options dialog box. Some commands, such as Tie to Entity, will remove objects from their groups if they are used in this mode. Also see Grouping and VisGrouping for more information on Grouping.</property>
+        <property name="tooltip_text" translatable="yes">Group Ignore [Ctrl+W]
+Group Ignore allows you to modify individual brushes that are part of a group or entity by temporarily bypassing all object groups. All selection commands work as if there are no groups defined. The Group and Ungroup commands may or may not function while in this mode, depending on how the Allow grouping/ungrouping while Ignore Groups is checked. This option is set in the General Options dialog box. Some commands, such as Tie to Entity, will remove objects from their groups if they are used in this mode. Also see Grouping and VisGrouping for more information on Grouping.</property>
+        <property name="action_name">MapOperations.GroupIgnore</property>
+        <property name="label" translatable="yes">Group Ignore </property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">ignore.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Hide Selected">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Hide Selected
+Creates a new VisGroup with the selected objects and hides it. See Hide Selected, under the View Menu, for more information.</property>
+        <property name="tooltip_text" translatable="yes">Hide Selected
+Creates a new VisGroup with the selected objects and hides it. See Hide Selected, under the View Menu, for more information.</property>
+        <property name="action_name">MapOperations.HideSelected</property>
+        <property name="label" translatable="yes">Hide Selected</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">hideselected.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Hide Unselected">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Hide Unselected
+Hides all unselected objects. Identical in function to the Hide Selected function, but applies to all unselected objects. See Hide Selected, under the View Menu, for more information.</property>
+        <property name="tooltip_text" translatable="yes">Hide Unselected
+Hides all unselected objects. Identical in function to the Hide Selected function, but applies to all unselected objects. See Hide Selected, under the View Menu, for more information.</property>
+        <property name="action_name">MapOperations.HideUnselected</property>
+        <property name="label" translatable="yes">Hide Unselected</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">hidedeselected.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Quickhide Objects ">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Quickhide Objects [H]
+Temporarily hides the selected object without placing it in its own Visgroup</property>
+        <property name="tooltip_text" translatable="yes">Quickhide Objects [H]
+Temporarily hides the selected object without placing it in its own Visgroup</property>
+        <property name="action_name">MapOperations.QuickhideObjects</property>
+        <property name="label" translatable="yes">Quickhide Objects </property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">quickhide.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Quickhide Unslected Objects">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Quickhide Unslected Objects[Ctrl+H]
+Temporarily hides every other visible object except for the selected object</property>
+        <property name="tooltip_text" translatable="yes">Quickhide Unslected Objects[Ctrl+H]
+Temporarily hides every other visible object except for the selected object</property>
+        <property name="action_name">MapOperations.QuickhideUnslectedObjects</property>
+        <property name="label" translatable="yes">Quickhide Unslected Objects</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">quickhidedeselected.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Unhide Quickhide Objects ">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Unhide Quickhide Objects [U]
+Unhides every Temporarily hidden object</property>
+        <property name="tooltip_text" translatable="yes">Unhide Quickhide Objects [U]
+Unhides every Temporarily hidden object</property>
+        <property name="action_name">MapOperations.UnhideQuickhideObjects</property>
+        <property name="label" translatable="yes">Unhide Quickhide Objects </property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">unhidequickhide.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Show All Visgroups">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Show All Visgroups
+This command will make the all hidden objects visible, including VisGroups. This button’s function is identical to the Show Hidden Objects command, under the View Menu.</property>
+        <property name="tooltip_text" translatable="yes">Show All Visgroups
+This command will make the all hidden objects visible, including VisGroups. This button’s function is identical to the Show Hidden Objects command, under the View Menu.</property>
+        <property name="action_name">MapOperations.ShowAllVisgroups</property>
+        <property name="label" translatable="yes">Show All Visgroups</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">showallvisgroups.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Cut">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Cut</property>
+        <property name="use_underline">True</property>
+        <property name="stock_id">gtk-cut</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Copy">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Copy</property>
+        <property name="use_underline">True</property>
+        <property name="stock_id">gtk-copy</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Paste">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Paste</property>
+        <property name="use_underline">True</property>
+        <property name="stock_id">gtk-paste</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem4">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Cordon State ">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Cordon State
+This function will toggle the visibility and effect of a cordon area you have created with the Edit Cordon Bounds tool. See Cordon Usage for more information.</property>
+        <property name="tooltip_text" translatable="yes">Cordon State
+This function will toggle the visibility and effect of a cordon area you have created with the Edit Cordon Bounds tool. See Cordon Usage for more information.</property>
+        <property name="action_name">MapOperations.CordonState</property>
+        <property name="label" translatable="yes">Cordon State </property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">cordon.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Edit Cordon Bounds">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Edit Cordon Bounds
+This function allows you to create a Cordon in order to test compile a smaller section of the map. See Cordon Usage for more information.</property>
+        <property name="tooltip_text" translatable="yes">Edit Cordon Bounds
+This function allows you to create a Cordon in order to test compile a smaller section of the map. See Cordon Usage for more information.</property>
+        <property name="action_name">MapOperations.EditCordonBounds</property>
+        <property name="label" translatable="yes">Edit Cordon Bounds</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">editcordon.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Radius Culling">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Radius Culling[C]
+Creates a sphere around your location in the 2D viewports. It shows the maximal visible area in the editor.</property>
+        <property name="tooltip_text" translatable="yes">Radius Culling[C]
+Creates a sphere around your location in the 2D viewports. It shows the maximal visible area in the editor.</property>
+        <property name="action_name">MapOperations.RadiusCulling</property>
+        <property name="label" translatable="yes">Radius Culling</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">radiusculling.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem5">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Select by Handles">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Select by Handles
+When this option is toggled on, you will only be able to select objects by their center &amp;quot;x&amp;quot; handles in the 2D view. This is a shortcut – see Selection box selects by center handles only in the 2D views tab of the Options dialog box for more information.</property>
+        <property name="tooltip_text" translatable="yes">Select by Handles
+When this option is toggled on, you will only be able to select objects by their center "x" handles in the 2D view. This is a shortcut – see Selection box selects by center handles only in the 2D views tab of the Options dialog box for more information.</property>
+        <property name="action_name">MapOperations.SelectbyHandles</property>
+        <property name="label" translatable="yes">Select by Handles</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">selectbyhandles.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="AutoSelect">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">AutoSelect
+When Toggle Auto-selection is toggled on, you can select multiple objects by simply clicking your mouse button and dragging a selection box around the objects. When this option is toggled off, multiple objects are selected by dragging a selection box around the objects and then pressing ENTER. This is a shortcut to the Automatic infinite selection in 2D windows option in the 2D views tab tab of the Options dialog box.</property>
+        <property name="tooltip_text" translatable="yes">AutoSelect
+When Toggle Auto-selection is toggled on, you can select multiple objects by simply clicking your mouse button and dragging a selection box around the objects. When this option is toggled off, multiple objects are selected by dragging a selection box around the objects and then pressing ENTER. This is a shortcut to the Automatic infinite selection in 2D windows option in the 2D views tab tab of the Options dialog box.</property>
+        <property name="action_name">MapOperations.AutoSelect</property>
+        <property name="label" translatable="yes">AutoSelect</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">autoselect.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Texture Lock">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Texture Lock
+This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
+        <property name="tooltip_text" translatable="yes">Texture Lock
+This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
+        <property name="action_name">MapOperations.TextureLock</property>
+        <property name="label" translatable="yes">Texture Lock</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">texturelock.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Texture Scroll Lock">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Texture Scroll Lock
+This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
+        <property name="tooltip_text" translatable="yes">Texture Scroll Lock
+This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
+        <property name="action_name">MapOperations.TextureScrollLock</property>
+        <property name="label" translatable="yes">Texture Scroll Lock</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">texturescroll.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Align To World or Face">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Align To World or Face
+This button toggles the texture alignment style between world alignment and face alignment. World alignment will align textures according to the world grid coordinates. Face alignment will align textures according to the brush face.</property>
+        <property name="tooltip_text" translatable="yes">Align To World or Face
+This button toggles the texture alignment style between world alignment and face alignment. World alignment will align textures according to the world grid coordinates. Face alignment will align textures according to the brush face.</property>
+        <property name="action_name">MapOperations.AlignToWorldorFace</property>
+        <property name="label" translatable="yes">Align To World or Face</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">aligntoworldface.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem6">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Displacement Mask">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Displacement Mask
+Turns off the display of the non-displacement sides for a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
+        <property name="tooltip_text" translatable="yes">Displacement Mask
+Turns off the display of the non-displacement sides for a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
+        <property name="action_name">MapOperations.DisplacementMask</property>
+        <property name="label" translatable="yes">Displacement Mask</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">displacementmask.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Draw Displacements">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Draw Displacements
+Turn the drawing of displacements of/off.</property>
+        <property name="tooltip_text" translatable="yes">Draw Displacements
+Turn the drawing of displacements of/off.</property>
+        <property name="action_name">MapOperations.DrawDisplacements</property>
+        <property name="label" translatable="yes">Draw Displacements</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">drawdisplacements.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Draw Walkable">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Draw Walkable
+Highlights surfaces in yellow if the angle of the surface is too steep for the player to walk up it.</property>
+        <property name="tooltip_text" translatable="yes">Draw Walkable
+Highlights surfaces in yellow if the angle of the surface is too steep for the player to walk up it.</property>
+        <property name="action_name">MapOperations.DrawWalkable</property>
+        <property name="label" translatable="yes">Draw Walkable</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">drawwalkable.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Displacement Edge Collapse">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Displacement Edge Collapse
+Turns off the display of the vertices that are collapsed when two displacements of different resolutions are connected via a Sew command.. or a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
+        <property name="tooltip_text" translatable="yes">Displacement Edge Collapse
+Turns off the display of the vertices that are collapsed when two displacements of different resolutions are connected via a Sew command.. or a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
+        <property name="action_name">MapOperations.DisplacementEdgeCollapse</property>
+        <property name="label" translatable="yes">Displacement Edge Collapse</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">displacementedgecollapse.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem7">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Run Map!">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Run Map!
+This is equivalent to choosing Run Map from the File Menu.</property>
+        <property name="tooltip_text" translatable="yes">Run Map!
+This is equivalent to choosing Run Map from the File Menu.</property>
+        <property name="action_name">MapOperations.RunMap!</property>
+        <property name="label" translatable="yes">Run Map!</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">runmap.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Show Helpers">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Show Helpers
+This is equivalent to choosing Run Map from the File Menu.</property>
+        <property name="tooltip_text" translatable="yes">Show Helpers
+This is equivalent to choosing Run Map from the File Menu.</property>
+        <property name="action_name">MapOperations.ShowHelpers</property>
+        <property name="label" translatable="yes">Show Helpers</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">showhelpers.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Models in 2D">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Models in 2D
+Turns the models wireframe in the 2D viewports on/off.</property>
+        <property name="tooltip_text" translatable="yes">Models in 2D
+Turns the models wireframe in the 2D viewports on/off.</property>
+        <property name="action_name">MapOperations.Modelsin2D</property>
+        <property name="label" translatable="yes">Models in 2D</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">models2d.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Model Fade Preview">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Model Fade Preview
+This option allows you to test a model&amp;apos;s Start Fade Distance and End Fade Distance by using real-time fading in the 3D camera view.</property>
+        <property name="tooltip_text" translatable="yes">Model Fade Preview
+This option allows you to test a model's Start Fade Distance and End Fade Distance by using real-time fading in the 3D camera view.</property>
+        <property name="action_name">MapOperations.ModelFadePreview</property>
+        <property name="label" translatable="yes">Model Fade Preview</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">modelfade.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Show Collision Models Wireframe">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Show Collision Models Wireframe
+If &amp;quot;Toggle models in 2D&amp;quot; is activated, the collision models will shown up in the 2D viewports.</property>
+        <property name="tooltip_text" translatable="yes">Show Collision Models Wireframe
+If "Toggle models in 2D" is activated, the collision models will shown up in the 2D viewports.</property>
+        <property name="action_name">MapOperations.ShowCollisionModelsWireframe</property>
+        <property name="label" translatable="yes">Show Collision Models Wireframe</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">collisionmodels.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Shows Detail Models And Sprites On Materials">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Shows Detail Models And Sprites On Materials
+Toggle drawing of func_details and sprites on materials.</property>
+        <property name="tooltip_text" translatable="yes">Shows Detail Models And Sprites On Materials
+Toggle drawing of func_details and sprites on materials.</property>
+        <property name="action_name">MapOperations.ShowsDetailModelsAndSpritesOnMaterials</property>
+        <property name="label" translatable="yes">Shows Detail Models And Sprites On Materials</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">sprites.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="Show Nodraw Faces">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Show Nodraw Faces
+Toggle Drawing of Nodraw Brushes on all viewports.</property>
+        <property name="tooltip_text" translatable="yes">Show Nodraw Faces
+Toggle Drawing of Nodraw Brushes on all viewports.</property>
+        <property name="action_name">MapOperations.ShowNodrawFaces</property>
+        <property name="label" translatable="yes">Show Nodraw Faces</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">nodraw.svg</property>
+        <property name="active">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+  </object>
   <object class="GtkImage" id="aligntoworldface.svg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -145,591 +811,5 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">./icons/unhidequickhide.svg</property>
-  </object>
-  <object class="GtkHandleBox" id="MapOperations">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="hexpand">True</property>
-    <child>
-      <object class="GtkToolbar" id="Map Operations">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="toolbar_style">icons</property>
-        <property name="icon_size">24</property>
-        <child>
-          <object class="GtkToolButton" id="Carve">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Carve
-When the Carve button is pressed, the selected brush will subtract its shape from the non-selected brushes around it. See Carve, under the Tools Menu, for more information.</property>
-            <property name="action_name">MapOperations.Carve</property>
-            <property name="label" translatable="yes">Carve</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">carve.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem1">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Group">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Group
-Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
-            <property name="action_name">MapOperations.Group</property>
-            <property name="label" translatable="yes">Group</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">group.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Ungroup">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Ungroup
-Group/Ungroup binds two or more objects together so they may be acted upon simultaneously.</property>
-            <property name="action_name">MapOperations.Ungroup</property>
-            <property name="label" translatable="yes">Ungroup</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">ungroup.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Group Ignore ">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Group Ignore [Ctrl+W]
-Group Ignore allows you to modify individual brushes that are part of a group or entity by temporarily bypassing all object groups. All selection commands work as if there are no groups defined. The Group and Ungroup commands may or may not function while in this mode, depending on how the Allow grouping/ungrouping while Ignore Groups is checked. This option is set in the General Options dialog box. Some commands, such as Tie to Entity, will remove objects from their groups if they are used in this mode. Also see Grouping and VisGrouping for more information on Grouping.</property>
-            <property name="action_name">MapOperations.GroupIgnore</property>
-            <property name="label" translatable="yes">Group Ignore </property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">ignore.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem2">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Hide Selected">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Hide Selected
-Creates a new VisGroup with the selected objects and hides it. See Hide Selected, under the View Menu, for more information.</property>
-            <property name="action_name">MapOperations.HideSelected</property>
-            <property name="label" translatable="yes">Hide Selected</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">hideselected.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Hide Unselected">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Hide Unselected
-Hides all unselected objects. Identical in function to the Hide Selected function, but applies to all unselected objects. See Hide Selected, under the View Menu, for more information.</property>
-            <property name="action_name">MapOperations.HideUnselected</property>
-            <property name="label" translatable="yes">Hide Unselected</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">hidedeselected.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Quickhide Objects ">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Quickhide Objects [H]
-Temporarily hides the selected object without placing it in its own Visgroup</property>
-            <property name="action_name">MapOperations.QuickhideObjects</property>
-            <property name="label" translatable="yes">Quickhide Objects </property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">quickhide.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Quickhide Unslected Objects">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Quickhide Unslected Objects[Ctrl+H]
-Temporarily hides every other visible object except for the selected object</property>
-            <property name="action_name">MapOperations.QuickhideUnslectedObjects</property>
-            <property name="label" translatable="yes">Quickhide Unslected Objects</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">quickhidedeselected.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Unhide Quickhide Objects ">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Unhide Quickhide Objects [U]
-Unhides every Temporarily hidden object</property>
-            <property name="action_name">MapOperations.UnhideQuickhideObjects</property>
-            <property name="label" translatable="yes">Unhide Quickhide Objects </property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">unhidequickhide.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Show All Visgroups">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show All Visgroups
-This command will make the all hidden objects visible, including VisGroups. This button’s function is identical to the Show Hidden Objects command, under the View Menu.</property>
-            <property name="action_name">MapOperations.ShowAllVisgroups</property>
-            <property name="label" translatable="yes">Show All Visgroups</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">showallvisgroups.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem3">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Cut">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Cut</property>
-            <property name="use_underline">True</property>
-            <property name="stock_id">gtk-cut</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Copy">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Copy</property>
-            <property name="use_underline">True</property>
-            <property name="stock_id">gtk-copy</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Paste">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Paste</property>
-            <property name="use_underline">True</property>
-            <property name="stock_id">gtk-paste</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem4">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Cordon State ">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Cordon State
-This function will toggle the visibility and effect of a cordon area you have created with the Edit Cordon Bounds tool. See Cordon Usage for more information.</property>
-            <property name="action_name">MapOperations.CordonState</property>
-            <property name="label" translatable="yes">Cordon State </property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">cordon.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Edit Cordon Bounds">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Edit Cordon Bounds
-This function allows you to create a Cordon in order to test compile a smaller section of the map. See Cordon Usage for more information.</property>
-            <property name="action_name">MapOperations.EditCordonBounds</property>
-            <property name="label" translatable="yes">Edit Cordon Bounds</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">editcordon.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Radius Culling">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Radius Culling[C]
-Creates a sphere around your location in the 2D viewports. It shows the maximal visible area in the editor.</property>
-            <property name="action_name">MapOperations.RadiusCulling</property>
-            <property name="label" translatable="yes">Radius Culling</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">radiusculling.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem5">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Select by Handles">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Select by Handles
-When this option is toggled on, you will only be able to select objects by their center "x" handles in the 2D view. This is a shortcut – see Selection box selects by center handles only in the 2D views tab of the Options dialog box for more information.</property>
-            <property name="action_name">MapOperations.SelectbyHandles</property>
-            <property name="label" translatable="yes">Select by Handles</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">selectbyhandles.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="AutoSelect">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">AutoSelect
-When Toggle Auto-selection is toggled on, you can select multiple objects by simply clicking your mouse button and dragging a selection box around the objects. When this option is toggled off, multiple objects are selected by dragging a selection box around the objects and then pressing ENTER. This is a shortcut to the Automatic infinite selection in 2D windows option in the 2D views tab tab of the Options dialog box.</property>
-            <property name="action_name">MapOperations.AutoSelect</property>
-            <property name="label" translatable="yes">AutoSelect</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">autoselect.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Texture Lock">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Texture Lock
-This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
-            <property name="action_name">MapOperations.TextureLock</property>
-            <property name="label" translatable="yes">Texture Lock</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">texturelock.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Texture Scroll Lock">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Texture Scroll Lock
-This button toggles texture lock mode on and off. Texture lock allows you to move or rotate a brush without disturbing the texture alignments.</property>
-            <property name="action_name">MapOperations.TextureScrollLock</property>
-            <property name="label" translatable="yes">Texture Scroll Lock</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">texturescroll.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Align To World or Face">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Align To World or Face
-This button toggles the texture alignment style between world alignment and face alignment. World alignment will align textures according to the world grid coordinates. Face alignment will align textures according to the brush face.</property>
-            <property name="action_name">MapOperations.AlignToWorldorFace</property>
-            <property name="label" translatable="yes">Align To World or Face</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">aligntoworldface.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem6">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Displacement Mask">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Displacement Mask
-Turns off the display of the non-displacement sides for a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
-            <property name="action_name">MapOperations.DisplacementMask</property>
-            <property name="label" translatable="yes">Displacement Mask</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">displacementmask.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Draw Displacements">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Draw Displacements
-Turn the drawing of displacements of/off.</property>
-            <property name="action_name">MapOperations.DrawDisplacements</property>
-            <property name="label" translatable="yes">Draw Displacements</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">drawdisplacements.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Draw Walkable">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Draw Walkable
-Highlights surfaces in yellow if the angle of the surface is too steep for the player to walk up it.</property>
-            <property name="action_name">MapOperations.DrawWalkable</property>
-            <property name="label" translatable="yes">Draw Walkable</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">drawwalkable.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Displacement Edge Collapse">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Displacement Edge Collapse
-Turns off the display of the vertices that are collapsed when two displacements of different resolutions are connected via a Sew command.. or a brush that contains displacement surfaces. See Face Edit Displacements for more information.</property>
-            <property name="action_name">MapOperations.DisplacementEdgeCollapse</property>
-            <property name="label" translatable="yes">Displacement Edge Collapse</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">displacementedgecollapse.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparatorToolItem" id="separatortoolitem7">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="Run Map!">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Run Map!
-This is equivalent to choosing Run Map from the File Menu.</property>
-            <property name="action_name">MapOperations.RunMap!</property>
-            <property name="label" translatable="yes">Run Map!</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">runmap.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Show Helpers">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show Helpers
-This is equivalent to choosing Run Map from the File Menu.</property>
-            <property name="action_name">MapOperations.ShowHelpers</property>
-            <property name="label" translatable="yes">Show Helpers</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">showhelpers.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Models in 2D">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Models in 2D
-Turns the models wireframe in the 2D viewports on/off.</property>
-            <property name="action_name">MapOperations.Modelsin2D</property>
-            <property name="label" translatable="yes">Models in 2D</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">models2d.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Model Fade Preview">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Model Fade Preview
-This option allows you to test a model's Start Fade Distance and End Fade Distance by using real-time fading in the 3D camera view.</property>
-            <property name="action_name">MapOperations.ModelFadePreview</property>
-            <property name="label" translatable="yes">Model Fade Preview</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">modelfade.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Show Collision Models Wireframe">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show Collision Models Wireframe
-If "Toggle models in 2D" is activated, the collision models will shown up in the 2D viewports.</property>
-            <property name="action_name">MapOperations.ShowCollisionModelsWireframe</property>
-            <property name="label" translatable="yes">Show Collision Models Wireframe</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">collisionmodels.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Shows Detail Models And Sprites On Materials">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Shows Detail Models And Sprites On Materials
-Toggle drawing of func_details and sprites on materials.</property>
-            <property name="action_name">MapOperations.ShowsDetailModelsAndSpritesOnMaterials</property>
-            <property name="label" translatable="yes">Shows Detail Models And Sprites On Materials</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">sprites.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleToolButton" id="Show Nodraw Faces">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show Nodraw Faces
-Toggle Drawing of Nodraw Brushes on all viewports.</property>
-            <property name="action_name">MapOperations.ShowNodrawFaces</property>
-            <property name="label" translatable="yes">Show Nodraw Faces</property>
-            <property name="use_underline">True</property>
-            <property name="icon_widget">nodraw.svg</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-      </object>
-    </child>
   </object>
 </interface>
