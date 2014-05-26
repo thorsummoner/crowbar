@@ -1,9 +1,10 @@
 
 import signal
 import json
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Gdl
 from lib.Extensions import Extensions
 from importlib import import_module
+from os import path
 
 class crowbar(object):
 	"""docstring for crowbar"""
@@ -13,9 +14,20 @@ class crowbar(object):
 	def __init__(self):
 		super(crowbar, self).__init__()
 
+		self.register_icons()
 		self.build()
 		self.load_extensions('settings/default.crowbar-mountpoints')
 		self.window.show_all()
+
+	def register_icons(self):
+		basepath = path.realpath(path.dirname(path.realpath(__file__)) + '/../share/crowbar/icons')
+		# register icon path
+		# Note: I gave this documnet one hell of a try https://wiki.gnome.org/DraftSpecs/ThemableAppSpecificIcons
+		#       What it documents didn't work, but for some reason in desparation I added the full endpoint and it worked.
+		# TODO: Unfuck this to load like a sane environment... If that is even possible.
+
+		Gtk.IconTheme.get_default().append_search_path(basepath + '/hicolor/24/mimetypes')
+		Gtk.IconTheme.get_default().append_search_path(basepath + '/hicolor/24/actions')
 
 	def main(self):
 		signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -59,55 +71,3 @@ class crowbar(object):
 
 				self.builder.get_object(mountpoint).add(mount_box.gui)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from gi.repository import Gtk, Gdk
-# from lib.Handler import Handler
-
-# max_int = 2**14 # 16384
-
-# builder = Gtk.Builder()
-# builder.add_from_file("ui/crowbar.glade")
-# builder.connect_signals(Handler())
-
-# window = builder.get_object("MainWindow")
-
-# style_provider = Gtk.CssProvider()
-# style_provider.load_from_path('ui/crowbar.css')
-
-# Gtk.StyleContext.add_provider_for_screen(
-#     Gdk.Screen.get_default(),
-#     style_provider,
-#     Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-# )
-
-# window.show_all()
-
-# signal.signal(signal.SIGINT, signal.SIG_DFL)
-# Gtk.main()
-#

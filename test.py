@@ -1,6 +1,5 @@
-#!/c/Python34x32/python.exe
+#!/usr/bin/env python3
 
-from lib.Extensions import Extensions
 from crowbar.crowbar import crowbar
 
 # statusbar = Extensions('StatusBar')
