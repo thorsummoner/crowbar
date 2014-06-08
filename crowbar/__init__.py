@@ -4,6 +4,9 @@ import signal
 from os import path
 from gi.repository import Gtk
 
+#DEBUG
+from pprint import pprint
+
 class desktop(Gtk.Builder):
 	"""docstring for desktop"""
 
@@ -47,10 +50,8 @@ class desktop(Gtk.Builder):
 		)
 
 	def _menuitems(this, list, menu):
-		from pprint import pprint
-		for menuitem in list:
-			pprint(menuitem)
 
+		for menuitem in list:
 
 			menuitem_label = menuitem['caption']
 			mnemonic_index = -1
