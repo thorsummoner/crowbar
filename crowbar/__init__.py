@@ -52,23 +52,23 @@ class desktop(Gtk.Builder):
 
 
 			menuitem_label = menuitem['caption']
+			mnemonic_index = -1
 
-			# Apparently this is wrong
-			# literal underlines show in the ui
-
+			# Prefix mnemonic substring of caption with underscore
 			if 'mnemonic' in menuitem:
 				mnemonic_index = menuitem_label.lower().find(
 					menuitem['mnemonic']
 				)
-				if -1 != mnemonic_index:
-
-					menuitem_label = \
-						menuitem_label[0:mnemonic_index] \
-						+ '_' + \
-						menuitem_label[mnemonic_index:]
+			if -1 != mnemonic_index:
+				menuitem_label = \
+					menuitem_label[0:mnemonic_index] \
+					+ '_' + \
+					menuitem_label[mnemonic_index:]
 
 			# Make a new menu item
-			_menuitem = Gtk.MenuItem(menuitem_label)
+			_menuitem = Gtk.MenuItem(
+				label=menuitem_label, use_underline=True
+			)
 
 			if menuitem['caption'] == '-':
 				_menuitem = Gtk.SeparatorMenuItem()
