@@ -50,8 +50,25 @@ class desktop(Gtk.Builder):
 		for menuitem in list:
 			pprint(menuitem)
 
+
+			menuitem_label = menuitem['caption']
+
+			# Apparently this is wrong
+			# literal underlines show in the ui
+
+			if 'mnemonic' in menuitem:
+				mnemonic_index = menuitem_label.lower().find(
+					menuitem['mnemonic']
+				)
+				if -1 != mnemonic_index:
+
+					menuitem_label = \
+						menuitem_label[0:mnemonic_index] \
+						+ '_' + \
+						menuitem_label[mnemonic_index:]
+
 			# Make a new menu item
-			_menuitem = Gtk.MenuItem(menuitem['caption'])
+			_menuitem = Gtk.MenuItem(menuitem_label)
 
 			if menuitem['caption'] == '-':
 				_menuitem = Gtk.SeparatorMenuItem()
