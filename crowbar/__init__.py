@@ -23,8 +23,7 @@ class desktop(Gtk.Builder):
 		this.connect_signals(dektop_handles())
 
 		# Get the glade root object as the main window.
-		# NOTE: this implementation may be very wrong.
-		this.window = this.get_objects().pop(0)
+		this.window = this.get_object('window')
 		this.window.show_all()
 
 		# Die on Ctrl+C
