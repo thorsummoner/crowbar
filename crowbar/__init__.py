@@ -1,4 +1,6 @@
 
+import signal
+
 from os import path
 from gi.repository import Gtk
 
@@ -17,12 +19,16 @@ class desktop(Gtk.Builder):
 
 	def main(this):
 
+		# Bind Glade-events to desktop_handlers methods
 		this.connect_signals(dektop_handles())
 
 		# Get the glade root object as the main window.
 		# NOTE: this implementation may be very wrong.
 		this.window = this.get_objects().pop(0)
 		this.window.show_all()
+
+		# Die on Ctrl+C
+		signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 		Gtk.main()
 
