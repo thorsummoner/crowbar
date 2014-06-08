@@ -1,0 +1,44 @@
+Vectors Mostly by Dylan Grafmyre <thorsummoner@live.com>. Supplementary vectors from Wikipedia Commons, Public Domain.
+
+Vectors based on associated toolbar from Vavle's SourceSDK tool Hammer.
+
+| File Name                                   | Additional Contributors |
+| ------------------------------------------- | ----------------------- |
+| carve.svg                                   |                         |
+| ------------------------------------------- | ----------------------- |
+| group.svg                                   |                         |
+| ungroup.svg                                 |                         |
+| group_ignore.svg                            |                         |
+| ------------------------------------------- | ----------------------- |
+| show_all_visgroups.svg                      |                         |
+| hide_selected.svg                           |                         |
+| hide_unselected.svg                         |                         |
+| quickhide_objects.svg                       |                         |
+| quickhide_unselected_objects.svg            |                         |
+| unhide_quickhide_objects.svg                | WikiCommons             |
+| ------------------------------------------- | ----------------------- |
+| toggle_cordon_state.svg                     |                         |
+| edit_cordon_bounds.svg                      |                         |
+| ------------------------------------------- | ----------------------- |
+| radius_culling.svg                          |                         |
+| ------------------------------------------- | ----------------------- |
+| toggle_select_by_handles.svg                |                         |
+| autoselect.svg                              |                         |
+| align_to_world_face.svg                     |                         |
+| texture_lock.svg                            |                         |
+| texture_scroll.svg                          |                         |
+| ------------------------------------------- | ----------------------- |
+| displacement_mask.svg                       |                         |
+| toggle_displacements.svg                    |                         |
+| display_walkable.svg                        |                         |
+| displacement_edge_collapse.svg              |                         |
+| ------------------------------------------- | ----------------------- |
+| play.svg                                    | WikiCommons             |
+| show_helpers.svg                            |                         |
+| toggle_models_in_2d.svg                     |                         |
+| toggle_model_face_preview.svg               |                         |
+| ------------------------------------------- | ----------------------- |
+| show_collision_models_wireframe.svg         |                         |
+| show_detail_models&sprites_on_materials.svg | WikiCommons             |
+| show_nodraw_faces.svg                       |                         |
+

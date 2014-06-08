@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.6 -->
+  <!-- interface-local-resource-path C:\Users\dylang\Desktop\thorsummoner\crowbar_py\extensions\MapTools -->
+  <object class="GtkImage" id="2d_grid.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/2d_grid.svg</property>
+  </object>
+  <object class="GtkImage" id="3d_grid.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/3d_grid.svg</property>
+  </object>
+  <object class="GtkToolbar" id="MapView">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="toolbar_style">icons</property>
+    <property name="icon_size">24</property>
+    <child>
+      <object class="GtkToggleToolButton" id="2D Grid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">2D Grid
+Toggles the 2D grid -- gridlines that show up in the 2D Views. See Show Grid, and Grid Settings for more information.</property>
+        <property name="tooltip_text" translatable="yes">2D Grid
+Toggles the 2D grid -- gridlines that show up in the 2D Views. See Show Grid, and Grid Settings for more information.</property>
+        <property name="action_name">MapView.2DGrid</property>
+        <property name="label" translatable="yes">2D Grid</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">2d_grid.svg</property>
+        <property name="active">True</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToggleToolButton" id="3D Grid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">3D Grid
+Toggles the 3D grid -- gridlines that show up on all brush solids in the 3D View.</property>
+        <property name="tooltip_text" translatable="yes">3D Grid
+Toggles the 3D grid -- gridlines that show up on all brush solids in the 3D View.</property>
+        <property name="action_name">MapView.3DGrid</property>
+        <property name="label" translatable="yes">3D Grid</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">3d_grid.svg</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Smaller Grid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Smaller Grid
+These decrease and increase the grid size. See Show Grid, and Grid Settings for more information.</property>
+        <property name="tooltip_text" translatable="yes">Smaller Grid
+These decrease and increase the grid size. See Show Grid, and Grid Settings for more information.</property>
+        <property name="action_name">MapView.SmallerGrid</property>
+        <property name="label" translatable="yes">Smaller Grid</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">smaller_grid.svg</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Larger Grid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Larger Grid
+These decrease and increase the grid size. See Show Grid, and Grid Settings for more information.</property>
+        <property name="tooltip_text" translatable="yes">Larger Grid
+These decrease and increase the grid size. See Show Grid, and Grid Settings for more information.</property>
+        <property name="action_name">MapView.LargerGrid</property>
+        <property name="label" translatable="yes">Larger Grid</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">larger_grid.svg</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparatorToolItem" id="separatortoolitem1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Load Window State">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Load Window State
+These buttons are used to save and restore window configurations when the Use independent window configurations option is being used.</property>
+        <property name="tooltip_text" translatable="yes">Load Window State
+These buttons are used to save and restore window configurations when the Use independent window configurations option is being used.</property>
+        <property name="action_name">MapView.LoadWindowState</property>
+        <property name="label" translatable="yes">Load Window State</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">load_window_state.svg</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkToolButton" id="Save Window State">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_tooltip">True</property>
+        <property name="tooltip_markup" translatable="yes">Save Window State
+These buttons are used to save and restore window configurations when the Use independent window configurations option is being used.</property>
+        <property name="tooltip_text" translatable="yes">Save Window State
+These buttons are used to save and restore window configurations when the Use independent window configurations option is being used.</property>
+        <property name="action_name">MapView.SaveWindowState</property>
+        <property name="label" translatable="yes">Save Window State</property>
+        <property name="use_underline">True</property>
+        <property name="icon_widget">save_window_state.svg</property>
+        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="homogeneous">True</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkImage" id="larger_grid.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/larger_grid.svg</property>
+  </object>
+  <object class="GtkImage" id="load_window_state.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/load_window_state.svg</property>
+  </object>
+  <object class="GtkImage" id="save_window_state.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/save_window_state.svg</property>
+  </object>
+  <object class="GtkImage" id="smaller_grid.svg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">./icons/smaller_grid.svg</property>
+  </object>
+</interface>
