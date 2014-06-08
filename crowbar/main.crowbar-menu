@@ -4,6 +4,11 @@
         "mnemonic": "f",
         "id": "file",
         "children": [
+            {
+                "caption": "Press Button" ,
+                "mnemonic": "r",
+                "command": "onButtonPressed"
+            },
             { "caption": "-" },
             {
                 "caption": "Exit",

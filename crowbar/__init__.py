@@ -22,7 +22,8 @@ class desktop(Gtk.Builder):
 		this.add_from_file(this.top_level_glade)
 
 		# Bind Glade-events to desktop_handlers methods
-		this.connect_signals(dektop_handles())
+		this.handlers = dektop_handles()
+		this.connect_signals(this.handlers)
 
 		# Get the glade root object as the main window.
 		this.window = this.get_object('window')
@@ -70,8 +71,16 @@ class desktop(Gtk.Builder):
 				label=menuitem_label, use_underline=True
 			)
 
+			# Allow separators to be defined
 			if menuitem['caption'] == '-':
 				_menuitem = Gtk.SeparatorMenuItem()
+
+			# Allow handlers to be called
+			if 'command' in menuitem:
+				_menuitem.connect('activate', getattr(
+					this.handlers,
+					menuitem['command']
+				))
 
 			_menuitem.show()
 			menu.append(_menuitem)
