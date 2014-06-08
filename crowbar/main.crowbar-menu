@@ -1,0 +1,15 @@
+[
+    {
+        "caption": "File",
+        "mnemonic": "f",
+        "id": "file",
+        "children": [
+            { "caption": "-" },
+            {
+                "caption": "Exit",
+                "mnemonic": "x",
+                "command": "onDeleteWindow"
+            }
+        ]
+    }
+]

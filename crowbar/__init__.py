@@ -11,13 +11,15 @@ class desktop(Gtk.Builder):
 		path.dirname(__file__), 'desktop.glade'
 	)
 
+	crowbar_menu = path.join(
+		path.dirname(__file__), 'main.crowbar-menu'
+	)
+
 	def __init__(this):
 		super(desktop, this).__init__()
 
+		# Load glade file
 		this.add_from_file(this.top_level_glade)
-
-
-	def main(this):
 
 		# Bind Glade-events to desktop_handlers methods
 		this.connect_signals(dektop_handles())
@@ -26,10 +28,46 @@ class desktop(Gtk.Builder):
 		this.window = this.get_object('window')
 		this.window.show_all()
 
+		this.menu_add(this.crowbar_menu)
+
+	def main(this):
 		# Die on Ctrl+C
 		signal.signal(signal.SIGINT, signal.SIG_DFL)
-
 		Gtk.main()
+
+
+	def menu_add(this, file):
+		import json
+		with open(file) as crowbar_menu:
+			crowbar_menu = json.loads(crowbar_menu.read())
+
+		menu = this._menuitems(
+			crowbar_menu, this.get_object('menubar')
+		)
+
+	def _menuitems(this, list, menu):
+		from pprint import pprint
+		for menuitem in list:
+			pprint(menuitem)
+
+			# Make a new menu item
+			_menuitem = Gtk.MenuItem(menuitem['caption'])
+
+			if menuitem['caption'] == '-':
+				_menuitem = Gtk.SeparatorMenuItem()
+
+			_menuitem.show()
+			menu.append(_menuitem)
+
+			# Fill it with children if it so desired.
+			if 'children' in menuitem:
+				obj_id = 'menu_' + menuitem['id']
+				# DO IF CHILD MENU WITH THIS ID DOES NOT EXIST
+				submenu = Gtk.Menu()
+				_menuitem.set_submenu(submenu)
+
+				this._menuitems(menuitem['children'], submenu)
+
 
 class dektop_handles(object):
 	"""docstring for dektop_handles"""
