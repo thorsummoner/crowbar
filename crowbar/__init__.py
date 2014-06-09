@@ -1,5 +1,6 @@
 
 import signal
+from crowbar.extensions import Extensions
 
 from os import path
 from gi.repository import Gtk
@@ -7,8 +8,8 @@ from gi.repository import Gtk
 #DEBUG
 from pprint import pprint
 
-class desktop(Gtk.Builder):
-	"""docstring for desktop"""
+class Desktop(Gtk.Builder):
+	"""docstring for Desktop"""
 
 	top_level_glade = path.join(
 		path.dirname(__file__), 'desktop.glade'
@@ -19,18 +20,22 @@ class desktop(Gtk.Builder):
 	)
 
 	def __init__(this):
-		super(desktop, this).__init__()
+		super(Desktop, this).__init__()
 
 		# Load glade file
 		this.add_from_file(this.top_level_glade)
 
-		# Bind Glade-events to desktop_handlers methods
-		this.handlers = dektop_handles()
-		this.connect_signals(this.handlers)
+		# Bind Glade-events to Desktop_signals methods
+		this.signals = DesktopSignals()
+		this.connect_signals(this.signals)
+
 
 		# Get the glade root object as the main window.
 		this.window = this.get_object('window')
 		this.window.show_all()
+
+		# Load Extensions
+		this.extensions = extensions.Extensions(this)
 
 		this.menu_add(this.crowbar_menu)
 
@@ -76,10 +81,10 @@ class desktop(Gtk.Builder):
 			if menuitem['caption'] == '-':
 				_menuitem = Gtk.SeparatorMenuItem()
 
-			# Allow handlers to be called
+			# Allow signals to be called
 			if 'command' in menuitem:
 				_menuitem.connect('activate', getattr(
-					this.handlers,
+					this.signals,
 					menuitem['command']
 				))
 
@@ -95,11 +100,21 @@ class desktop(Gtk.Builder):
 
 				this._menuitems(menuitem['children'], submenu)
 
+	def register_icons(self):
+		basepath = path.realpath(path.dirname(path.realpath(__file__)) + '/../share/crowbar/icons')
+		# register icon path
+		# Note: I gave this document one hell of a try https://wiki.gnome.org/DraftSpecs/ThemableAppSpecificIcons
+		#       What it documents didn't work, but for some reason in desperation I added the full endpoint and it worked.
+		# TODO: Unfuck this to load like a sane environment... If that is even possible.
 
-class dektop_handles(object):
-	"""docstring for dektop_handles"""
+		Gtk.IconTheme.get_default().append_search_path(basepath + '/hicolor/24/mimetypes')
+		Gtk.IconTheme.get_default().append_search_path(basepath + '/hicolor/24/actions')
+
+
+class DesktopSignals(object):
+	"""docstring for DesktopSignals"""
 	def __init__(this):
-		super(dektop_handles, this).__init__()
+		super(DesktopSignals, this).__init__()
 
 
 	def onDeleteWindow(self, *args):
