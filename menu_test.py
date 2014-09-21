@@ -25,38 +25,38 @@ class MenuTest(Gtk.Window):
 		return menubar
 
 	def walk_menu(self, definition, widget):
-		try:
-			for menu in definition:
-				if not 'mnemonic' in menu:
-					menu['mnemonic'] = ''
-				if not 'args' in menu:
-					menu['args'] = ()
-				if 'children' in menu:
-					sub_menu = self.spawn_menu(
-						caption = menu['caption'],
-						widget = widget,
-						mnemonic = menu['mnemonic']
-					)
-					self.walk_menu(menu['children'], sub_menu)
-				else:
-					if not 'command' in menu:
-						if '-' == menu['caption']:
-							self.spawn_sep(widget)
-							continue
-						else:
-	 						raise NameError(
-	 							'Menu item "%s" missing command.' % menu['caption']
-	 						)
+		for menu in definition:
+			if not 'mnemonic' in menu:
+				menu['mnemonic'] = ''
+			if not 'args' in menu:
+				menu['args'] = ()
+			if 'children' in menu:
+				sub_menu = self.spawn_menu(
+					caption = menu['caption'],
+					widget = widget,
+					mnemonic = menu['mnemonic']
+				)
+				self.walk_menu(menu['children'], sub_menu)
+			else:
+				if not 'command' in menu:
+					if '-' == menu['caption']:
+						self.spawn_sep(widget)
+						continue
+					elif 'id' in menu:
+						# Insert these elements anyway, they may be used
+						# as an id achor point for complex menu generators
+						menu['command'] = ''
+					else:
+						raise NameError(
+							'Menu item "%s" missing command.' % menu['caption']
+						)
 
-					action = self.spawn_action(
-						caption = menu['caption'],
-						widget = widget,
-						mnemonic = menu['mnemonic'],
-						action = self.resolve_callable(menu['command'], menu['args'])
-					)
-		except NameError as e:
-			pass
-
+				action = self.spawn_action(
+					caption = menu['caption'],
+					widget = widget,
+					mnemonic = menu['mnemonic'],
+					action = self.resolve_callable(menu['command'], menu['args'])
+				)
 
 	def spawn_menu(self, caption, widget, mnemonic):
 		menu = Gtk.Menu()
