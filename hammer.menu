@@ -1,0 +1,430 @@
+[
+	{
+		"caption": "File",
+		"mnemonic": "f",
+		"id": "file",
+		"children": [
+			{
+				"caption": "New",
+				"mnemonic": "n",
+				"command": "new_file", "args": {}
+			},
+			{
+				"caption": "Open…",
+				"mnemonic": "o",
+				"command": "open_file", "args":
+				{
+					"dialog": true,
+					"file": "~/Desktop/"
+				}
+			},
+			{
+				"caption": "Close",
+				"mnemonic": "c",
+				"command": "close_file"
+			},
+			{
+				"caption": "Save",
+				"mnemonic": "s",
+				"command": "save_file"
+			},
+			{
+				"caption": "Save As…",
+				"mnemonic": "a",
+				"command": "save_file", "args":
+				{
+					"save_as": true
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Export…",
+				"mnemonic": "e",
+				"command": "save_file", "args":
+				{
+					"save_as": true,
+					"export": true
+				}
+			},
+			{
+				"caption": "Export Again",
+				"command": "save_file", "args":
+				{
+					"save_as": true,
+					"export": true,
+					"export_again": true
+				}
+			},
+			{
+				"caption": "Export to .DXF",
+				"mnemonic": "d",
+				"command": "save_file", "args":
+				{
+					"save_as": true,
+					"export": true,
+					"format": ".DXF"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Run Map…",
+				"mnemonic": "u",
+				"command": "run_file"
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Convert WAD to VMT…",
+				"mnemonic": "w",
+				"command": "open_file", "args":
+				{
+					"import": true,
+					"format": ".WAD"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Reload Sounds",
+				"mnemonic": "r",
+				"command": "reload_assets", "args":
+				{
+					"mimetype": "audio/*"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Recent Files",
+				"id": "recent_files",
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Exit",
+				"mnemonic": "x",
+				"command": "exit", "args":
+				{
+					"hot_exit": true
+				}
+			}
+		]
+	},
+	{
+		"caption": "Edit",
+		"mnemonic": "e",
+		"id": "edit",
+		"children": [
+			{
+				"caption": "Undo",
+				"command": "history", "args":
+				{
+					"action": "hard_undo",
+					"selection": true
+				}
+			},
+			{
+				"caption": "Redo",
+				"command": "history", "args":
+				{
+					"action": "redo",
+					"selection": true
+				}
+			},
+			{
+				"caption": "Disable Undo/Redo",
+				"command": "history", "args":
+				{
+					"enable_history": false,
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Find Entities…",
+				"mnemonic": "f",
+				"command": "find", "args":
+				{
+					"object_filter": [
+						"entity"
+					],
+					"dialog": true
+				}
+			},
+			{
+				"caption": "Replace…",
+				"mnemonic": "r",
+				"command": "replace"
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Cut",
+				"mnemonic": "t",
+				"command": "selection", "args":
+				{
+					"action": "cut"
+				}
+			},
+			{
+				"caption": "Copy",
+				"mnemonic": "c",
+				"command": "selection", "args":
+				{
+					"action": "copy"
+				}
+			},
+			{
+				"caption": "Paste",
+				"mnemonic": "p",
+				"command": "selection", "args":
+				{
+					"action": "paste"
+				}
+			},
+			{
+				"caption": "Paste special…",
+				"mnemonic": "s",
+				"command": "selection", "args":
+				{
+					"action": "paste",
+					"dialog": true
+				}
+			},
+			{
+				"caption": "Delete",
+				"mnemonic": "d",
+				"command": "selection", "args":
+				{
+					"action": "delete"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Clear selection",
+				"mnemonic": "l",
+				"command": "selection", "args":
+				{
+					"action": "deselect_all"
+				}
+			},
+			{
+				"caption": "Select all",
+				"mnemonic": "a",
+				"command": "selection", "args":
+				{
+					"action": "select_all"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Properties",
+				"mnemonic": "o",
+				"command": "object_properties", "args":
+				{
+					"dialog": true
+				}
+			}
+		]
+	},
+	{
+		"caption": "Map",
+		"mnemonic": "m",
+		"id": "map",
+		"children": [
+			{
+				"caption": "Snap to Grid",
+				"mnemonic": "s",
+				"command": "toggle_snap"
+			},
+			{
+				"caption": "Show Grid",
+				"mnemonic": "w",
+				"command": "toggle_grid"
+			},
+			{
+				"caption": "Grid Settings",
+				"mnemonic": "g",
+				"children": [
+					{
+						"caption": "Smaller Grid",
+						"mnemonic": "s",
+						"command": "grid_smaller"
+					},
+					{
+						"caption": "Bigger Grid",
+						"mnemonic": "b",
+						"command": "grid_larger"
+					}
+				]
+			},
+			{
+				"caption": "Units",
+				"mnemonic": "n",
+				"children": [
+					{
+						"caption": "Decimal",
+						"mnemonic": "d",
+						"command": "unit", "args":
+						{
+							"unit": null
+						}
+					},
+					{
+						"caption": "Inches",
+						"mnemonic": "i",
+						"command": "unit", "args":
+						{
+							"unit": "inches"
+						}
+					},
+					{
+						"caption": "Feet + Inches",
+						"mnemonic": "d",
+						"command": "unit", "args":
+						{
+							"unit": "feet + inches"
+						}
+					}
+				]
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Show Selected Brush Number",
+				"command": "selection", "args":
+				{
+					"action": "show_selected"
+				}
+			},
+			{
+				"caption": "Entity Report…",
+				"mnemonic": "e",
+				"command": "entity", "args":
+				{
+					"action": "report",
+					"dialog": true
+				}
+			},
+			{
+				"caption": "Entity Gallery",
+				"mnemonic": "a",
+				"command": "entity", "args":
+				{
+					"action": "gallery"
+				}
+
+			},
+			{
+				"caption": "Check for Problems",
+				"mnemonic": "c",
+				"command": "check_for_problems", "args":
+				{
+					"dialog": true
+				}
+			},
+			{
+				"caption": "Diff Map File",
+				"command": "delta", "args":
+				{
+					"dialog": true
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Load Pointfile",
+				"mnemonic": "l",
+				"command": "pointfile", "args":
+				{
+					"action": "load",
+					"automatic": true
+				}
+			},
+			{
+				"caption": "Unload Pointfile",
+				"mnemonic": "u",
+				"command": "pointfile", "args":
+				{
+					"action": "unload"
+				}
+			},
+			{
+				"caption": "Load PortalFile",
+				"mnemonic": "l",
+				"command": "portalfile", "args":
+				{
+					"action": "load",
+					"automatic": true
+				}
+			},
+			{
+				"caption": "Unload PortalFile",
+				"mnemonic": "u",
+				"command": "portalfile", "args":
+				{
+					"action": "unload"
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Show Information",
+				"command": "vmf", "args":
+				{
+					"action": "stat",
+					"current_file": true
+				}
+			},
+			{
+				"caption": "Map Properties…",
+				"mnemonic": "m",
+				"command": "vmf", "args":
+				{
+					"action": "properties",
+					"current_file": true,
+					"dialog": true
+				}
+			}
+		]
+	},
+	{
+		"caption": "View",
+		"mnemonic": "v",
+		"id": "view",
+		"children": [
+
+		]
+	},
+	{
+		"caption": "Tools",
+		"mnemonic": "t",
+		"id": "tools",
+		"children": [
+
+		]
+	},
+	{
+		"caption": "Instancing",
+		"mnemonic": "i",
+		"id": "instancing",
+		"children": [
+
+		]
+	},
+	{
+		"caption": "Foundry",
+		"mnemonic": "f",
+		"id": "foundry",
+		"children": [
+
+		]
+	},
+	{
+		"caption": "Window",
+		"mnemonic": "w",
+		"id": "window",
+		"children": [
+
+		]
+	},
+	{
+		"caption": "Help",
+		"mnemonic": "h",
+		"id": "help",
+		"children": [
+
+		]
+	}
+]

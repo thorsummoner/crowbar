@@ -1,0 +1,648 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.4/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.4/ http://www.mediawiki.org/xml/export-0.4.xsd" version="0.4" xml:lang="en">
+  <siteinfo>
+    <sitename>Valve Developer Community</sitename>
+    <base>https://developer.valvesoftware.com/wiki/Main_Page</base>
+    <generator>MediaWiki 1.16.5</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Valve Developer Community</namespace>
+      <namespace key="5" case="first-letter">Valve Developer Community talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Hammer Foundry Menu</title>
+    <id>26255</id>
+    <revision>
+      <id>168083</id>
+      <timestamp>2012-05-16T05:48:27Z</timestamp>
+      <contributor>
+        <username>Kwp17pitts</username>
+        <id>68763</id>
+      </contributor>
+      <comment>made minor touchups</comment>
+      <text xml:space="preserve">__NOTOC__
+{{stub}} 
+{{warning|This feature will not work without the engine in foundry mode, which in turn won't work without the unreleased '''foundry.dll'''.}}
+{{note|This menu only appears in {{as}} [[Authoring_Tools/SDK (Alien Swarm)|Alien Swarm Authoring Tools]] and {{portal2}}[[Authoring_Tools/SDK (Portal 2)|Portal 2 Authoring Tools]] Beta}}
+[[File:Foundry.jpg‎]]
+
+=== Send Selected Entities To Engine ===
+{{todo|Explanation needed}}
+
+=== Move Engine View To Hammer 3D View ===
+{{todo|Explanation needed}}
+
+=== Remove Selected Entities From Engine ===
+{{todo|Explanation needed}}
+
+=== Move Focus To Engine ===
+{{confirm|Moves view to engine}}
+
+
+== See Also ==
+*[[Foundry]]
+*[[Engine tools]]
+[[Category:Hammer_Menus]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Help Menu</title>
+    <id>1111</id>
+    <revision>
+      <id>173601</id>
+      <timestamp>2013-02-07T10:49:37Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>otherlang2 de</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer Help Menu:de
+}}
+[[Image:hammer_helpmenu.png]]
+
+This menu provides easy access to documentation of the Valve Hammer Editor and Source Engine editing information.
+
+==Help Topics==
+
+This option brings up the [[:Category:Hammer|Valve Hammer Editor documentation]] page.
+
+==About...==
+
+This brings up the About dialog which contains version and copyright information.
+
+[[Image:hammer_aboutdialog.png]]
+
+[[Category:Hammer Menus]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Instancing Menu</title>
+    <id>26249</id>
+    <revision>
+      <id>173596</id>
+      <timestamp>2013-02-07T09:40:59Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <comment>General overhaul and completion</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer_Instancing_Menu:de
+}}
+__NOTOC__
+The '''Instancing''' menu contains various functions to manage [[Instances]] on one hand, and to manage so-called [[Manifests]] on the other hand. Manifest functions are part of the '''Instancing''' menu because Hammer accomplishes manifests by way of instancing selected parts of a map.
+{{note|Instancing is only supported by {{l4d2}}[[Left 4 Dead 2]] and later}}  
+[[File:Instancing.jpg]]
+
+== Create New Instance From Selection ==
+{{bug|Apparently, this function is supposed to open a dialog from which to create a new instance from the selected objects. However, there seems to be no way to activate this function which renders it useless.}}
+{{note|A workaround is to create a new [[VMF]] file in the ''instances/'' folder}} 
+
+== Collapse ==
+[[File:instancingSelAll.jpg]]
+
+Collapses instances either by selection or all into the main map
+{{note|The '''Collapse''' function should be handled with care. Collapsing does not perform all of the operations that the BSP process does for instancing and, thus, may result in issues with the map. Therefore, upon calling this command you will be asked to confirm.}}
+
+== View Instances ==
+[[File:instancingHSTSN.jpg]]
+;Hide
+:If checked, hides all instances on the map.
+;Show Tinted
+:If checked, shows and highlights all instances on the map.
+;Show Normal
+:If checked, shows all instances on the map untintedly and without highlighting.
+
+{{note|When opening a map '''View Instances''' will always be reset to ''Show Tinted''.}}
+
+== Windows ==
+[[File:InstancingWin.jpg‎]]
+
+Not to be confused with the '''View Instances''' command. '''Windows''' opens and closes a window each for every instance on the map with the corresponding VMF file.
+;Hide All Instances
+:Closes all instances windows.
+;Show All Instances
+:Opens an instance window for each instance on the map.
+
+== Create Manifest ==
+Creates a Manifest file in the [[VMM]] format from the current map. All objects of the map will be moved into a so-called SubMap. For more information see [[Manifest]].
+
+== Version Control ==
+{{bug|It seems as if the submenu commands of '''Version Control''' cannot be activated which renders it useless.}}
+{{todo|Explanation needed}}
+
+== View Manifests ==
+{{bug|It seems as if the submenu commands of '''View Manifests''' cannot be activated which renders it useless.}}
+{{todo|Explanation needed}}
+{{note|The Visibility of SubMaps can be controlled with [[Manifest Control]]. Besides, '''View Instances''' (''see above'') also has a visibility effect on the SubMaps and Instances of a Manifest.}}
+
+== See Also ==
+*[[L4D2 Level Design/VMF Instances]]- A Valve tutorial on how to use instances in Left 4 Dead 2. 
+*[[Working with instances]]- A tutorial on how to use instances in Portal 2.
+
+[[Category:Hammer Menus]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Window Menu</title>
+    <id>1109</id>
+    <revision>
+      <id>173599</id>
+      <timestamp>2013-02-07T10:40:30Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>otherlang2 de and other</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer Window Menu:de
+}}
+[[Image:hammer_windowmenu.png]]
+
+This is a standard Windows menu. The only thing unusual is the Messages option, which will bring up Hammer's Messages window. The message window will report standard I/O operations and any problems Hammer had with loading its game configuration files. Typically, you will only see a message there if you have modified your .FGD file in some way and made a mistake.
+
+{{note|The New Window function is useful for creating new windows when you're [[Hammer_General_Options#Window Setup|using independent window configurations]].}}
+
+{{bug|{{portal2}} Portal 2 Authoring Tools don't always show all open windows in this menu.}}
+
+[[Category:Hammer Menus]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer File Menu</title>
+    <id>1089</id>
+    <revision>
+      <id>91553</id>
+      <timestamp>2008-01-13T01:18:59Z</timestamp>
+      <contributor>
+        <username>Etset</username>
+        <id>10732</id>
+      </contributor>
+      <minor/>
+      <comment>&quot;pipe trick&quot; done right (sorry, forgot to order correctly) see [[category:Hammer Menus]]</comment>
+      <text xml:space="preserve">[[Category:Hammer Menus|HMenu1_File]]
+[[Image:hammer_filemenu.png|left]]
+__TOC__
+&lt;br style=&quot;clear:left;&quot; /&gt;
+==New &lt;Ctrl+N&gt;==
+
+This will open a new blank map file. If you have more than one game profile, Hammer will prompt you to choose a game profile used to edit the map file. See the [[Hammer_Game_Configurations|Game Configurations]] tab in the [[:Category:Hammer_Options_Dialog|Options]] dialog section for more information on how to create or edit game profiles.
+
+==Open... &lt;Ctrl+O&gt;==
+
+This will bring up a browse window from which you can load game maps. The file type will default to [[VMF|.VMF]] (Hammer's map format), although you can also choose to load the older .RMF binary format files. If you have defined different game profiles, Hammer will prompt you to choose a game profile used to edit the opened map file. See the [[Hammer_Game_Configurations|Game Configurations]] for more information on how to create or edit game profiles.
+
+==Close &lt;Ctrl+F4&gt;==
+
+This will close the currently selected map file.
+
+==Save &lt;Ctrl+S&gt;==
+
+This will save the currently selected map. It will be saved in the same format as when it was loaded (.VMF., .RMF, or .MAP).
+
+==Save As...==
+This will bring up a Save As... dialog box and allow you to save the currently selected map with a different name.
+
+==Export...==
+This will allow you to save the current map without changing the name or format of the current map.
+
+==Export Again &lt;Alt+B&gt;==
+
+Repeats the last '''Export''' command, using the exact same filename and location, without any other prompting.
+
+==Export to .DXF==
+This will allow you to save the current map in the .DXF (Drawing Exchange Format), so that it can be used for scripted sequences or imported into another 3D modeling application.
+
+==Run Map... &lt;F9&gt;==
+
+This command opens the [[Hammer_Run_Map_Normal|Run Map]] dialog, which allows you to run the utilities that are necessary to compile the map into the .BSP format usable in the Source engine. The ''Run Map'' dialog will be in [[Hammer_Run_Map_Normal|Normal]] or [[Hammer_Run_Map_Expert|Expert]] mode, depending on which mode was last used.
+
+==[[Convert WAD to VMT...]]==
+
+See [[Convert WAD to VMT...]]
+
+==Reload Sounds==
+This command will reload the list of all sounds defined in the scripts directory. Any new sounds that were defined after Hammer first loaded will now show up in the [[Hammer_Sound_Browser|Sound Browser]].
+
+==Exit &lt;Alt+F4&gt;==
+
+This command will close Hammer.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Edit Menu</title>
+    <id>1090</id>
+    <revision>
+      <id>173534</id>
+      <timestamp>2013-02-05T16:48:07Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>otherlang2 de</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer Edit Menu:de
+}}
+[[Category:Hammer Menus|HMenu2_Edit]]
+&lt;div class=&quot;floatleft&quot; style=&quot;padding:0px 0px 1px 0px;&quot;&gt;&lt;span&gt;[[Image:hammer_editmenu.png]]&lt;/span&gt;&lt;/div&gt;
+__TOC__
+{{clr}}
+==Undo &lt;Ctrl+Z&gt;==
+
+This is the standard Undo command. You can set the number of successive Undo commands Hammer stores using the Undo Levels setting in [[:Category:Hammer_Options_Dialog|Options]] dialog box.
+
+{{note|If you are getting low memory warnings it may help if you set the number of '''Undo Levels''' to a lower value.}}
+
+==Redo &lt;Ctrl+Y&gt;==
+
+This allows you to '''Redo''' a command that was mistakenly undone using the '''Undo''' command. The number of '''Redo''' levels is the same size as the '''Undo''' levels.
+
+==Disable Undo/Redo==
+
+In certain situations, it may be necessary to disable the '''Undo/Redo''' function. For example, if you are doing something that will require a rather large amount of system memory, such as deleting a large portion of your map. It is also probably a good idea to save your map before you do this – if you make a mistake, you will no longer be able to '''Undo''' it.
+
+==Find Entities... &lt;Ctrl+Shift+F&gt;==
+
+Opens the [[Hammer_Find_Entities_Dialog|Find Entities]] dialog, which allows you to do a text search for a particular entity in the map.
+
+==Replace... &lt;Ctrl+Shift+R&gt;==
+
+Opens the [[Hammer_Replace_Dialog|Replace]] dialog, which allows you to do a search and replace for a text string in the map.
+
+==Cut &lt;Ctrl+X&gt;==
+
+Deletes the currently selected object(s) from the file, and moves a copy of them into the Windows clipboard. You can store only one set of objects in the clipboard at one time, and the current clipboard is lost when you exit Hammer.
+
+==Copy &lt;Ctrl+C&gt;==
+
+Copies the currently selected object(s) into the Windows clipboard without removing the original. You can store only one set of objects in the clipboard at one time, and the current clipboard is lost when you exit Hammer.
+
+==Paste &lt;Ctrl+V&gt;==
+
+Pastes a copy of any objects in the Windows clipboard into the current file. The objects will be offset from their original location, so you are able to identify the duplicates.
+
+{{tip|If you want to make a copy of an object leaving its exact location intact, use the '''Paste Special...''' command. For more information, see the '''Paste Special''' command, below.}}
+
+==Paste special...==
+
+Opens the [[Hammer_Paste_Special_Dialog|Paste Special]] dialog, which allows multiple pasting of the clipboard contents with offsets and rotations.
+
+==Delete &lt;nowiki&gt;&lt;Del&gt;&lt;/nowiki&gt;==
+
+Selecting Delete removes the currently selected object from your map.
+
+==Clear selection &lt;Shift+Q&gt;==
+
+This will clear the current selections without altering any objects.
+
+==Select all==
+
+This will select all visible objects in the current map. This can be used to rapidly delete, move, or copy objects or to create [[VisGroup]]s.
+
+==Properties &lt;Alt+Enter&gt;==
+
+This will bring up the [[Hammer Object Properties Dialog|Object Properties]] dialog for the currently selected objects. The '''Object Properties''' dialog box is the primary method of modifying entity properties. It also allows you to adjust VisGroup properties for one or many brushes. For non-entity objects, only the '''VisGroup''' tab will appear in the '''Object Properties''' dialog box.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Map Menu</title>
+    <id>1095</id>
+    <revision>
+      <id>173537</id>
+      <timestamp>2013-02-05T18:00:34Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>otherlang2 de</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer Map Menu:de
+}}
+[[Category:Hammer Menus|HMenu3_Map]]
+The Map menu contains a number of functions related to the display of the map, as well as global viewing and manipulation of map contents and properties.
+
+[[Image:hammer_mapmenu.gif]]
+
+==Snap to Grid &lt;Shift+W&gt;==
+
+Will cause objects and selection boxes to snap to the current grid.
+
+==Show Grid &lt;Shift+R&gt;==
+
+You can use this to toggle the grid display on and off. Objects will still snap to the grid if the ''Snap to Grid'' option is enabled, regardless if the grid is visible.
+
+==Grid Settings &lt;[&gt; and &lt;]&gt;==
+
+[[Image:hammer_gridsettingsmenu.gif]]
+
+This allows you to increase or decrease the current '''Snap to Grid''' size. The current grid size is show in the status bar at the bottom of the Hammer window.
+
+{{note|Snap-Grid increments are powers of two inches; ie: 1&quot; - 2&quot; - 4&quot; - 8&quot; - 16&quot; - 32&quot; - 64&quot; - 128&quot; - etc. Therefore ''increase'' grid size will '''double''' the grid unit dimension and ''decrease'' will '''halve''' it.}}
+
+==Units==
+
+This allows you to changes the units of measurement displayed in the '''Selection size information''' area on the [[Hammer Status Bar Toolbar|status bar]].
+
+{{note|1=1&quot;=1 unit}}
+
+[[Image:hammer_unitsettingsmenu.gif]]
+
+==Show Selected Brush Number==
+
+This displays the brush number of the selected brush. You must select a single non-entity brush for this command.
+
+==Entity Report...==
+
+Opens the [[Hammer_Entity_Report_Dialog|Entity Report]] dialog, which can be used to manage your entities and do quick searches for specific entities, providing an easy alternative to searching through your map manually.
+
+==Entity Gallery==
+
+Pastes a copy of every type of entity in the game data file into the current map. Mainly used for debugging purposes.
+
+==Check for Problems &lt;Alt+P&gt;==
+
+Opens the [[Hammer_Check_For_Problems_Dialog|Check for Problems]] dialog that will analyze the map and notify you of any errors it finds.
+
+==Diff Map File==
+
+A feature used to compare differences between two maps. This feature is incomplete at the current time and has limited usefulness.
+
+==Load Pointfile==
+
+If your map is not totally sealed, the compile tools ([[vbsp]].exe, specifically) will report a &quot;leak&quot; and generate a ''pointfile''. A pointfile contains information Hammer can use to trace a line from one of the map's entities to the source of the leak. This is represented in the 2D and 3D views by a thick red line. The '''Load Pointfile''' command will open the pointfile data associated with the current map, if it can locate the file. If not, it will display an Open dialog that allows you to load the pointfile. The pointfile will have a ''.lin'' or ''.pts'' filename extension, depending on the game compilation tools you are using. See [[Leaks Explained]] for more information.
+
+[[Image:hammer_pointfilemenu.jpg | The Load Pointfile command shows the path to the leak in the Hammer viewports.]]
+
+==Unload Pointfile==
+
+Use this command to remove the display of pointfile data from the 2D and 3D views of the current map file.
+
+==Load PortalFile==
+Loads the Prt file associated with the bsp and vmf, to view Visleafs with Hammer instead of using Glview.
+
+==Unload PortalFile==
+Same as above, but removes the file.
+
+==Show Information==
+
+This brings up the ''Map Information'' dialog, which gives you some statistics on the currently selected map file.
+
+==Map Properties...==
+
+This will open an ''Object Properties'' dialog box, containing different editable parameters for the current map file. This is also known as the ''worldspawn'' entity. The ''worldspawn'' is an entity that defines some characteristics of the world, including the map title and [[skybox]]. See [[worldspawn]] for more information.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer View Menu</title>
+    <id>1100</id>
+    <revision>
+      <id>173550</id>
+      <timestamp>2013-02-06T12:50:03Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>/* 2D Window Options */ exchanged side and front view</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer View Menu:de
+}}
+[[Category:Hammer Menus|HMenu4_View]]
+The purpose of the functions in this menu is to control what does and doesn't appear in the Hammer Editor's 3D and 2D views. For more ways to customize the appearance of Hammer, refer to the sections on the General Options, 3D View Options, and 2D Views Options.
+
+[[Image:Hammer_viewmenu.png]]
+
+==Screen Elements==
+
+This sub-menu gives you control over which toolbars and other elements are displayed on your Hammer desktop. Select an item to remove it from the display. Selecting it again will display the item again.
+
+[[Image:Hammer_viewsubmenu.png]]
+
+==Autosize 4 views &lt;Ctrl+A&gt;==
+
+This will restore the layout of the four viewports to the default if they have been resized -- the current map window is set to four equal sections.
+
+{{note|This command has no effect when the &quot;[[Hammer_General_Options|Use independent window configurations]]&quot; option is enabled.}}
+
+==2D Window Options==
+
+The Hammer working area is divided into four separate panes. Three of these are used to show the 2D views. The forth window contains a single 3D view.
+
+The items '''2D X/Y''', '''2D Y/Z''', and '''2D X/Z''' are three commands to select which 2D view is displayed in which window. Click in a 2D window pane to select it, then choose one of the three options to choose which 2D direction is displayed in that window. The default window settings have one window from each direction.
+
+{{tip|X/Y is the top-down view, Y/Z is the front view, and X/Z is the side view.}}
+
+==3D Window Options==
+
+There are six 3D view options available – '''3D Wireframe''', '''3D Filled Polygons''', '''3D Textured Polygons''' and '''3D Shaded Textured Polygons''', as well as newly added '''3D lighting preview''' and '''3D raytrace preview'''. These options control which 3D mode is used when the 3D preview window is rendered.
+{{bug|3D lighting preview and 3D raytrace preview do not function properly.}}
+[[Image:hammer_3dmodes.jpg|frame|left|A cube drawn with the first three rendering modes.]]{{clr}}
+
+==Center Views on Selection &lt;Ctrl+E&gt;==
+
+Choosing this function will center all of the 2D views on the center of the currently selected object(s).
+
+==Center 3D Views on Selection &lt;Ctrl+Shift+E&gt;==
+
+Choosing this function will center the 3D view on the center of the currently selected object(s).
+
+==Go to Coordinates...==
+
+Centers the viewports on the coordinates typed into the [[Hammer_Go_To_Coordinates|Go to Coordinates]] dialog box after pressing OK.
+
+==Go to Brush Number... &lt;Ctrl+Shift+G&gt;==
+
+Centers the viewports on the brush number typed into the [[Hammer_Go_To_Brush_Dialog|Go to Brush Number]] dialog box after pressing OK.
+
+==Show Connections==
+
+[[Image:hammer_showconnections.jpg|right|thumb|300px|An entity and its target with Show Connections enabled.]]
+
+Selecting this option will toggle on and off visible connection between entities that are linked by ''[[target]]'' and ''[[targetname]]'' values. {{note|This function is mostly obsolete with the entity I/O system in Source.}}&lt;br style=&quot;clear:both&quot;&gt;
+
+==Show Helpers==
+
+[[Image:hammer_object_helpers.png|right|frame|Some entities selected with entity helpers enabled.]]
+Turns on and off the display of entity helpers for entities that have them. The helpers are only displayed when the entity is selected.
+
+Examples:
+* Light shape and parameters on [[point_spotlight]].
+* Inner and outer fade distances on [[prop_static]].
+* The start and end points of the hinge axis on a [[phys_hinge]].
+* Origin helpers on any entities that have them.
+
+See the [[List of entities]] for more information about specific entities.{{clr}}
+
+==Show Models in 2D==
+
+This setting renders wireframes of models in 2D viewports if enabled. If a model entity were selected, its model would be rendered completely, rather than as a wireframe.
+
+==Hide Items==
+
+Selecting '''Hide Items''' hides all point entities from view and, when selected again, returns the entities to view.
+
+==Hide Entity Names==
+
+Turns on and off the display of entity names for all entities in the 2D Views.
+
+==Hide Selected Objects==
+
+This command hides the selected objects by placing the objects into a new [[VisGroup]]. Upon activating the command, it will bring up the [[Hammer_New_VisGroup|New Visgroup]] dialog to define the new VisGroup containing the selected objects. After creating the VisGroup, it will be immediately hidden.
+
+For more information on using VisGroups, see [[Hammer_Filter_Control_Toolbar|Filter Control]] toolbar.
+
+==Move Selection to Visgroup==
+Moves any object selected with another object's visgroup, into that group.
+
+==Draw Materials Opaque==
+
+Disables transparent rendering of all materials in the 3D Views. Can be useful to select and sort objects in the scene, and improve rendering speed of complex scenes on lower-end systems.
+
+==HDR==
+Currently this option doesn't work.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Hammer Tools Menu</title>
+    <id>1106</id>
+    <revision>
+      <id>173589</id>
+      <timestamp>2013-02-07T06:33:36Z</timestamp>
+      <contributor>
+        <username>Innocentive</username>
+        <id>81762</id>
+      </contributor>
+      <minor/>
+      <comment>otherlang2 de</comment>
+      <text xml:space="preserve">{{otherlang2
+|de=Hammer Tools Menu:de
+}}
+[[Category:Hammer Menus|HMenu5_Tools]]
+[[Image:hammer_toolsmenu.png|left]]
+__TOC__
+{{clr}}
+==Carve &lt;Ctrl+Shift+C&gt;==
+
+This will take the selected object and carve its shape out of any surrounding objects that intersect it. You can have more than one carve object selected at once, and they will each carve the surrounding solids. For more information, see [[Reshaping Solids]].
+
+==Make Hollow &lt;Ctrl+H&gt;==
+
+Opens the [[Hammer_Make_Hollow_Dialog|Make Hollow]] dialog, which takes a selected object and generates walls out the shape, making it a hollow room.
+
+==Group and Ungroup &lt;Ctrl+G&gt; and &lt;Ctrl+U&gt;==
+
+Using Group on selected objects will bind them together so they may be acted upon simultaneously. For purposes of selecting and transforming, the grouped objects will act as one single object. You can edit the objects separately if you '''Ungroup''' them, or use the '''Toggle group ignore''' button on the '''MapOperations''' toolbar. Note that using '''Group''' is not the same as VisGrouping, which controls object visibility.
+
+For more information on grouping, see [[Grouping and VisGrouping]].
+
+==Tie to Entity &lt;Ctrl+T&gt;==
+
+This command converts a solid (world) object into an entity type object so it can be given parameters that affect gameplay. When you tie an object to an entity, the [[Hammer_Object_Properties_Dialog|Object Properties]] dialog will pop up with a list of all available brush entities. The entity can be made up of several objects at once – simply select multiple objects before you perform the command, and all the selected objects will be a part of the entity. Objects can also be added to an existing entity by selecting the entity and the objects you will to add, and performing another '''Tie to entity''' command. You can also join two entities together in a similar way. See [[Entity Creation]] for more information.
+
+==Move to World &lt;Ctrl+Shift+W&gt;==
+
+The '''Move to world''' command converts an entity object into a non-entity world object, and strips all entity properties from it. The command can be used to convert multiple selected entity objects at once.
+
+{{note|This command will not work when the 'Solids' [[Hammer Selection Modes Toolbar|selection mode]] is active.}}
+
+==Texture Application &lt;Shift+A&gt;==
+
+This will switch the current tool to the Texture Application Tool, and bring up the [[Hammer_Face_Edit_Dialog|Face Edit]] dialog box. These tools are used to edit texture properties of objects on a per face level. The '''Face Edit''' dialog also provides access to the displacement geometry tools.
+
+==Replace Textures==
+
+This will bring up the [[Hammer_Replace_Textures_Dialog|Replace Textures]] dialog which allows you to search, mark, or replace all textures of a certain type.
+
+==Texture Lock &lt;Shift+L&gt;==
+
+This option toggles '''Texture lock''' mode on and off. '''Texture lock''' allows you to move a brush without disturbing the alignment of the texture on the object. With '''Texture lock''' disabled, if you move an object, the texture stays aligned with the original position of the object.
+
+{{tip|There are times when it is easier to resize or move an object to fit the current texture alignment instead of the other way around. In this case, disable '''Texture lock''', move the object to fit the texture, then enable '''Texture lock''' to move the object with the texture aligned.}}
+
+==Sound Browser... &lt;Ctrl+Shift+S&gt;==
+
+Opens the [[Hammer_Sound_Browser|Sound Browser]] dialog, which provides a listing of the available sounds in the game.
+
+==Transform &lt;Ctrl+M&gt;==
+
+This brings up the [[Hammer_Transform_Dialog|Transform]] dialog, allowing you to rotate, scale, and move an object with precise values in any of the X, Y, or Z planes.
+
+==Snap Selected to Grid &lt;Ctrl+B&gt;==
+
+Not all objects will align perfectly to the grid, due to moving or resizing of the objects or changes in the grid size. This command will snap the bottom and left sides of the object to the grid. If more than one object is selected, the command will use the lowest to the bottom and leftmost objects to align all the objects as a single group.
+
+==Snap Selected to Grid Individually &lt;Ctrl+Shift+B&gt;==
+
+Identical to '''Snap Selected to Grid''', except that each object in the selection is snapped to the grid on its own, instead of using the bottom and left edges of the group bounding box.
+
+==Center Origins==
+
+For entities with origin entity helpers, this command moves the origin helper back to the center of the object bounding box. Multiple objects can be selected, and the origin helper of each object will be moved to the center of that object.
+
+See the [[Hammer_View_Menu#Show_Helpers|Show Helpers]] command on the View Menu for more information about entity helpers.
+
+==Align objects==
+
+The '''Align objects''' sub-menu allows you to align objects to one another, similar to the '''Snap selected to grid''' command, but with additional options as to how the objects are aligned.
+
+[[Image:Hammer_alignobjects.png]]
+
+Objects can be aligned on their left, right, top, or bottom edges. The object that is farthest in the direction you wish to align stays stationary, and all the other objects are moved to align with that object’s edge. Also, the direction the objects are aligned is relative to the active 2D view.
+
+To align a set of objects:
+
+# Select the objects you wish to align in the 2D view you wish to align them.
+# Select the direction you want the objects to align from the '''Align objects''' sub-menu in the '''Tools Menu'''. Remember the direction is relative to the current active 2D view.
+# The objects will be aligned in the direction you chose.
+
+[[Image:hammer_alignobjects2.jpg|frame|left|Using the Align Objects command to align a set of object along their left edges.]]&lt;br style=&quot;clear:both&quot; /&gt;
+
+==Flip Objects &lt;Ctrl+L&gt; and &lt;Ctrl+I&gt;==
+
+The '''Flip objects''' sub-menu allows you to flip objects horizontally or vertically (or both, to mirror the object).
+
+[[Image:Hammer_flipobjects.png]]
+
+You can mirror multiple objects at once. A single object is mirrored about its center point, and a group of selected objects are mirrored about their common center point. Also, the direction the objects are mirrored is relative to the active 2D view.
+
+To mirror an object or set objects:
+
+# Select the objects you wish to mirror in the 2D view you wish to align them.
+# Select the direction you want to flip the objects from the '''Flip objects''' sub-menu in the '''Tools Menu'''. Remember the direction is relative to the current active 2D view.
+# The objects are flipped in the direction you chose.
+
+[[Image:hammer_flipobjects2.jpg|frame|left|Using the Flip Objects command to Flip an object horizontally.]]&lt;br style=&quot;clear:both&quot; /&gt;
+
+==Create Prefab &lt;Ctrl+R&gt;==
+
+Creates a Hammer [[prefab]] object out of the selected objects. Hammer opens a '''Save As...''' dialog open in the Hammer prefabs directory. Type in a name and click the '''Save''' button to add the prefab to the library.
+
+See [[prefab]] for more information.
+
+==Options...==
+
+This will bring up the [[:Category:Hammer_Options_Dialog|Options]] dialog box which allows you to modify a number of Hammer Editor behaviors.</text>
+    </revision>
+  </page>
+</mediawiki>
