@@ -10,7 +10,7 @@
 				"command": "new_file", "args": {}
 			},
 			{
-				"caption": "Open…",
+				"caption": "Open...",
 				"mnemonic": "o",
 				"command": "open_file", "args":
 				{
@@ -29,7 +29,7 @@
 				"command": "save_file"
 			},
 			{
-				"caption": "Save As…",
+				"caption": "Save As...",
 				"mnemonic": "a",
 				"command": "save_file", "args":
 				{
@@ -38,7 +38,7 @@
 			},
 			{ "caption": "-" },
 			{
-				"caption": "Export…",
+				"caption": "Export...",
 				"mnemonic": "e",
 				"command": "save_file", "args":
 				{
@@ -67,13 +67,13 @@
 			},
 			{ "caption": "-" },
 			{
-				"caption": "Run Map…",
+				"caption": "Run Map...",
 				"mnemonic": "u",
 				"command": "run_file"
 			},
 			{ "caption": "-" },
 			{
-				"caption": "Convert WAD to VMT…",
+				"caption": "Convert WAD to VMT...",
 				"mnemonic": "w",
 				"command": "open_file", "args":
 				{
@@ -93,7 +93,7 @@
 			{ "caption": "-" },
 			{
 				"caption": "Recent Files",
-				"id": "recent_files",
+				"id": "recent_files"
 			},
 			{ "caption": "-" },
 			{
@@ -131,12 +131,12 @@
 				"caption": "Disable Undo/Redo",
 				"command": "history", "args":
 				{
-					"enable_history": false,
+					"enable_history": false
 				}
 			},
 			{ "caption": "-" },
 			{
-				"caption": "Find Entities…",
+				"caption": "Find Entities...",
 				"mnemonic": "f",
 				"command": "find", "args":
 				{
@@ -147,7 +147,7 @@
 				}
 			},
 			{
-				"caption": "Replace…",
+				"caption": "Replace...",
 				"mnemonic": "r",
 				"command": "replace"
 			},
@@ -177,7 +177,7 @@
 				}
 			},
 			{
-				"caption": "Paste special…",
+				"caption": "Paste special...",
 				"mnemonic": "s",
 				"command": "selection", "args":
 				{
@@ -291,7 +291,7 @@
 				}
 			},
 			{
-				"caption": "Entity Report…",
+				"caption": "Entity Report...",
 				"mnemonic": "e",
 				"command": "entity", "args":
 				{
@@ -368,7 +368,7 @@
 				}
 			},
 			{
-				"caption": "Map Properties…",
+				"caption": "Map Properties...",
 				"mnemonic": "m",
 				"command": "vmf", "args":
 				{

@@ -1,4 +1,5 @@
 from gi.repository import Gtk, Gdk
+import json
 import signal
 
 from pprint import pprint
@@ -9,29 +10,38 @@ class MenuTest(Gtk.Window):
 		super(MenuTest, self).__init__(title="Menu Test")
 		self.connect("delete-event", Gtk.main_quit)
 
-		self.spawn_menubar()
+		self.spawn_menubar('hammer.menu')
 
 		self.set_default_size(200, 0)
 		self.show_all()
 
-	def spawn_menubar(self):
+	def spawn_menubar(self, resource):
 		menubar = Gtk.MenuBar()
 
-		file_menu = self.spawn_menu(
-			caption='File',
-			widget=menubar,
-			mnemonic='f'
-		)
-
-		self.spawn_action(
-			caption='Exit',
-			widget=file_menu,
-			mnemonic='x',
-			action=Gtk.main_quit
-		)
+		with open(resource) as resource:
+			self.walk_menu(json.load(resource), menubar)
 
 		self.add(menubar)
 		return menubar
+
+	def walk_menu(self, definition, widget):
+		for menu in definition:
+			if not 'mnemonic' in menu:
+				menu['mnemonic'] = ''
+			if 'children' in menu:
+				sub_menu = self.spawn_menu(
+					caption = menu['caption'],
+					widget = widget,
+					mnemonic = menu['mnemonic']
+				)
+				self.walk_menu(menu['children'], sub_menu)
+			else:
+				action = self.spawn_action(
+					caption = menu['caption'],
+					widget = widget,
+					mnemonic = menu['mnemonic'],
+					action = lambda x: pprint((menu['command'], menu['args']))
+				)
 
 	def spawn_menu(self, caption, widget, mnemonic):
 		menu = Gtk.Menu()
