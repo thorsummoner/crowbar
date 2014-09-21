@@ -25,23 +25,38 @@ class MenuTest(Gtk.Window):
 		return menubar
 
 	def walk_menu(self, definition, widget):
-		for menu in definition:
-			if not 'mnemonic' in menu:
-				menu['mnemonic'] = ''
-			if 'children' in menu:
-				sub_menu = self.spawn_menu(
-					caption = menu['caption'],
-					widget = widget,
-					mnemonic = menu['mnemonic']
-				)
-				self.walk_menu(menu['children'], sub_menu)
-			else:
-				action = self.spawn_action(
-					caption = menu['caption'],
-					widget = widget,
-					mnemonic = menu['mnemonic'],
-					action = lambda x: pprint((menu['command'], menu['args']))
-				)
+		try:
+			for menu in definition:
+				if not 'mnemonic' in menu:
+					menu['mnemonic'] = ''
+				if not 'args' in menu:
+					menu['args'] = ()
+				if 'children' in menu:
+					sub_menu = self.spawn_menu(
+						caption = menu['caption'],
+						widget = widget,
+						mnemonic = menu['mnemonic']
+					)
+					self.walk_menu(menu['children'], sub_menu)
+				else:
+					if not 'command' in menu:
+						if '-' == menu['caption']:
+							self.spawn_sep(widget)
+							continue
+						else:
+	 						raise NameError(
+	 							'Menu item "%s" missing command.' % menu['caption']
+	 						)
+
+					action = self.spawn_action(
+						caption = menu['caption'],
+						widget = widget,
+						mnemonic = menu['mnemonic'],
+						action = self.resolve_callable(menu['command'], menu['args'])
+					)
+		except NameError as e:
+			pass
+
 
 	def spawn_menu(self, caption, widget, mnemonic):
 		menu = Gtk.Menu()
@@ -62,9 +77,18 @@ class MenuTest(Gtk.Window):
 		widget.append(item)
 		return action
 
+	def spawn_sep(self, widget):
+		sep = Gtk.SeparatorMenuItem()
+		widget.append(sep)
+
+		return sep
+
 	def menu_mnemonic(self, caption, mnemonic):
 		index = caption.lower().find(mnemonic)
 		return caption[0:index] + '_' + caption[index:]
+
+	def resolve_callable(self, command, args):
+		return lambda x: pprint((command, args))
 
 	def main(self):
 		signal.signal(signal.SIGINT, signal.SIG_DFL)
