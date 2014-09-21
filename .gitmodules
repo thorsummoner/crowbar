@@ -1,0 +1,3 @@
+[submodule "vmflib"]
+	path = vmflib
+	url = https://github.com/BHSPitMonkey/vmflib.git
