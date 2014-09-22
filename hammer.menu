@@ -866,7 +866,87 @@
 		"mnemonic": "i",
 		"id": "instancing",
 		"children": [
+			{
+				"caption": "Create New Instance From Selection",
+				"command": "", "args":
+				{
 
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Collapse Selection",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Collapse All",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "View Instances",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Show Normal",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Show Tinted",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Hide All Instances",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Show All Instances",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Create Manifest...",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Version Control...",
+				"children":
+				[
+
+				]
+			},
+			{
+				"caption": "View Manifests...",
+				"children":
+				[
+
+				]
+			}
 		]
 	},
 	{
