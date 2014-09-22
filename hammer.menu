@@ -739,7 +739,26 @@
 		"mnemonic": "f",
 		"id": "foundry",
 		"children": [
-
+			{
+				"caption": "Send Selected Entities To Engine",
+				"mnemonic": "s",
+				"command": "", "args": {}
+			},
+			{
+				"caption": "Move Engine View To Hammer 3D View",
+				"mnemonic": "m",
+				"command": "", "args": {}
+			},
+			{
+				"caption": "Remove Selected Entities From Engine",
+				"mnemonic": "r",
+				"command": "", "args": {}
+			},
+			{
+				"caption": "Move Focus To Engine",
+				"mnemonic": "f",
+				"command": "", "args": {}
+			}
 		]
 	},
 	{
