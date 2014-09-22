@@ -766,7 +766,12 @@
 		"mnemonic": "w",
 		"id": "window",
 		"children": [
-
+			{
+				"caption": "New Viewport Into Map",
+				"mnemonic": "n",
+				"command": "", "args": {}
+			},
+			{ "caption": "-" }
 		]
 	},
 	{
@@ -774,7 +779,17 @@
 		"mnemonic": "h",
 		"id": "help",
 		"children": [
-
+			{
+				"caption": "Help Topics...",
+				"mnemonic": "h",
+				"command": "", "args": {}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "About...",
+				"mnemonic": "a",
+				"command": "", "args": {}
+			}
 		]
 	}
 ]
