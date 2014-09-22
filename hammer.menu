@@ -507,7 +507,48 @@
 				}
 			},
 			{ "caption": "-" },
+ 			{
+ 				"caption": "3D Wireframe",
+ 				"mnemonic": "w",
+ 				"command": "", "args": {
 
+ 				}
+ 			},
+ 			{
+ 				"caption": "3D Filled Polygons",
+ 				"mnemonic": "f",
+ 				"command": "", "args": {
+
+ 				}
+ 			},
+ 			{
+ 				"caption": "3D Textured Polygons",
+ 				"mnemonic": "t",
+ 				"command": "", "args": {
+
+ 				}
+ 			},
+ 			{
+ 				"caption": "3D Shaded Textured Polygons",
+ 				"mnemonic": "s",
+ 				"command": "", "args": {
+
+ 				}
+ 			},
+ 			{
+ 				"caption": "3D Lighting Preview",
+ 				"mnemonic": "l",
+ 				"command": "", "args": {
+
+ 				}
+ 			},
+ 			{
+ 				"caption": "3D Raytrace Preview",
+ 				"mnemonic": "r",
+ 				"command": "", "args": {
+
+ 				}
+ 			},
 			{ "caption": "-" },
 			{
 				"caption": "Center Views on Selection",
