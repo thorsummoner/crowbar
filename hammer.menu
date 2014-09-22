@@ -668,7 +668,197 @@
 		"mnemonic": "t",
 		"id": "tools",
 		"children": [
+			{
+				"caption": "Carve",
+				"mnemonic": "c",
+				"command": "", "args":
+				{
 
+				}
+			},
+			{
+				"caption": "Make Hollow...",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Group",
+				"mnemonic": "g",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Ungroup",
+				"mnemonic": "u",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Tie to Entity...",
+				"mnemonic": "t",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Move to World",
+				"mnemonic": "m",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Texture Application...",
+				"mnemonic": "x",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Replace Textures",
+				"mnemonic": "e",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Texture Lock",
+				"chekcbox": true,
+				"mnemonic": "t",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Sound Browser...",
+				"mnemonic": "s",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Transform",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Snap Selected to Grid",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Snap Selected to Grid Individually",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Center Origins",
+				"mnemonic": "o",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Align objects",
+				"mnemonic": "a",
+				"children": [
+					{
+						"caption": "To Left",
+						"mnemonic": "l",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "To Right",
+						"mnemonic": "r",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "To Top",
+						"mnemonic": "t",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "To Bottom",
+						"mnemonic": "b",
+						"command": "", "args":
+						{
+
+						}
+					}
+				]
+			},
+			{
+				"caption": "Flip Objects",
+				"mnemonic": "f",
+				"children": [
+					{
+						"caption": "Horrizontally",
+						"mnemonic": "h",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Vertically",
+						"mnemonic": "v",
+						"command": "", "args":
+						{
+
+						}
+					}
+				]
+			},
+			{
+				"caption": "Create Prefab",
+				"mnemonic": "r",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Options...",
+				"mnemonic": "o",
+				"command": "", "args":
+				{
+
+				}
+			}
 		]
 	},
 	{
