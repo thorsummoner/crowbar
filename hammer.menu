@@ -229,11 +229,13 @@
 			{
 				"caption": "Snap to Grid",
 				"mnemonic": "s",
+				"checkbox": true,
 				"command": "toggle_snap"
 			},
 			{
 				"caption": "Show Grid",
 				"mnemonic": "w",
+				"checkbox": true,
 				"command": "toggle_grid"
 			},
 			{
@@ -384,7 +386,240 @@
 		"mnemonic": "v",
 		"id": "view",
 		"children": [
+			{
+				"caption": "Screen Elements",
+				"mnemonic": "el",
+				"children": [
+					{
+						"caption": "Selection Mode Bar",
+						"checkbox": true,
+						"mnemonic": "m",
+						"command": "", "args":
+						{
 
+						}
+					},
+					{
+						"caption": "Object Bar",
+						"checkbox": true,
+						"mnemonic": "o",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Manifest Bar",
+						"checkbox": true,
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Maptools Bar",
+						"checkbox": true,
+						"mnemonic": "t",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Map Operations Bar",
+						"checkbox": true,
+						"mnemonic": "p",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Map View Bar",
+						"checkbox": true,
+						"mnemonic": "v",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Filter Control",
+						"checkbox": true,
+						"mnemonic": "f",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{
+						"caption": "Texture Bar",
+						"checkbox": true,
+						"mnemonic": "x",
+						"command": "", "args":
+						{
+
+						}
+					},
+					{ "caption": "-" },
+					{
+						"caption": "Status Bar",
+						"checkbox": true,
+						"mnemonic": "s",
+						"command": "", "args":
+						{
+
+						}
+					}
+				]
+			},
+			{
+				"caption": "Autosize 4 views",
+				"mnemonic": "a",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "2D X/Y",
+				"mnemonic": "x",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "2D Y/Z",
+				"mnemonic": "y",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "2D X/Z",
+				"mnemonic": "z",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+
+			{ "caption": "-" },
+			{
+				"caption": "Center Views on Selection",
+				"mnemonic": "c",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Center 3D Views on Selection",
+				"mnemonic": "3",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Go to Coordinates...",
+				"command": "", "args":
+				{
+					"dialog": true
+				}
+			},
+			{
+				"caption": "Go to Brush Number...",
+				"mnemonic": "o",
+				"command": "", "args":
+				{
+					"dialog": true
+				}
+			},
+			{ "caption": "-" },
+			{
+				"caption": "Show Connections",
+				"mnemonic": "o",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Show Helpers",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Show Models in 2D",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Hide Items",
+				"mnemonic": "h",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Hide Entity Names",
+				"mnemonic": "n",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Use Radius Culling",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{ "caption": "-" },
+
+			{ "caption": "-" },
+			{
+				"caption": "Move Selection to Visgroup",
+				"mnemonic": "i",
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "Draw Materials Opaque",
+				"mnemonic": "d",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			},
+			{
+				"caption": "HDR",
+				"checkbox": true,
+				"command": "", "args":
+				{
+
+				}
+			}
 		]
 	},
 	{

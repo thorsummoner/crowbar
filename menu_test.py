@@ -84,7 +84,7 @@ class MenuTest(Gtk.Window):
 		return sep
 
 	def menu_mnemonic(self, caption, mnemonic):
-		index = caption.lower().find(mnemonic)
+		index = caption.lower().find(mnemonic.lower())
 		return caption[0:index] + '_' + caption[index:]
 
 	def resolve_callable(self, command, args):
