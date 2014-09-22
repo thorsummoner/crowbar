@@ -32,16 +32,21 @@ class MenuTest(Gtk.Window):
 				menu['args'] = ()
 			if 'children' in menu:
 				sub_menu = self.spawn_menu(
-					caption = menu['caption'],
-					widget = widget,
+					caption  = menu['caption'],
+					widget   = widget,
 					mnemonic = menu['mnemonic']
 				)
 				self.walk_menu(menu['children'], sub_menu)
 			else:
+				menuitem = Gtk.MenuItem
+
+				if 'checked' in menu:
+					menuitem = Gtk.CheckMenuItem
+
 				if not 'command' in menu:
 					if '-' == menu['caption']:
-						self.spawn_sep(widget)
-						continue
+						menuitem = Gtk.SeparatorMenuItem
+						menu['command'] = ''
 					elif 'id' in menu:
 						# Insert these elements anyway, they may be used
 						# as an id achor point for complex menu generators
@@ -52,10 +57,11 @@ class MenuTest(Gtk.Window):
 						)
 
 				action = self.spawn_action(
-					caption = menu['caption'],
-					widget = widget,
+					caption  = menu['caption'],
+					widget   = widget,
 					mnemonic = menu['mnemonic'],
-					action = self.resolve_callable(menu['command'], menu['args'])
+					action   = self.resolve_callable(menu['command'], menu['args']),
+					menuitem = menuitem
 				)
 
 	def spawn_menu(self, caption, widget, mnemonic):
@@ -68,8 +74,10 @@ class MenuTest(Gtk.Window):
 		widget.append(item)
 		return menu
 
-	def spawn_action(self, caption, widget, mnemonic, action):
-		item = Gtk.MenuItem(caption)
+	def spawn_action(self, caption, widget, mnemonic, action, menuitem=Gtk.MenuItem):
+		if menuitem == Gtk.SeparatorMenuItem:
+			return self.spawn_sep(widget)
+		item = menuitem(caption)
 		item.connect("activate", action)
 		if mnemonic:
 			item.set_use_underline(True)
