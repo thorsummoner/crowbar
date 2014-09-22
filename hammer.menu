@@ -12,8 +12,7 @@
 			{
 				"caption": "Open...",
 				"mnemonic": "o",
-				"command": "open_file", "args":
-				{
+				"command": "open_file", "args": {
 					"dialog": true,
 					"file": "~/Desktop/"
 				}
@@ -31,8 +30,7 @@
 			{
 				"caption": "Save As...",
 				"mnemonic": "a",
-				"command": "save_file", "args":
-				{
+				"command": "save_file", "args": {
 					"save_as": true
 				}
 			},
@@ -40,16 +38,14 @@
 			{
 				"caption": "Export...",
 				"mnemonic": "e",
-				"command": "save_file", "args":
-				{
+				"command": "save_file", "args": {
 					"save_as": true,
 					"export": true
 				}
 			},
 			{
 				"caption": "Export Again",
-				"command": "save_file", "args":
-				{
+				"command": "save_file", "args": {
 					"save_as": true,
 					"export": true,
 					"export_again": true
@@ -58,8 +54,7 @@
 			{
 				"caption": "Export to .DXF",
 				"mnemonic": "d",
-				"command": "save_file", "args":
-				{
+				"command": "save_file", "args": {
 					"save_as": true,
 					"export": true,
 					"format": ".DXF"
@@ -75,8 +70,7 @@
 			{
 				"caption": "Convert WAD to VMT...",
 				"mnemonic": "w",
-				"command": "open_file", "args":
-				{
+				"command": "open_file", "args": {
 					"import": true,
 					"format": ".WAD"
 				}
@@ -85,8 +79,7 @@
 			{
 				"caption": "Reload Sounds",
 				"mnemonic": "r",
-				"command": "reload_assets", "args":
-				{
+				"command": "reload_assets", "args": {
 					"mimetype": "audio/*"
 				}
 			},
@@ -99,8 +92,7 @@
 			{
 				"caption": "Exit",
 				"mnemonic": "x",
-				"command": "exit", "args":
-				{
+				"command": "exit", "args": {
 					"hot_exit": true
 				}
 			}
@@ -113,24 +105,21 @@
 		"children": [
 			{
 				"caption": "Undo",
-				"command": "history", "args":
-				{
+				"command": "history", "args": {
 					"action": "hard_undo",
 					"selection": true
 				}
 			},
 			{
 				"caption": "Redo",
-				"command": "history", "args":
-				{
+				"command": "history", "args": {
 					"action": "redo",
 					"selection": true
 				}
 			},
 			{
 				"caption": "Disable Undo/Redo",
-				"command": "history", "args":
-				{
+				"command": "history", "args": {
 					"enable_history": false
 				}
 			},
@@ -138,8 +127,7 @@
 			{
 				"caption": "Find Entities...",
 				"mnemonic": "f",
-				"command": "find", "args":
-				{
+				"command": "find", "args": {
 					"object_filter": [
 						"entity"
 					],
@@ -155,32 +143,28 @@
 			{
 				"caption": "Cut",
 				"mnemonic": "t",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "cut"
 				}
 			},
 			{
 				"caption": "Copy",
 				"mnemonic": "c",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "copy"
 				}
 			},
 			{
 				"caption": "Paste",
 				"mnemonic": "p",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "paste"
 				}
 			},
 			{
 				"caption": "Paste special...",
 				"mnemonic": "s",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "paste",
 					"dialog": true
 				}
@@ -188,8 +172,7 @@
 			{
 				"caption": "Delete",
 				"mnemonic": "d",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "delete"
 				}
 			},
@@ -197,16 +180,14 @@
 			{
 				"caption": "Clear selection",
 				"mnemonic": "l",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "deselect_all"
 				}
 			},
 			{
 				"caption": "Select all",
 				"mnemonic": "a",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "select_all"
 				}
 			},
@@ -214,8 +195,7 @@
 			{
 				"caption": "Properties",
 				"mnemonic": "o",
-				"command": "object_properties", "args":
-				{
+				"command": "object_properties", "args": {
 					"dialog": true
 				}
 			}
@@ -261,24 +241,21 @@
 					{
 						"caption": "Decimal",
 						"mnemonic": "d",
-						"command": "unit", "args":
-						{
+						"command": "unit", "args": {
 							"unit": null
 						}
 					},
 					{
 						"caption": "Inches",
 						"mnemonic": "i",
-						"command": "unit", "args":
-						{
+						"command": "unit", "args": {
 							"unit": "inches"
 						}
 					},
 					{
 						"caption": "Feet + Inches",
 						"mnemonic": "d",
-						"command": "unit", "args":
-						{
+						"command": "unit", "args": {
 							"unit": "feet + inches"
 						}
 					}
@@ -287,16 +264,14 @@
 			{ "caption": "-" },
 			{
 				"caption": "Show Selected Brush Number",
-				"command": "selection", "args":
-				{
+				"command": "selection", "args": {
 					"action": "show_selected"
 				}
 			},
 			{
 				"caption": "Entity Report...",
 				"mnemonic": "e",
-				"command": "entity", "args":
-				{
+				"command": "entity", "args": {
 					"action": "report",
 					"dialog": true
 				}
@@ -304,8 +279,7 @@
 			{
 				"caption": "Entity Gallery",
 				"mnemonic": "a",
-				"command": "entity", "args":
-				{
+				"command": "entity", "args": {
 					"action": "gallery"
 				}
 
@@ -313,15 +287,13 @@
 			{
 				"caption": "Check for Problems",
 				"mnemonic": "c",
-				"command": "check_for_problems", "args":
-				{
+				"command": "check_for_problems", "args": {
 					"dialog": true
 				}
 			},
 			{
 				"caption": "Diff Map File",
-				"command": "delta", "args":
-				{
+				"command": "delta", "args": {
 					"dialog": true
 				}
 			},
@@ -329,8 +301,7 @@
 			{
 				"caption": "Load Pointfile",
 				"mnemonic": "l",
-				"command": "pointfile", "args":
-				{
+				"command": "pointfile", "args": {
 					"action": "load",
 					"automatic": true
 				}
@@ -338,16 +309,14 @@
 			{
 				"caption": "Unload Pointfile",
 				"mnemonic": "u",
-				"command": "pointfile", "args":
-				{
+				"command": "pointfile", "args": {
 					"action": "unload"
 				}
 			},
 			{
 				"caption": "Load PortalFile",
 				"mnemonic": "l",
-				"command": "portalfile", "args":
-				{
+				"command": "portalfile", "args": {
 					"action": "load",
 					"automatic": true
 				}
@@ -355,16 +324,14 @@
 			{
 				"caption": "Unload PortalFile",
 				"mnemonic": "u",
-				"command": "portalfile", "args":
-				{
+				"command": "portalfile", "args": {
 					"action": "unload"
 				}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Show Information",
-				"command": "vmf", "args":
-				{
+				"command": "vmf", "args": {
 					"action": "stat",
 					"current_file": true
 				}
@@ -372,8 +339,7 @@
 			{
 				"caption": "Map Properties...",
 				"mnemonic": "m",
-				"command": "vmf", "args":
-				{
+				"command": "vmf", "args": {
 					"action": "properties",
 					"current_file": true,
 					"dialog": true
@@ -394,190 +360,131 @@
 						"caption": "Selection Mode Bar",
 						"checkbox": true,
 						"mnemonic": "m",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Object Bar",
 						"checkbox": true,
 						"mnemonic": "o",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Manifest Bar",
 						"checkbox": true,
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Maptools Bar",
 						"checkbox": true,
 						"mnemonic": "t",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Map Operations Bar",
 						"checkbox": true,
 						"mnemonic": "p",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Map View Bar",
 						"checkbox": true,
 						"mnemonic": "v",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Filter Control",
 						"checkbox": true,
 						"mnemonic": "f",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Texture Bar",
 						"checkbox": true,
 						"mnemonic": "x",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{ "caption": "-" },
 					{
 						"caption": "Status Bar",
 						"checkbox": true,
 						"mnemonic": "s",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					}
 				]
 			},
 			{
 				"caption": "Autosize 4 views",
 				"mnemonic": "a",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "2D X/Y",
 				"mnemonic": "x",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "2D Y/Z",
 				"mnemonic": "y",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "2D X/Z",
 				"mnemonic": "z",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
  			{
  				"caption": "3D Wireframe",
  				"mnemonic": "w",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
  			{
  				"caption": "3D Filled Polygons",
  				"mnemonic": "f",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
  			{
  				"caption": "3D Textured Polygons",
  				"mnemonic": "t",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
  			{
  				"caption": "3D Shaded Textured Polygons",
  				"mnemonic": "s",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
  			{
  				"caption": "3D Lighting Preview",
  				"mnemonic": "l",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
  			{
  				"caption": "3D Raytrace Preview",
  				"mnemonic": "r",
- 				"command": "", "args": {
-
- 				}
+ 				"command": "", "args": {}
  			},
 			{ "caption": "-" },
 			{
 				"caption": "Center Views on Selection",
 				"mnemonic": "c",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Center 3D Views on Selection",
 				"mnemonic": "3",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Go to Coordinates...",
-				"command": "", "args":
-				{
+				"command": "", "args": {
 					"dialog": true
 				}
 			},
 			{
 				"caption": "Go to Brush Number...",
 				"mnemonic": "o",
-				"command": "", "args":
-				{
+				"command": "", "args": {
 					"dialog": true
 				}
 			},
@@ -586,52 +493,34 @@
 				"caption": "Show Connections",
 				"mnemonic": "o",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Show Helpers",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Show Models in 2D",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Hide Items",
 				"mnemonic": "h",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Hide Entity Names",
 				"mnemonic": "n",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Use Radius Culling",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 
@@ -639,27 +528,18 @@
 			{
 				"caption": "Move Selection to Visgroup",
 				"mnemonic": "i",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Draw Materials Opaque",
 				"mnemonic": "d",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "HDR",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			}
 		]
 	},
@@ -671,116 +551,74 @@
 			{
 				"caption": "Carve",
 				"mnemonic": "c",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Make Hollow...",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Group",
 				"mnemonic": "g",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Ungroup",
 				"mnemonic": "u",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Tie to Entity...",
 				"mnemonic": "t",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Move to World",
 				"mnemonic": "m",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Texture Application...",
 				"mnemonic": "x",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Replace Textures",
 				"mnemonic": "e",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Texture Lock",
 				"chekcbox": true,
 				"mnemonic": "t",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Sound Browser...",
 				"mnemonic": "s",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Transform",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Snap Selected to Grid",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Snap Selected to Grid Individually",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Center Origins",
 				"mnemonic": "o",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Align objects",
@@ -789,34 +627,22 @@
 					{
 						"caption": "To Left",
 						"mnemonic": "l",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "To Right",
 						"mnemonic": "r",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "To Top",
 						"mnemonic": "t",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "To Bottom",
 						"mnemonic": "b",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					}
 				]
 			},
@@ -827,37 +653,25 @@
 					{
 						"caption": "Horrizontally",
 						"mnemonic": "h",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					},
 					{
 						"caption": "Vertically",
 						"mnemonic": "v",
-						"command": "", "args":
-						{
-
-						}
+						"command": "", "args": {}
 					}
 				]
 			},
 			{
 				"caption": "Create Prefab",
 				"mnemonic": "r",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Options...",
 				"mnemonic": "o",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			}
 		]
 	},
@@ -868,82 +682,53 @@
 		"children": [
 			{
 				"caption": "Create New Instance From Selection",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Collapse Selection",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Collapse All",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "View Instances",
 				"checkbox": true,
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Show Normal",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Show Tinted",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{ "caption": "-" },
 			{
 				"caption": "Hide All Instances",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Show All Instances",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Create Manifest...",
-				"command": "", "args":
-				{
-
-				}
+				"command": "", "args": {}
 			},
 			{
 				"caption": "Version Control...",
-				"children":
-				[
+				"children": [
 
 				]
 			},
 			{
 				"caption": "View Manifests...",
-				"children":
-				[
+				"children": [
 
 				]
 			}
