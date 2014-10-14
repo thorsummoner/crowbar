@@ -19,14 +19,38 @@ class ValveMap(ValveDict):
 		super(ValveMap, self).__init__(*args, **kw)
 		self.itemlist = super(ValveMap, self).keys()
 
-		self['versioninfo'] = ValveDict({"editorversion": 400, "editorbuild": 6550, "mapversion": self.mapversion, "formatversion": 100, "prefab": 0, })
-		self['viewsettings'] = ValveDict({"bSnapToGrid": 1, "bShowGrid": 1, "bShowLogicalGrid": 0, "nGridSpacing": 64, "bShow3DGrid": 0, })
-		self['world'] = ValveDict({"id": 1, "mapversion": self.mapversion, "classname": "worldspawn", "skyname": None, "maxpropscreenwidth": -1, "detailvbsp": None, "detailmaterial": None, })
-		self['cameras'] = ValveDict({"activecamera": -1, })
-		self['cordon'] = ValveDict({"mins": (-1024, -1024, -1024), "maxs": ( 1024,  1024,  1024), "active": 0, })
-
-		if None == self['world']['mapversion']:
-			self['world']['mapversion'] = self['versioninfo']['mapversion']
+		# Defualt New Map
+		self['versioninfo'] = ValveDict({
+			"editorversion": 400,
+			"editorbuild": 6550,
+			"mapversion": 0,
+			"formatversion": 100,
+			"prefab": 0,
+		})
+		self['viewsettings'] = ValveDict({
+			"bSnapToGrid": 1,
+			"bShowGrid": 1,
+			"bShowLogicalGrid": 0,
+			"nGridSpacing": 64,
+			"bShow3DGrid": 0,
+		})
+		self['world'] = ValveDict({
+			"id": 1,
+			"mapversion": 0,
+			"classname": "worldspawn",
+			"skyname": None,
+			"maxpropscreenwidth": -1,
+			"detailvbsp": None,
+			"detailmaterial": None,
+		})
+		self['cameras'] = ValveDict({
+			"activecamera": -1,
+		})
+		self['cordon'] = ValveDict({
+			"mins": (-1024, -1024, -1024),
+			"maxs": ( 1024,  1024,  1024),
+			"active": 0,
+		})
 
 	def __str__(self):
 		out = ''
