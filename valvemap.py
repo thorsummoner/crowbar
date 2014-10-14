@@ -2,10 +2,6 @@
 from pprint import pprint
 
 class ValveDict(dict):
-	def __init__(self, *args, **kw):
-		super(ValveDict, self).__init__(*args, **kw)
-		self.itemlist = super(ValveDict, self).keys()
-
 	def __str__(self):
 		out = ''
 		for key, value in self.items():
@@ -15,78 +11,33 @@ class ValveDict(dict):
 	def __repr__(self):
 		return self.__str__()
 
-class ValveMap(object):
-	"""ValveMap File Handler"""
+class ValveMap(ValveDict):
 
-	_versioninfo = ValveDict({"editorversion": 400, "editorbuild": 6550, "mapversion": 0, "formatversion": 100, "prefab": 0, })
-	@property
-	def versioninfo(self):
-		return self._versioninfo
-	@versioninfo.setter
-	def versioninfo(self, value):
-		self._versioninfo = value
+	mapversion = 0
 
-	_viewsettings = ValveDict({"bSnapToGrid": 1, "bShowGrid": 1, "bShowLogicalGrid": 0, "nGridSpacing": 64, "bShow3DGrid": 0, })
-	@property
-	def viewsettings(self):
-		return self._viewsettings
-	@viewsettings.setter
-	def viewsettings(self, value):
-		self._viewsettings = value
+	def __init__(self, *args, **kw):
+		super(ValveMap, self).__init__(*args, **kw)
+		self.itemlist = super(ValveMap, self).keys()
 
-	_world = ValveDict({"id": 1, "mapversion": None, "classname": "worldspawn", "skyname": None, "maxpropscreenwidth": -1,
-		"detailvbsp": None, "detailmaterial": None, })
-	@property
-	def world(self):
-		return self._world
-	@world.setter
-	def world(self, value):
-		self._world = value
+		self['versioninfo'] = ValveDict({"editorversion": 400, "editorbuild": 6550, "mapversion": self.mapversion, "formatversion": 100, "prefab": 0, })
+		self['viewsettings'] = ValveDict({"bSnapToGrid": 1, "bShowGrid": 1, "bShowLogicalGrid": 0, "nGridSpacing": 64, "bShow3DGrid": 0, })
+		self['world'] = ValveDict({"id": 1, "mapversion": self.mapversion, "classname": "worldspawn", "skyname": None, "maxpropscreenwidth": -1, "detailvbsp": None, "detailmaterial": None, })
+		self['cameras'] = ValveDict({"activecamera": -1, })
+		self['cordon'] = ValveDict({"mins": (-1024, -1024, -1024), "maxs": ( 1024,  1024,  1024), "active": 0, })
 
-	_cameras = ValveDict({"activecamera": -1, })
-	@property
-	def cameras(self):
-		return self._cameras
-	@cameras.setter
-	def cameras(self, value):
-		self._cameras = value
-
-	_cordon = ValveDict({"mins": (-1024, -1024, -1024), "maxs": ( 1024,  1024,  1024), "active": 0, })
-	@property
-	def cordon(self):
-		return self._cordon
-	@cordon.setter
-	def cordon(self, value):
-		self._cordon = value
-
-
-	def __init__(
-		self,
-		versioninfo = None,
-		viewsettings  = None,
-		world         = None,
-		cameras       = None,
-		cordon        = None
-	):
-		super(ValveMap, self).__init__()
-		if None != versioninfo: self.versioninfo = versioninfo
-		if None != viewsettings:  self.viewsettings  = viewsettings
-		if None != world:         self.world         = world
-		if None != cameras:       self.cameras       = cameras
-		if None != cordon:        self.cordon        = cordon
-
-		if None == self.world['mapversion']:
-			self.world['mapversion'] = self.versioninfo['mapversion']
+		if None == self['world']['mapversion']:
+			self['world']['mapversion'] = self['versioninfo']['mapversion']
 
 	def __str__(self):
 		out = ''
-		for i in dir(self):
-			if i.startswith('_'):
-				continue
-			out += '%s\n{\n%s\n}\n' % (i, getattr(self, i))
+		for key, value in self.items():
+			out += '%s\n{\n%s}\n' % (key, value)
 		return out
 
-
+	def save(self):
+		self.mapversion += 1
+		self['versioninfo']['mapversion'] = self.mapversion
+		self['world']['mapversion'] = self.mapversion
 #
 # TEST
 #
@@ -97,6 +48,7 @@ if __name__ == '__main__':
 	import gamelib
 
 	mymap = gamelib.TF2()
+	mymap.save()
 
 	with open('demofile.vmf', 'w') as demofile:
 		print(str(mymap))
