@@ -1,0 +1,15 @@
+*.py[cod]
+
+*~
+
+*.vmf
+*.vmx
+*.bsp
+*.log
+*.prt
+*.lin
+
+build/
+dist/
+*.egg-info/
+
