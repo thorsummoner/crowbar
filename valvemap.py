@@ -11,6 +11,13 @@ class ValveDict(dict):
 	def __repr__(self):
 		return self.__str__()
 
+	def loads(maptext):
+		valvedict = ValveDict()
+		for line in maptext.splitlines():
+			key, value = line.strip('"').split('" "')
+			valvedict[key] = value
+
+		return valvedict
 class ValveMap(ValveDict):
 
 	mapversion = 0
@@ -62,18 +69,45 @@ class ValveMap(ValveDict):
 		self.mapversion += 1
 		self['versioninfo']['mapversion'] = self.mapversion
 		self['world']['mapversion'] = self.mapversion
+
+	def loads(maptext, baseclass=None):
+		if None == baseclass:
+			baseclass = ValveMap
+		valvemap = baseclass()
+		if not isinstance(valvemap, ValveMap):
+			raise TypeError('`baseclass` is not valid Valve Map/child.')
+
+		blockname = None
+		blocktext = None
+		for line in maptext.splitlines():
+			if line.startswith('}') or line.startswith('{'):
+				continue
+			if line.startswith('\t'):
+				blocktext.append(line[1:])
+				continue
+
+			if None != blockname:
+				valvemap[blockname] = ValveDict.loads('\n'.join(blocktext))
+
+			blockname = line
+			blocktext = []
+
+		return valvemap
 #
 # TEST
 #
 
 #!python2
 if __name__ == '__main__':
-	print('hello wotld')
 	import gamelib
 
-	mymap = gamelib.TF2()
-	mymap.save()
+	if True:
+		with open('demofile.vmf', 'r') as demofile:
+			mymap = gamelib.TF2.loads(demofile.read())
+	else:
+		mymap = gamelib.TF2()
 
+	mymap.save()
 	with open('demofile.vmf', 'w') as demofile:
 		print(str(mymap))
 		demofile.write(str(mymap))
