@@ -32,8 +32,18 @@ with open('ttt_67thway/src/ttt_67thway.vmf', 'r') as maptext:
     i = 0
     for line in iter(maptext.readline, ''):
         i += 1
+        linevalue = line.strip()
         if 0 == i % minupdate:
             report(i, lines)
+
+        if line.startswith('\{'):
+
+            datavar = dict()
+
+        if line.lstrip('\t').startswith('"id"':
+            pass
+
+        datatype = line.strip()
 
 report(i, lines)
 elpsed_time = time() - entry_time
