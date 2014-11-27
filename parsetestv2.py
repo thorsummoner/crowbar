@@ -20,18 +20,22 @@ class ValveDict(dict):
         super(ValveDict, self).__init__()
         self.__setitem__ = super(ValveDict, self).__setitem__
     def __setitem__(self, key, value):
+        if key == 'datatype':
+            self.__setitem__(key, value)
+            return
+
         vmf_key = 'vmf_%s' % key
         if not hasattr(self, vmf_key):
             raise ValveKeyError('Key `%s` not allowed in %s' % (key, self._type()))
 
         allowedcontainer = getattr(self, vmf_key)
 
-        if not isinstance(value, allowedcontainer):
+        if not type(value) is allowedcontainer:
             # Lunacy!
             if not type(value)(allowedcontainer(value)) == value:
                 raise ValveTypeError(
-                    "Illigal Type %s for key `%s` in object %s, expected Type %s for value `%s`" % (
-                        type(value), key, self._type(), allowedcontainer, value
+                    "Illigal Type %s for key `%s`, expected Type %s for value `%s`" % (
+                        type(value), key, allowedcontainer, value
                     )
                 )
 
@@ -54,8 +58,57 @@ class ValveWorld(ValveDict):
     vmf_mapversion = int
     vmf_classname = str
 
+class ValveEntity(ValveDict):
+    vmf_classname = str
+    vmf_origin = str # "776.0 259.0 -96.0"
+
+    def __setitem__(self, key, value):
+        self.__setitem__(key, value)
+
+
 class ValveCameras(ValveDict):
-    pass
+    vmf_activecamera = int
+
+class ValveCamera(ValveDict):
+    vmf_position = str # "[-2712.7458 6088.62 149.23857]"
+    vmf_look = str # "[-2460.03 6088.62 65.0]"
+
+class ValveDisplacement(ValveDict):
+    vmf_power = int # "3"
+    vmf_startposition = str # "[384.0 512.0 72.0]"
+    vmf_elevation = int # "0"
+    vmf_subdiv = int # "0"
+
+    class _RowData(ValveDict):
+        def __setitem__(self, key, value):
+            # Allow variable keys
+            if key.startswith('row') and key[3:].isdigit():
+                setattr(self, 'vmf_%s' % key, str)
+
+            super(ValveDisplacement._RowData, self).__setitem__(key, value)
+
+    class AllowedVerts(ValveDict):
+        def __setitem__(self, key, value):
+            # todo, restruct to numeric keys only?
+            self.__setitem__(key, value)
+
+    class Alphas(_RowData):
+        pass
+
+    class Distances(_RowData):
+        pass
+
+    class Normals(_RowData):
+        pass
+
+
+class ValveSide(ValveDict):
+    vmf_plane = str
+    vmf_smoothing_groups = int
+    vmf_material = str
+    vmf_uaxis = str # "[0.0 0.0 -1.0 288] 0.25"
+    vmf_vaxis = str # "[0.0 1.0 0.0 0] 0.25"
+    vmf_lightmapscale = int
 
 class ValveMap(ValveDict):
     vmf_world   = ValveWorld
@@ -77,19 +130,25 @@ class ValveMap_test(dict):
     mapdata = mapobject()
     _parsenode = []
     datatypes = {
-        'entity': ValveDict,
+        'entity': ValveEntity,
         'world': ValveWorld,
-        'cameras': ValveDict,
-        'camera': ValveDict,
+        'cameras': ValveCameras,
+        'camera': ValveCamera,
         'solid': ValveDict,
-        'side': ValveDict,
-        'dispinfo': ValveDict,
+        'side': ValveSide,
+        'dispinfo': ValveDisplacement,
         'normals': ValveDict,
         'distances': ValveDict,
         'alphas': ValveDict,
         'triangle_tags': ValveDict,
         'allowed_verts': ValveDict,
         'connections': list,
+        # Todo Refactor datatypes to be children of datatype
+        # ValveDisplacement:
+        'allowed_verts': ValveDisplacement.AllowedVerts,
+        'alphas': ValveDisplacement.Alphas,
+        'distances': ValveDisplacement.Distances,
+        'normals': ValveDisplacement.Normals,
     }
     _parseerrors = []
 
@@ -181,7 +240,7 @@ class ValveMap_test(dict):
                         try:
                             output[key] = value
                         except ValveException as err:
-                            self._parseerrors.append(err)
+                            self._parseerrors.append('Ln %s: %s' % (self.i, err))
 
                     elif isinstance(output, list):
                         output.append((key, value))
