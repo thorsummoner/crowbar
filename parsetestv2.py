@@ -15,24 +15,35 @@ class ValveTypeError(ValveException):
 
 class ValveDict(dict):
     vmf_id = int
+    allow_multiple = False
 
     def __init__(self, *args, **kw):
-        super(ValveDict, self).__init__()
-        self.__setitem__ = super(ValveDict, self).__setitem__
+        super(ValveDict, self).__init__(*args, **kw)
+
     def __setitem__(self, key, value):
         if key == 'datatype':
-            self.__setitem__(key, value)
+            super(ValveDict, self).__setitem__(key, value)
             return
 
         vmf_key = 'vmf_%s' % key
         if not hasattr(self, vmf_key):
             raise ValveKeyError('Key `%s` not allowed in %s' % (key, self._type()))
 
+
+        if isinstance(value, list):
+            if not value[0].allow_multiple:
+                raise ValveTypeError("Type %s does not allow allow multiple values" % (type(value[0])))
+            # TODO, enforce datatype of list elements
+            super(ValveDict, self).__setitem__(key, value)
+            return
+
         allowedcontainer = getattr(self, vmf_key)
 
         if not type(value) is allowedcontainer:
             # Lunacy!
-            if not type(value)(allowedcontainer(value)) == value:
+            # Check if casting to the expected type and back vields the same value
+            if value is None or not type(value)(allowedcontainer(value)) == value:
+                # We do not get the same value, we cannont cast
                 raise ValveTypeError(
                     "Illigal Type %s for key `%s`, expected Type %s for value `%s`" % (
                         type(value), key, allowedcontainer, value
@@ -42,55 +53,63 @@ class ValveDict(dict):
             # We can cast it, we have te technology!
             value = allowedcontainer(value)
 
-        self.__setitem__(key, value)
+        super(ValveDict, self).__setitem__(key, value)
+
+    def __str__(self):
+        out = ''
+        for key, value in self.items():
+            out += '\t"%s" "%s"\n' % (key, value)
+        return out
+
+    def __repr__(self):
+        return self.__str__()
 
     def _type(self):
         return self.__class__.__name__
 
 ValveDict.vmf_datatype = ValveDict
 
-class ValveWorld(ValveDict):
-    vmf_skyname = str
-    vmf_maxpropscreenwidth = int
-    vmf_detailvbsp = str
-    vmf_detailmaterial = str
-    vmf_comment = str
-    vmf_mapversion = int
-    vmf_classname = str
+class ValveClass(ValveDict):
+    def __str__(self):
+        out = ''
+        for key, value in self.items():
+            out += '\t%s {%s}\n' % (key, value)
+        return out
 
-class ValveEntity(ValveDict):
+    def __repr__(self):
+        return self.__str__()
+
+class ValveEntity(ValveClass):
+    allow_multiple = True
     vmf_classname = str
     vmf_origin = str # "776.0 259.0 -96.0"
 
     def __setitem__(self, key, value):
-        self.__setitem__(key, value)
+        super(ValveDict, self).__setitem__(key, value)
 
 
-class ValveCameras(ValveDict):
+class ValveCameras(ValveClass):
     vmf_activecamera = int
 
-class ValveCamera(ValveDict):
+class ValveCamera(ValveClass):
+    allow_multiple = True
     vmf_position = str # "[-2712.7458 6088.62 149.23857]"
     vmf_look = str # "[-2460.03 6088.62 65.0]"
 
-class ValveDisplacement(ValveDict):
-    vmf_power = int # "3"
-    vmf_startposition = str # "[384.0 512.0 72.0]"
-    vmf_elevation = int # "0"
-    vmf_subdiv = int # "0"
+class ValveDisplacement(ValveClass):
 
-    class _RowData(ValveDict):
+    class _RowData(ValveClass):
         def __setitem__(self, key, value):
             # Allow variable keys
             if key.startswith('row') and key[3:].isdigit():
                 setattr(self, 'vmf_%s' % key, str)
 
-            super(ValveDisplacement._RowData, self).__setitem__(key, value)
+            super(ValveDict, self).__setitem__(key, value)
 
-    class AllowedVerts(ValveDict):
+    class AllowedVerts(ValveClass):
         def __setitem__(self, key, value):
             # todo, restruct to numeric keys only?
-            self.__setitem__(key, value)
+            super(ValveDict, self).__setitem__(key, value)
 
     class Alphas(_RowData):
         pass
@@ -101,32 +120,66 @@ class ValveDisplacement(ValveDict):
     class Normals(_RowData):
         pass
 
+    class TriangleTags(ValveClass):
+        pass
 
-class ValveSide(ValveDict):
-    vmf_plane = str
-    vmf_smoothing_groups = int
-    vmf_material = str
-    vmf_uaxis = str # "[0.0 0.0 -1.0 288] 0.25"
-    vmf_vaxis = str # "[0.0 1.0 0.0 0] 0.25"
-    vmf_lightmapscale = int
+    vmf_power = int # "3"
+    vmf_startposition = str # "[384.0 512.0 72.0]"
+    vmf_elevation = int # "0"
+    vmf_subdiv = int # "0"
+    vmf_triangle_tags = TriangleTags
+    vmf_allowed_verts = AllowedVerts
+    vmf_alphas = Alphas
+    vmf_distances = Distances
+    vmf_normals = Normals
+
+class ValveSolid(ValveClass):
+    allow_multiple = True
+
+    class Side(ValveClass):
+        allow_multiple = True
+
+        vmf_plane = str
+        vmf_smoothing_groups = int
+        vmf_material = str
+        vmf_uaxis = str # "[0.0 0.0 -1.0 288] 0.25"
+        vmf_vaxis = str # "[0.0 1.0 0.0 0] 0.25"
+        vmf_lightmapscale = int
+        vmf_dispinfo = ValveDisplacement
+
+    vmf_side = Side
+
+class ValveWorld(ValveClass):
+    vmf_skyname = str
+    vmf_maxpropscreenwidth = int
+    vmf_detailvbsp = str
+    vmf_detailmaterial = str
+    vmf_comment = str
+    vmf_mapversion = int
+    vmf_classname = str
+    vmf_solid = ValveSolid
 
 class ValveMap(ValveDict):
     vmf_world   = ValveWorld
-    vmf_entity  = list
+    vmf_entity  = ValveEntity
     vmf_cameras = ValveCameras
 
 
-if '__main__' == __name__:
-    test =    ValveMap()
-    test['world'] = ValveWorld()
-    test['world']['id'] = 1
-    pprint(test)
+
+ValveCameras.vmf_camera = ValveCamera
+
+
+# if '__main__' == __name__:
+#     test =    ValveMap()
+#     test['world'] = ValveWorld()
+#     test['world']['id'] = 1
+#     pprint(test)
 
 class ValveMap_test(dict):
     lines = 0
     i = 0
     indent = 0
-    mapobject = ValveWorld
+    mapobject = ValveMap
     mapdata = mapobject()
     _parsenode = []
     datatypes = {
@@ -134,14 +187,9 @@ class ValveMap_test(dict):
         'world': ValveWorld,
         'cameras': ValveCameras,
         'camera': ValveCamera,
-        'solid': ValveDict,
-        'side': ValveSide,
+        'solid': ValveSolid,
+        'side': ValveSolid.Side,
         'dispinfo': ValveDisplacement,
-        'normals': ValveDict,
-        'distances': ValveDict,
-        'alphas': ValveDict,
-        'triangle_tags': ValveDict,
-        'allowed_verts': ValveDict,
         'connections': list,
         # Todo Refactor datatypes to be children of datatype
         # ValveDisplacement:
@@ -149,6 +197,7 @@ class ValveMap_test(dict):
         'alphas': ValveDisplacement.Alphas,
         'distances': ValveDisplacement.Distances,
         'normals': ValveDisplacement.Normals,
+        'triangle_tags': ValveDisplacement.TriangleTags,
     }
     _parseerrors = []
 
@@ -164,14 +213,14 @@ class ValveMap_test(dict):
 
 
         self.iterator = iter(self.filehandle.readline, '')
-        self.mapdata = self._parse(ValveWorld())
+        self.mapdata = self._parse(self.mapobject())
         self.elpsed_time = time.time() - entry_time
         self.stdout.write('\n%s\n' % self.elpsed_time)
 
+        # pprint(self.mapdata)
         pprint(self._parseerrors)
-        pprint(self.mapdata)
-        # with open('dumps.vmfstuff', 'w') as fh:
-            # fh.write(pformat(self.mapdata))
+        with open('dumps.vmfstuff', 'w') as fh:
+            fh.write(str(self.mapdata))
 
     def report(self, callback=lambda x: False):
         percent = "{0:.0f} ".format(float(self.i)/self.lines * 100)
@@ -212,19 +261,23 @@ class ValveMap_test(dict):
                     self.report()
 
                 if line.startswith('{'):
-                    assert datatype in self.datatypes, "Unknown datatype [ %s ]" % datatype
+                    if not datatype in self.datatypes:
+                        raise ValveKeyError("Unknown datatype [ %s ]" % datatype)
                     self.indent += 1
                     value = self._parse(self.datatypes[datatype]())
                     if isinstance(output, dict):
-                        if type(value) is str and 'id' in value:
-                            output[value['id']] = value
-                        elif not datatype in output:
-                            output['datatype'] = value
-                        else:
-                            if isinstance(list, output['datatype']):
-                                output['datatype'].append(value)
+                        try:
+                            if type(value) is str and 'id' in value:
+                                output[value['id']] = value
+                            elif not datatype in output:
+                                output[datatype] = value
                             else:
-                                output['datatype'] = [output['datatype']].append(value)
+                                if not isinstance(output[datatype], list):
+                                    output[datatype] = [output[datatype]]
+
+                                output[datatype].append(value)
+                        except ValveException as err:
+                            self._parseerrors.append('Ln %s: %s' % (self.i, err))
                     elif isinstance(output, list):
                         output.append((datatype, value))
                     self.indent -= 1
