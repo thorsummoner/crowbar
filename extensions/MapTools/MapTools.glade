@@ -2,270 +2,6 @@
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
   <!-- interface-local-resource-path C:\Users\dylang\Desktop\thorsummoner\crowbar_py\extensions\MapTools -->
-  <object class="GtkToolbar" id="MapTools">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="toolbar_style">icons</property>
-    <property name="icon_size">40</property>
-    <child>
-      <object class="GtkRadioToolButton" id="Selection Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Selection Tool [Shift+S]
-The Selection Tool allows you to accomplish a number of things. It is used to select, resize, rotate, shear, and move objects.</property>
-        <property name="tooltip_text" translatable="yes">Selection Tool [Shift+S]
-The Selection Tool allows you to accomplish a number of things. It is used to select, resize, rotate, shear, and move objects.</property>
-        <property name="action_name">MapTools.SelectionTool</property>
-        <property name="label" translatable="yes">Selection Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">select.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Magnify Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Magnify Tool [Shift+G]
-The Magnify Tool allows you to increase the magnification factor of the 2D views. Click once in a 2D view to increase the magnification level. Zoom back out again by clicking the right mouse button. Zoom in and out can also be accomplished by pressing the &amp;quot;+&amp;quot; and &amp;quot;-&amp;quot; keys on the numeric keypad while the mouse cursor is in a 2D view. The mouse wheel can also be used to zoom in and out.</property>
-        <property name="tooltip_text" translatable="yes">Magnify Tool [Shift+G]
-The Magnify Tool allows you to increase the magnification factor of the 2D views. Click once in a 2D view to increase the magnification level. Zoom back out again by clicking the right mouse button. Zoom in and out can also be accomplished by pressing the "+" and "-" keys on the numeric keypad while the mouse cursor is in a 2D view. The mouse wheel can also be used to zoom in and out.</property>
-        <property name="action_name">MapTools.MagnifyTool</property>
-        <property name="label" translatable="yes">Magnify Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">magnify.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="g" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Camera Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Camera Tool [Shift+C]
-The Camera Tool allows you to place and modify cameras within your level. More information can also be found in the article about viewports.</property>
-        <property name="tooltip_text" translatable="yes">Camera Tool [Shift+C]
-The Camera Tool allows you to place and modify cameras within your level. More information can also be found in the article about viewports.</property>
-        <property name="action_name">MapTools.CameraTool</property>
-        <property name="label" translatable="yes">Camera Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">camera.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="c" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparatorToolItem" id="separatortoolitem0">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Entity Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Entity Tool [Shift+E]
-The Entity Tool allows you to place point-based entities in a map. Point-based entities are those entities which exist only at a point, and do not rely on a brush for their effect. Also see Applying Materials.</property>
-        <property name="tooltip_text" translatable="yes">Entity Tool [Shift+E]
-The Entity Tool allows you to place point-based entities in a map. Point-based entities are those entities which exist only at a point, and do not rely on a brush for their effect. Also see Applying Materials.</property>
-        <property name="action_name">MapTools.EntityTool</property>
-        <property name="label" translatable="yes">Entity Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">entity.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="e" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Block Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Block Tool [Shift+B]
-This is the basic creation tool in Hammer. The Block Tool allows you to create any of the different types of primitive shapes and prefab objects in the New Objects Bar. Also see Creating Brushes for additional information.</property>
-        <property name="tooltip_text" translatable="yes">Block Tool [Shift+B]
-This is the basic creation tool in Hammer. The Block Tool allows you to create any of the different types of primitive shapes and prefab objects in the New Objects Bar. Also see Creating Brushes for additional information.</property>
-        <property name="action_name">MapTools.BlockTool</property>
-        <property name="label" translatable="yes">Block Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">block.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="b" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparatorToolItem" id="separatortoolitem1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Toggle Texture A">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Toggle Texture Application [Shift+A]
-This button toggles the Texture Application mode on and off. Texture Application mode allows you to edit the properties of individual brush faces and create displacement surfaces. For more information, see Face Edit mode.</property>
-        <property name="tooltip_text" translatable="yes">Toggle Texture Application [Shift+A]
-This button toggles the Texture Application mode on and off. Texture Application mode allows you to edit the properties of individual brush faces and create displacement surfaces. For more information, see Face Edit mode.</property>
-        <property name="action_name">MapTools.TextureTool</property>
-        <property name="label" translatable="yes">Toggle Texture Application</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">texture.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="a" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Apply Current Te">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Apply Current Texture [Shift+T]
-When Apply Current Texture is pressed, the current texture selected in the Textures Toolbar is applied to all faces of the selected brushes, replacing all textures existing on the objects. Texture scale and shift parameters are unchanged – the new textures will use the existing parameters on the objects.</property>
-        <property name="tooltip_text" translatable="yes">Apply Current Texture [Shift+T]
-When Apply Current Texture is pressed, the current texture selected in the Textures Toolbar is applied to all faces of the selected brushes, replacing all textures existing on the objects. Texture scale and shift parameters are unchanged – the new textures will use the existing parameters on the objects.</property>
-        <property name="action_name">MapTools.FillTexture</property>
-        <property name="label" translatable="yes">Apply Current Texture</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">fill.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="t" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Apply Decals">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Apply Decals [Shift+D]
-The Apply Decals tool is used to place decals upon objects. A decal is a texture that can be placed on top of another texture, combining the two.</property>
-        <property name="tooltip_text" translatable="yes">Apply Decals [Shift+D]
-The Apply Decals tool is used to place decals upon objects. A decal is a texture that can be placed on top of another texture, combining the two.</property>
-        <property name="action_name">MapTools.DecalTool</property>
-        <property name="label" translatable="yes">Apply Decals</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">decal.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="d" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Overlay Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Overlay Tool [Shift+O]
-The Overlay Tool is used to place overlays upon brush and displacement surfaces. An overlay is similar to a decal, but has some additional properties to control how the overlay is applied to the underlying surface.</property>
-        <property name="tooltip_text" translatable="yes">Overlay Tool [Shift+O]
-The Overlay Tool is used to place overlays upon brush and displacement surfaces. An overlay is similar to a decal, but has some additional properties to control how the overlay is applied to the underlying surface.</property>
-        <property name="action_name">MapTools.OverlayTool</property>
-        <property name="label" translatable="yes">Overlay Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">overlay.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="o" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparatorToolItem" id="separatortoolitem2">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Clipping Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">Clipping Tool [Shift+X]
-The Clipping Tool allows you to slice the currently selected brush using clip planes. Clip planes enable you to precisely make a cut in a solid, leaving you the option to keep either or both parts of the resulting two solids. Also see Reshaping Solids.</property>
-        <property name="tooltip_text" translatable="yes">Clipping Tool [Shift+X]
-The Clipping Tool allows you to slice the currently selected brush using clip planes. Clip planes enable you to precisely make a cut in a solid, leaving you the option to keep either or both parts of the resulting two solids. Also see Reshaping Solids.</property>
-        <property name="action_name">MapTools.ClippingTool</property>
-        <property name="label" translatable="yes">Clipping Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">clip.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="x" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioToolButton" id="Vertex Tool">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_tooltip">True</property>
-        <property name="tooltip_markup" translatable="yes">VertexVertex Tool [Shift+V]
-Vertex manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids. manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids.</property>
-        <property name="tooltip_text" translatable="yes">VertexVertex Tool [Shift+V]
-Vertex manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids. manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids.</property>
-        <property name="action_name">MapTools.VertexTool</property>
-        <property name="label" translatable="yes">Vertex Tool</property>
-        <property name="use_underline">True</property>
-        <property name="icon_widget">vertex.svg</property>
-        <property name="group">Selection Tool</property>
-        <accelerator key="v" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="homogeneous">True</property>
-      </packing>
-    </child>
-  </object>
   <object class="GtkImage" id="block.svg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -320,5 +56,243 @@ Vertex manipulation gives you complete control over the shape of a solid object.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">./icons/vertex.svg</property>
+  </object>
+  <object class="GtkHandleBox" id="MapTools">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="hexpand">True</property>
+    <child>
+      <object class="GtkToolbar" id="Map Tools">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="toolbar_style">icons</property>
+        <property name="icon_size">40</property>
+        <child>
+          <object class="GtkRadioToolButton" id="Selection Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Selection Tool [Shift+S]
+The Selection Tool allows you to accomplish a number of things. It is used to select, resize, rotate, shear, and move objects.</property>
+            <property name="action_name">MapTools.SelectionTool</property>
+            <property name="label" translatable="yes">Selection Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">select.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="s" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Magnify Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Magnify Tool [Shift+G]
+The Magnify Tool allows you to increase the magnification factor of the 2D views. Click once in a 2D view to increase the magnification level. Zoom back out again by clicking the right mouse button. Zoom in and out can also be accomplished by pressing the "+" and "-" keys on the numeric keypad while the mouse cursor is in a 2D view. The mouse wheel can also be used to zoom in and out.</property>
+            <property name="action_name">MapTools.MagnifyTool</property>
+            <property name="label" translatable="yes">Magnify Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">magnify.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="g" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Camera Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Camera Tool [Shift+C]
+The Camera Tool allows you to place and modify cameras within your level. More information can also be found in the article about viewports.</property>
+            <property name="action_name">MapTools.CameraTool</property>
+            <property name="label" translatable="yes">Camera Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">camera.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="c" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparatorToolItem" id="separatortoolitem0">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Entity Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Entity Tool [Shift+E]
+The Entity Tool allows you to place point-based entities in a map. Point-based entities are those entities which exist only at a point, and do not rely on a brush for their effect. Also see Applying Materials.</property>
+            <property name="action_name">MapTools.EntityTool</property>
+            <property name="label" translatable="yes">Entity Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">entity.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="e" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Block Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Block Tool [Shift+B]
+This is the basic creation tool in Hammer. The Block Tool allows you to create any of the different types of primitive shapes and prefab objects in the New Objects Bar. Also see Creating Brushes for additional information.</property>
+            <property name="action_name">MapTools.BlockTool</property>
+            <property name="label" translatable="yes">Block Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">block.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="b" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparatorToolItem" id="separatortoolitem1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Toggle Texture A">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Toggle Texture Application [Shift+A]
+This button toggles the Texture Application mode on and off. Texture Application mode allows you to edit the properties of individual brush faces and create displacement surfaces. For more information, see Face Edit mode.</property>
+            <property name="action_name">MapTools.TextureTool</property>
+            <property name="label" translatable="yes">Toggle Texture Application</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">texture.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="a" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Apply Current Te">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Apply Current Texture [Shift+T]
+When Apply Current Texture is pressed, the current texture selected in the Textures Toolbar is applied to all faces of the selected brushes, replacing all textures existing on the objects. Texture scale and shift parameters are unchanged – the new textures will use the existing parameters on the objects.</property>
+            <property name="action_name">MapTools.FillTexture</property>
+            <property name="label" translatable="yes">Apply Current Texture</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">fill.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="t" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Apply Decals">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Apply Decals [Shift+D]
+The Apply Decals tool is used to place decals upon objects. A decal is a texture that can be placed on top of another texture, combining the two.</property>
+            <property name="action_name">MapTools.DecalTool</property>
+            <property name="label" translatable="yes">Apply Decals</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">decal.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="d" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Overlay Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Overlay Tool [Shift+O]
+The Overlay Tool is used to place overlays upon brush and displacement surfaces. An overlay is similar to a decal, but has some additional properties to control how the overlay is applied to the underlying surface.</property>
+            <property name="action_name">MapTools.OverlayTool</property>
+            <property name="label" translatable="yes">Overlay Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">overlay.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="o" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparatorToolItem" id="separatortoolitem2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Clipping Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Clipping Tool [Shift+X]
+The Clipping Tool allows you to slice the currently selected brush using clip planes. Clip planes enable you to precisely make a cut in a solid, leaving you the option to keep either or both parts of the resulting two solids. Also see Reshaping Solids.</property>
+            <property name="action_name">MapTools.ClippingTool</property>
+            <property name="label" translatable="yes">Clipping Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">clip.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="x" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioToolButton" id="Vertex Tool">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">VertexVertex Tool [Shift+V]
+Vertex manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids. manipulation gives you complete control over the shape of a solid object. Using the Vertex Tool, you can reshape the object by manipulating individual vertices and brush edges, easily creating odd (and sometimes invalid) shapes. Also see Reshaping Solids.</property>
+            <property name="action_name">MapTools.VertexTool</property>
+            <property name="label" translatable="yes">Vertex Tool</property>
+            <property name="use_underline">True</property>
+            <property name="icon_widget">vertex.svg</property>
+            <property name="group">Selection Tool</property>
+            <accelerator key="v" signal="clicked" modifiers="GDK_SHIFT_MASK"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
 </interface>
