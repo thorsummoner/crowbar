@@ -50,42 +50,28 @@ class ConfigProfilesWindow(Gtk.Window):
 		# Notebook
 		box.pack_start(self.modes, True, True, 0)
 		self.mode.raw.set_border_width(10)
-		self.modes.append_page(self.mode.table, Gtk.Label('Operations'))
-		self.modes.append_page(self.mode.raw, Gtk.Label('Raw'))
+		table_window = Gtk.ScrolledWindow()
+		table_window.set_policy(
+			Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.ALWAYS)
+		table_window.add(self.mode.table)
+
+		self.modes.append_page(table_window, self.notebook_tab('Edit', Gtk.STOCK_EXECUTE))
+		self.modes.append_page(self.mode.raw, self.notebook_tab('Raw', Gtk.STOCK_FILE))
 
 		# Operations Table of Commands
+		cell_checkbox = Gtk.CellRendererToggle()
+		col_checkbox = Gtk.TreeViewColumn("#", cell_checkbox, text=0)
+		self.mode.table.append_column(col_checkbox)
 
-		# self.text_area = Gtk.TextView()
+		cell_command = Gtk.CellRendererText()
+		cell_command.set_property("editable", True)
+		cell_command.connect("edited", self.on_cell_edited)
+		col_command = Gtk.TreeViewColumn("Command", cell_command, text=0)
+		self.mode.table.append_column(col_command)
 
-		# self.textbuffer = self.text_area.get_buffer()
-		# self.textbuffer.set_text("This is some text inside of a Gtk.TextView. "
-		# 	+ "Select text and click one of the buttons 'bold', 'italic', "
-		# 	+ "or 'underline' to modify the text accordingly.")
-
-		# self.treeview = Gtk.TreeView(model=None)
-
-		# renderer_text = Gtk.CellRendererText()
-		# renderer_text.set_property("editable", True)
-		# column_text = Gtk.TreeViewColumn("Command", renderer_text, text=0)
-		# self.treeview.append_column(column_text)
-
-		# renderer_text.connect("edited", self.text_edited)
-
-		# box = Gtk.Box(spacing=6, orientation=Gtk.Orientation.VERTICAL)
-		# box.pack_start(self._spawn_selector(), True, True, 0)
-		# box.pack_start(self.text_area, True, True, 0)
-		# box.pack_start(self.treeview, True, True, 0)
-		# self.add(box)
-	# def _spawn_selector(self):
-	# 	name_combo = Gtk.ComboBox.new_with_model_and_entry(self.name_store)
-	# 	name_combo.connect("changed", self.on_name_combo_changed)
-	# 	name_combo.set_entry_text_column(1)
-
-	# 	self.selector = name_combo
-	# 	return self.selector
-
-	# def text_edited(self, widget, path, text):
-	# 	self.liststore[path][1] = text
+	def on_cell_edited(self, widget, path, text):
+		pprint((widget, path, text))
+		# self.liststore[path][1] = text
 
 	def on_profile_changed(self, combo):
 		tree_iter = combo.get_active_iter()
@@ -104,13 +90,24 @@ class ConfigProfilesWindow(Gtk.Window):
 			assert self.configs[name], 'No config by name `%s`' % name;
 			body = self.configs[name]
 
-		proper_name = body.splitlines()[0].lstrip('# ').rstrip()
-		body_lines = Gtk.ListStore(str)
-		for line in body.splitlines():
-			body_lines.append([line])
+		body_lines = body.splitlines()
+		proper_name = body_lines.pop(0).lstrip('# ').rstrip()
+		body_store = Gtk.ListStore(str)
+		for line in body_lines:
+			body_store.append([line])
 
-		return [name, proper_name, body_lines, body]
+		return [name, proper_name, body_store, body]
 
+
+	def notebook_tab(self, label, icon):
+		box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
+		box_icon = Gtk.Image.new_from_stock(icon, Gtk.IconSize.MENU)
+		box.pack_start(box_icon, False, False, 0)
+		box.pack_start(Gtk.Label(label), True, True, 0)
+		box.pack_start(Gtk.Label(''), False, False, 0)
+		box.show_all()
+
+		return box
 
 if __name__ == '__main__':
 	win = ConfigProfilesWindow()
