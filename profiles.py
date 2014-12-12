@@ -60,13 +60,14 @@ class ConfigProfilesWindow(Gtk.Window):
 
 		# Operations Table of Commands
 		cell_checkbox = Gtk.CellRendererToggle()
-		col_checkbox = Gtk.TreeViewColumn("#", cell_checkbox, text=0)
+		cell_checkbox.connect("toggled", self.toggle_line)
+		col_checkbox = Gtk.TreeViewColumn("#", cell_checkbox, active=0)
 		self.mode.table.append_column(col_checkbox)
 
 		cell_command = Gtk.CellRendererText()
 		cell_command.set_property("editable", True)
 		cell_command.connect("edited", self.on_cell_edited)
-		col_command = Gtk.TreeViewColumn("Command", cell_command, text=0)
+		col_command = Gtk.TreeViewColumn("Command", cell_command, text=1)
 		self.mode.table.append_column(col_command)
 
 	def on_cell_edited(self, widget, path, text):
@@ -92,9 +93,9 @@ class ConfigProfilesWindow(Gtk.Window):
 
 		body_lines = body.splitlines()
 		proper_name = body_lines.pop(0).lstrip('# ').rstrip()
-		body_store = Gtk.ListStore(str)
+		body_store = Gtk.ListStore(bool, str, str)
 		for line in body_lines:
-			body_store.append([line])
+			body_store.append([not line.startswith('#'), line.lstrip('# '), line])
 
 		return [name, proper_name, body_store, body]
 
@@ -108,6 +109,19 @@ class ConfigProfilesWindow(Gtk.Window):
 		box.show_all()
 
 		return box
+
+	def toggle_line(self, widget, index):
+		model = self.mode.table.get_model()
+		row = model[index]
+		row[0] ^= True
+		if row[0]:
+			row[2] = row[2].lstrip('# ')
+		else:
+			row[2] = '# ' + row[2]
+
+		self.mode.raw.get_buffer().set_text(
+			'\n'.join([row[2] for row in model])
+		)
 
 if __name__ == '__main__':
 	win = ConfigProfilesWindow()
