@@ -28,15 +28,17 @@ def read_configs():
     """
     configs_paths = reload_config_files()
 
-    config_bodys = {}
+    configs = list()
     for config_path in configs_paths:
         name = os.path.splitext(os.path.basename(config_path))[0]
         with open(config_path, 'r') as file_handle:
-            # The order of loading should allow a user to define and
-            # override the preset versions
-            config_bodys[name] = file_handle.read()
+            configs.append({
+                'name': name,
+                'path': config_path,
+                'body': file_handle.read(),
+            })
 
-    return config_bodys
+    return configs
 
 
 def get_default_directories():

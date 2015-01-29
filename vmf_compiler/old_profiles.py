@@ -5,7 +5,6 @@ Gui profile tool
 """
 
 from gi.repository import Gtk
-import signal
 
 import loader
 
@@ -17,7 +16,8 @@ PROFILE_DEFAULT = 'default'
 def main():
     """Run Function"""
     win = ConfigProfilesWindow()
-    win.main()
+    win.show_all()
+    Gtk.main()
 
 
 class ConfigProfilesWindow(Gtk.Window):
@@ -25,10 +25,8 @@ class ConfigProfilesWindow(Gtk.Window):
     """
 
     profile = Gtk.ComboBox.new_with_entry()
-
     configs = loader.read_configs()
     configs_store = Gtk.ListStore(str, str, Gtk.ListStore, str)
-    configs_store_proper_names = list()
 
     modes = Gtk.Notebook()
     mode = type('mode', (object,), dict(
@@ -41,7 +39,7 @@ class ConfigProfilesWindow(Gtk.Window):
 
         self.set_default_size(400, 300)
         self.connect("delete-event", Gtk.main_quit)
-        # self.connect("focus-out-event", Gtk.main_quit)  # DEBUG
+        self.connect("focus-out-event", Gtk.main_quit)  # DEBUG
 
         self.set_border_width(10)
 
@@ -92,8 +90,6 @@ class ConfigProfilesWindow(Gtk.Window):
         )
         self.mode.table.append_column(col_command)
 
-        pprint(self.configs.keys())
-
     @staticmethod
     def on_cell_edited(widget, path, text):
         """ Cell edit event
@@ -104,26 +100,22 @@ class ConfigProfilesWindow(Gtk.Window):
     def on_profile_changed(self, combo):
         """ On Change event
         """
-        value = combo.get_child().get_text()
-        if any(
-            combo.get_active_iter() is not None,
-            value in self.configs_store_models.keys()
-        ):
-            self.profile_selected(value)
+        tree_iter = combo.get_active_iter()
+        if tree_iter is not None:
+            model = combo.get_model()
+            name, proper_name, model, body = model[tree_iter][:4]
+            print(
+                "Selected: name=%s, proper_name=%s"
+                % (name, proper_name)
+            )
+            self.mode.raw.get_buffer().set_text(body)
+            self.mode.table.set_model(model)
         else:
-            pprint("Entered: %s" % value)
-
-    def profile_selected(self, name):
-        model = self.configs_store_models[name]
-        print(
-            "Selected: name=%s, proper_name=%s"
-            % (name, proper_name)
-        )
-        self.mode.raw.get_buffer().set_text(body)
-        self.mode.table.set_model(model)
+            entry = combo.get_child()
+            pprint("Entered: %s" % entry.get_text())
 
     def new_config_store(self, name=None, body=None):
-        """New List Store Item
+        """New File
         """
         if name:
             assert self.configs[name], 'No config by name `%s`' % name
@@ -136,8 +128,6 @@ class ConfigProfilesWindow(Gtk.Window):
             body_store.append(
                 [not line.startswith('#'), line.lstrip('# '), line]
             )
-
-        self.configs_store_models.[proper_name] =
 
         return [name, proper_name, body_store, body]
 
@@ -169,10 +159,6 @@ class ConfigProfilesWindow(Gtk.Window):
             '\n'.join([row[2] for row in model])
         )
 
-    def main(self):
-        signal.signal(signal.SIGINT, signal.SIG_DFL)
-        self.show_all()
-        Gtk.main()
 
 if __name__ == '__main__':
     main()
