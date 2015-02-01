@@ -1,6 +1,6 @@
 import sys
 import time
-
+import warnings
 from pprint import pprint
 
 class ValveException(Exception):
@@ -307,7 +307,7 @@ class VmfParser(dict):
                     value = value[:-1]
                     if isinstance(output, dict):
                         if key in output:
-                            self.stdout.write(
+                            warnings.warn(
                                 'Line %i: Duplicate key <%s> dropped\n'
                                 % (self.i, key)
                             )
