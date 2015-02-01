@@ -7,6 +7,7 @@ and displayed.
 from libvmf.exception import ValveTypeError
 from libvmf.exception import ValveKeyError
 
+
 class ValveDict(dict):
     """ Core dictionary item, restricts keytypes
     based on class properties
@@ -28,7 +29,6 @@ class ValveDict(dict):
                 'Key `%s` not allowed in %s'
                 % (key, self._type())
             )
-
 
         if isinstance(value, list):
             if not value[0].allow_multiple:
@@ -52,10 +52,10 @@ class ValveDict(dict):
             ]):
                 # We do not get the same value, we cannont cast
                 raise ValveTypeError(
-                    ("Illigal Type %s for key `%s`, "
-                    + "expected Type %s for value `%s`") % (
-                        type(value), key, allowedcontainer, value
-                    )
+                    (
+                        "Illigal Type %s for key `%s`, "
+                        + "expected Type %s for value `%s`"
+                    ) % (type(value), key, allowedcontainer, value)
                 )
 
             # We can cast it, we have te technology!
@@ -79,6 +79,7 @@ class ValveDict(dict):
 
 ValveDict.vmf_datatype = ValveDict
 
+
 class ValveClass(ValveDict):
     """ Valve Dict with modified output, intended for
     deepest items
@@ -91,4 +92,3 @@ class ValveClass(ValveDict):
 
     def __repr__(self):
         return self.__str__()
-

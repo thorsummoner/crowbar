@@ -13,6 +13,7 @@ from libvmf.datatype import ValveMap
 
 from libvmf.datatype import DATATYPES
 
+
 class VmfParser(dict):
     """docstring for ValveMap"""
     # pylint: disable=too-many-instance-attributes
@@ -33,7 +34,6 @@ class VmfParser(dict):
 
         self.lines = self.bufcount()
         self.minupdate = self.lines // 400 or 10
-
 
         self.iterator = iter(self.filehandle.readline, '')
         self.mapdata = self._parse(self.mapobject())
@@ -62,7 +62,8 @@ class VmfParser(dict):
         """ Count lines in file as fast as possible! """
         self.filehandle.seek(0)
         buf_size = 1024 * 1024
-        read_f = self.filehandle.read # loop optimization
+        # loop optimization:
+        read_f = self.filehandle.read
 
         buf = read_f(buf_size)
         while buf:
@@ -72,7 +73,6 @@ class VmfParser(dict):
         self.filehandle.seek(0)
 
         return self.lines
-
 
     def _parse(self, output):
         """ Recursive node parser
@@ -89,7 +89,7 @@ class VmfParser(dict):
                     self.report()
 
                 if line.startswith('{'):
-                    if not datatype in self.datatypes:
+                    if datatype not in self.datatypes:
                         raise ValveKeyError(
                             "Unknown datatype [ %s ]"
                             % datatype
@@ -100,7 +100,7 @@ class VmfParser(dict):
                         try:
                             if type(value) is str and 'id' in value:
                                 output[value['id']] = value
-                            elif not datatype in output:
+                            elif datatype not in output:
                                 output[datatype] = value
                             else:
                                 if not isinstance(output[datatype], list):
@@ -136,7 +136,6 @@ class VmfParser(dict):
                     elif isinstance(output, list):
                         output.append((key, value))
                     continue
-
 
                 datatype = line
 

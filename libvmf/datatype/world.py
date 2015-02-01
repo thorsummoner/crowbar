@@ -9,6 +9,7 @@ from libvmf.datatype.entity import ValveEntity
 
 from libvmf.datatype.camera import ValveCameras
 
+
 class ValveWorld(ValveClass):
     """ The World Geometry Node
     """
@@ -20,6 +21,7 @@ class ValveWorld(ValveClass):
     vmf_mapversion = int
     vmf_classname = str
     vmf_solid = ValveSolid
+
 
 class ValveMap(ValveDict):
     """ The file's outer most node
