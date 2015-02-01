@@ -143,8 +143,3 @@ class VmfParser(dict):
             assert 0 == len(self._parsenode)
             self.report()
             return output
-
-
-if '__main__' == __name__:
-    with open('ttt_67thway/src/ttt_67thway.vmf', 'r') as maphandle:
-        VmfParser(maphandle)
