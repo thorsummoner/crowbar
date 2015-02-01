@@ -7,4 +7,4 @@ from pprint import pprint
 mymap = gamelib.TF2()
 
 with open('demofile', 'w') as demofile:
-	demofile.write(str(mymap))
+    demofile.write(str(mymap))
