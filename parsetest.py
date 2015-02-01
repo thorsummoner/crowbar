@@ -22,7 +22,7 @@ class ValveDict(dict):
 
     def __setitem__(self, key, value):
         if key == 'datatype':
-            super(ValveDict, self).__setitem__(key, value)
+            dict.__setitem__(self, key, value)
             return
 
         vmf_key = 'vmf_%s' % key
@@ -40,7 +40,7 @@ class ValveDict(dict):
                     % (type(value[0]))
                 )
             # TODO, enforce datatype of list elements
-            super(ValveDict, self).__setitem__(key, value)
+            dict.__setitem__(self, key, value)
             return
 
         allowedcontainer = getattr(self, vmf_key)
@@ -49,10 +49,10 @@ class ValveDict(dict):
             # Lunacy!
             # Check if casting to the expected type and back vields
             # the same value
-            if any(
+            if any([
                 value is None,
                 not type(value)(allowedcontainer(value)) == value
-            ):
+            ]):
                 # We do not get the same value, we cannont cast
                 raise ValveTypeError(
                     ("Illigal Type %s for key `%s`, "
@@ -64,7 +64,7 @@ class ValveDict(dict):
             # We can cast it, we have te technology!
             value = allowedcontainer(value)
 
-        super(ValveDict, self).__setitem__(key, value)
+        dict.__setitem__(self, key, value)
 
     def __str__(self):
         out = ''
@@ -96,7 +96,7 @@ class ValveEntity(ValveClass):
     vmf_origin = str # "776.0 259.0 -96.0"
 
     def __setitem__(self, key, value):
-        dict.__setitem__(key, value)
+        dict.__setitem__(self, key, value)
 
 
 class ValveCameras(ValveClass):
@@ -115,12 +115,12 @@ class ValveDisplacement(ValveClass):
             if key.startswith('row') and key[3:].isdigit():
                 setattr(self, 'vmf_%s' % key, str)
 
-            dict.__setitem__(key, value)
+            dict.__setitem__(self, key, value)
 
     class AllowedVerts(ValveClass):
         def __setitem__(self, key, value):
             # todo, restruct to numeric keys only?
-            dict.__setitem__(key, value)
+            dict.__setitem__(self, key, value)
 
     class Alphas(_RowData):
         pass
