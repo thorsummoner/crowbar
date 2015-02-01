@@ -1,6 +1,4 @@
 
-from pprint import pprint
-
 class ValveDict(dict):
     def __str__(self):
         out = ''
@@ -11,7 +9,9 @@ class ValveDict(dict):
     def __repr__(self):
         return self.__str__()
 
-    def loads(maptext):
+    @staticmethod
+    def loads(maptext, baseclass=None):
+        del baseclass
         valvedict = ValveDict()
         for line in maptext.splitlines():
             key, value = line.strip('"').split('" "')
@@ -55,7 +55,7 @@ class ValveMap(ValveDict):
         })
         self['cordon'] = ValveDict({
             "mins": (-1024, -1024, -1024),
-            "maxs": ( 1024,  1024,  1024),
+            "maxs": (+1024, +1024, +1024),
             "active": 0,
         })
 
@@ -70,6 +70,7 @@ class ValveMap(ValveDict):
         self['versioninfo']['mapversion'] = self.mapversion
         self['world']['mapversion'] = self.mapversion
 
+    @staticmethod
     def loads(maptext, baseclass=None):
         if None == baseclass:
             baseclass = ValveMap
@@ -97,8 +98,7 @@ class ValveMap(ValveDict):
 # TEST
 #
 
-#!python2
-if __name__ == '__main__':
+def main():
     import gamelib
 
     if True:
@@ -111,3 +111,7 @@ if __name__ == '__main__':
     with open('demofile.vmf', 'w') as demofile:
         print(str(mymap))
         demofile.write(str(mymap))
+
+#!python2
+if __name__ == '__main__':
+    main()

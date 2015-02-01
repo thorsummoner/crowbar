@@ -1,12 +1,9 @@
 
 
 
-
-
 from time import time
 import sys
-from collections import namedtuple
-from pprint import pprint, pformat
+from pprint import pprint
 
 class ValveDict(dict):
     def __str__(self):
@@ -19,11 +16,11 @@ class ValveDict(dict):
         return self.__str__()
 
 class ValveMap(dict):
+    """docstring for ValveMap"""
     lines = 0
     i = 0
     indent = -1
 
-    """docstring for ValveMap"""
     def __init__(self, filehandle, stdout=sys.stdout):
         entry_time = time()
         super(ValveMap, self).__init__()
@@ -82,14 +79,14 @@ class ValveMap(dict):
                     datasum[datatype] = datavar
                     continue
 
-                assert line.lstrip() == line[(self.indent + 1):], "indent is wrong"
+                if not line.lstrip() == line[(self.indent + 1):]:
+                    raise AssertionError("indent is wrong")
                 line = line[(self.indent + 1):]
                 # linevalue = line.strip()
                 if 0 == self.i % self.minupdate:
                     self.report()
 
                 if line.startswith('{'):
-                    current_id = None
                     self.indent += 1
                     sub_datavar = self._parse(datavar)
 
@@ -107,7 +104,6 @@ class ValveMap(dict):
 
                 datatype = line
                 pprint('entering datatype %s' % datatype)
-                dataid = None
                 datavar = dict()
 
         except StopIteration:
@@ -121,10 +117,6 @@ class ValveMap(dict):
                     str((self.i, line, self.indent))
                 )
             )
-            # # Potentially, if the error is being used to indicate an empty
-            # # definition, the following line could be used to silence a
-            # # potential parsing error
-            return (None, dict())
 
 
 

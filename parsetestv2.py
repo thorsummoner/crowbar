@@ -1,7 +1,7 @@
 import sys
 import time
 
-from pprint import pprint, pformat
+from pprint import pprint
 
 class ValveException(Exception):
     pass
@@ -27,12 +27,18 @@ class ValveDict(dict):
 
         vmf_key = 'vmf_%s' % key
         if not hasattr(self, vmf_key):
-            raise ValveKeyError('Key `%s` not allowed in %s' % (key, self._type()))
+            raise ValveKeyError(
+                'Key `%s` not allowed in %s'
+                % (key, self._type())
+            )
 
 
         if isinstance(value, list):
             if not value[0].allow_multiple:
-                raise ValveTypeError("Type %s does not allow allow multiple values" % (type(value[0])))
+                raise ValveTypeError(
+                    "Type %s does not allow allow multiple values"
+                    % (type(value[0]))
+                )
             # TODO, enforce datatype of list elements
             super(ValveDict, self).__setitem__(key, value)
             return
@@ -41,11 +47,16 @@ class ValveDict(dict):
 
         if not type(value) is allowedcontainer:
             # Lunacy!
-            # Check if casting to the expected type and back vields the same value
-            if value is None or not type(value)(allowedcontainer(value)) == value:
+            # Check if casting to the expected type and back vields
+            # the same value
+            if any(
+                value is None,
+                not type(value)(allowedcontainer(value)) == value
+            ):
                 # We do not get the same value, we cannont cast
                 raise ValveTypeError(
-                    "Illigal Type %s for key `%s`, expected Type %s for value `%s`" % (
+                    ("Illigal Type %s for key `%s`, "
+                    + "expected Type %s for value `%s`") % (
                         type(value), key, allowedcontainer, value
                     )
                 )
@@ -85,7 +96,7 @@ class ValveEntity(ValveClass):
     vmf_origin = str # "776.0 259.0 -96.0"
 
     def __setitem__(self, key, value):
-        super(ValveDict, self).__setitem__(key, value)
+        dict.__setitem__(key, value)
 
 
 class ValveCameras(ValveClass):
@@ -104,12 +115,12 @@ class ValveDisplacement(ValveClass):
             if key.startswith('row') and key[3:].isdigit():
                 setattr(self, 'vmf_%s' % key, str)
 
-            super(ValveDict, self).__setitem__(key, value)
+            dict.__setitem__(key, value)
 
     class AllowedVerts(ValveClass):
         def __setitem__(self, key, value):
             # todo, restruct to numeric keys only?
-            super(ValveDict, self).__setitem__(key, value)
+            dict.__setitem__(key, value)
 
     class Alphas(_RowData):
         pass
@@ -160,8 +171,8 @@ class ValveWorld(ValveClass):
     vmf_solid = ValveSolid
 
 class ValveMap(ValveDict):
-    vmf_world   = ValveWorld
-    vmf_entity  = ValveEntity
+    vmf_world = ValveWorld
+    vmf_entity = ValveEntity
     vmf_cameras = ValveCameras
 
 
@@ -175,7 +186,9 @@ ValveCameras.vmf_camera = ValveCamera
 #     test['world']['id'] = 1
 #     pprint(test)
 
-class ValveMap_test(dict):
+class VmfParser(dict):
+    """docstring for ValveMap"""
+    # pylint: disable=too-many-instance-attributes
     lines = 0
     i = 0
     indent = 0
@@ -201,10 +214,9 @@ class ValveMap_test(dict):
     }
     _parseerrors = []
 
-    """docstring for ValveMap"""
     def __init__(self, filehandle, stdout=sys.stdout):
         entry_time = time.time()
-        super(ValveMap_test, self).__init__()
+        super(VmfParser, self).__init__()
         self.filehandle = filehandle
         self.stdout = stdout
 
@@ -219,8 +231,8 @@ class ValveMap_test(dict):
 
         # pprint(self.mapdata)
         pprint(self._parseerrors)
-        with open('dumps.vmfstuff', 'w') as fh:
-            fh.write(str(self.mapdata))
+        with open('dumps.vmfstuff', 'w') as file_handle:
+            file_handle.write(str(self.mapdata))
 
     def report(self, callback=lambda x: False):
         percent = "{0:.0f} ".format(float(self.i)/self.lines * 100)
@@ -251,6 +263,7 @@ class ValveMap_test(dict):
 
     def _parse(self, output):
         try:
+            datatype = 'FIRST_ITERATION_PLACEHOLDER'
             while True:
                 line = next(self.iterator).rstrip('\n\r')
                 self.i += 1
@@ -262,7 +275,10 @@ class ValveMap_test(dict):
 
                 if line.startswith('{'):
                     if not datatype in self.datatypes:
-                        raise ValveKeyError("Unknown datatype [ %s ]" % datatype)
+                        raise ValveKeyError(
+                            "Unknown datatype [ %s ]"
+                            % datatype
+                        )
                     self.indent += 1
                     value = self._parse(self.datatypes[datatype]())
                     if isinstance(output, dict):
@@ -277,7 +293,9 @@ class ValveMap_test(dict):
 
                                 output[datatype].append(value)
                         except ValveException as err:
-                            self._parseerrors.append('Ln %s: %s' % (self.i, err))
+                            self._parseerrors.append(
+                                'Ln %s: %s' % (self.i, err)
+                            )
                     elif isinstance(output, list):
                         output.append((datatype, value))
                     self.indent -= 1
@@ -289,11 +307,16 @@ class ValveMap_test(dict):
                     value = value[:-1]
                     if isinstance(output, dict):
                         if key in output:
-                            self.stdout.write('Line %i: Duplicate key <%s> dropped\n' % (self.i, key))
+                            self.stdout.write(
+                                'Line %i: Duplicate key <%s> dropped\n'
+                                % (self.i, key)
+                            )
                         try:
                             output[key] = value
                         except ValveException as err:
-                            self._parseerrors.append('Ln %s: %s' % (self.i, err))
+                            self._parseerrors.append(
+                                'Ln %s: %s' % (self.i, err)
+                            )
 
                     elif isinstance(output, list):
                         output.append((key, value))
@@ -310,4 +333,4 @@ class ValveMap_test(dict):
 
 if '__main__' == __name__:
     with open('ttt_67thway/src/ttt_67thway.vmf', 'r') as maphandle:
-        ValveMap_test(maphandle)
+        VmfParser(maphandle)
