@@ -1,11 +1,17 @@
+""" The Solid world geometry
+"""
 
-from base import ValveClass
-from displacement import ValveDisplacement
+from libvmf.datatype.base import ValveClass
+from libvmf.datatype.displacement import ValveDisplacement
 
 class ValveSolid(ValveClass):
+    """ A node representing a solid volume.
+    """
     allow_multiple = True
 
     class Side(ValveClass):
+        """ The geometry for a single face of a solid
+        """
         allow_multiple = True
 
         vmf_plane = str

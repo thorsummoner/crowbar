@@ -1,23 +1,17 @@
+"""VMF Parser
+"""
+
 import sys
 import time
 import warnings
 from pprint import pprint
 
-from exception import ValveException
-from exception import ValveKeyError
-from exception import ValveTypeError
+from libvmf.exception import ValveException
+from libvmf.exception import ValveKeyError
 
-from datatype import ValveDict
-from datatype import ValveClass
-from datatype import ValveEntity
-from datatype import ValveCamera
-from datatype import ValveCameras
-from datatype import ValveDisplacement
-from datatype import ValveSolid
-from datatype import ValveWorld
-from datatype import ValveMap
+from libvmf.datatype import ValveMap
 
-import datatype
+from libvmf.datatype import DATATYPES
 
 class VmfParser(dict):
     """docstring for ValveMap"""
@@ -28,7 +22,7 @@ class VmfParser(dict):
     mapobject = ValveMap
     mapdata = mapobject()
     _parsenode = []
-    datatypes = datatype.datatypes
+    datatypes = DATATYPES
     _parseerrors = []
 
     def __init__(self, filehandle, stdout=sys.stdout):
@@ -52,6 +46,8 @@ class VmfParser(dict):
             file_handle.write(str(self.mapdata))
 
     def report(self, callback=lambda x: False):
+        """Progress Update Handler
+        """
         percent = "{0:.0f} ".format(float(self.i)/self.lines * 100)
         output = (percent, self.i, self.lines)
         if None != self.stdout:
@@ -79,6 +75,8 @@ class VmfParser(dict):
 
 
     def _parse(self, output):
+        """ Recursive node parser
+        """
         try:
             datatype = 'FIRST_ITERATION_PLACEHOLDER'
             while True:

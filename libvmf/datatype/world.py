@@ -1,13 +1,17 @@
-from base import ValveDict
-from base import ValveClass
+""" Top level nodes
+"""
 
-from solid import ValveSolid
-from entity import ValveEntity
+from libvmf.datatype.base import ValveDict
+from libvmf.datatype.base import ValveClass
 
-from camera import ValveCamera
-from camera import ValveCameras
+from libvmf.datatype.solid import ValveSolid
+from libvmf.datatype.entity import ValveEntity
+
+from libvmf.datatype.camera import ValveCameras
 
 class ValveWorld(ValveClass):
+    """ The World Geometry Node
+    """
     vmf_skyname = str
     vmf_maxpropscreenwidth = int
     vmf_detailvbsp = str
@@ -18,6 +22,8 @@ class ValveWorld(ValveClass):
     vmf_solid = ValveSolid
 
 class ValveMap(ValveDict):
+    """ The file's outer most node
+    """
     vmf_world = ValveWorld
     vmf_entity = ValveEntity
     vmf_cameras = ValveCameras

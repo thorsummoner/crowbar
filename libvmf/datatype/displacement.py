@@ -1,9 +1,15 @@
+""" File for displacement-related classes
+"""
 
-from base import ValveClass
+from libvmf.datatype.base import ValveClass
 
 class ValveDisplacement(ValveClass):
+    """ `dispinfo` key
+    """
 
     class _RowData(ValveClass):
+        """ Handle node attributes
+        """
         def __setitem__(self, key, value):
             # Allow variable keys
             if key.startswith('row') and key[3:].isdigit():
@@ -12,20 +18,25 @@ class ValveDisplacement(ValveClass):
             dict.__setitem__(self, key, value)
 
     class AllowedVerts(ValveClass):
+        """ `allowed_verts` key """
         def __setitem__(self, key, value):
             # todo, restruct to numeric keys only?
             dict.__setitem__(self, key, value)
 
     class Alphas(_RowData):
+        """ `alphas` key """
         pass
 
     class Distances(_RowData):
+        """ `distances` key """
         pass
 
     class Normals(_RowData):
+        """ `normals` key """
         pass
 
     class TriangleTags(ValveClass):
+        """ `triangle_tags` key """
         pass
 
     vmf_power = int # "3"

@@ -1,20 +1,22 @@
+"""Governing classes used for parsing vmf files
+"""
 
-from base import ValveDict
-from base import ValveClass
+from libvmf.datatype.base import ValveDict
+from libvmf.datatype.base import ValveClass
 
-from camera import ValveCamera
-from camera import ValveCameras
+from libvmf.datatype.camera import ValveCamera
+from libvmf.datatype.camera import ValveCameras
 
-from displacement import ValveDisplacement
-from entity import ValveEntity
+from libvmf.datatype.displacement import ValveDisplacement
+from libvmf.datatype.entity import ValveEntity
 
-from world import ValveMap
-from world import ValveWorld
+from libvmf.datatype.world import ValveMap
+from libvmf.datatype.world import ValveWorld
 
-from solid import ValveSolid
+from libvmf.datatype.solid import ValveSolid
 
 
-datatypes = {
+DATATYPES = {
     'entity': ValveEntity,
     'world': ValveWorld,
     'cameras': ValveCameras,

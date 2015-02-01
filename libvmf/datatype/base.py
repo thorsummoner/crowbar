@@ -1,5 +1,16 @@
+"""Core datatypes
+
+These extend dictionaries to restrict how data can be added
+and displayed.
+"""
+
+from libvmf.exception import ValveTypeError
+from libvmf.exception import ValveKeyError
 
 class ValveDict(dict):
+    """ Core dictionary item, restricts keytypes
+    based on class properties
+    """
     vmf_id = int
     allow_multiple = False
 
@@ -62,11 +73,16 @@ class ValveDict(dict):
         return self.__str__()
 
     def _type(self):
+        """Return the instantiated class name
+        """
         return self.__class__.__name__
 
 ValveDict.vmf_datatype = ValveDict
 
 class ValveClass(ValveDict):
+    """ Valve Dict with modified output, intended for
+    deepest items
+    """
     def __str__(self):
         out = ''
         for key, value in self.items():

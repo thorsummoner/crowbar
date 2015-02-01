@@ -5,4 +5,4 @@ libvmf
 tools for manipulating Valve Map Files (vmf)
 """
 
-from datatype import ValveWorld
+from libvmf.datatype import ValveWorld
