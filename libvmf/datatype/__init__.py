@@ -19,9 +19,13 @@ from libvmf.datatype.solid import ValveSolid
 DATATYPES = {
     'entity': ValveEntity,
     'world': ValveWorld,
+    'visgroups': ValveDict,
+    'viewsettings': ValveDict,
+    'cordon': ValveDict,
     'cameras': ValveCameras,
     'camera': ValveCamera,
     'solid': ValveSolid,
+    'editor': ValveClass,
     'side': ValveSolid.Side,
     'dispinfo': ValveDisplacement,
     'connections': list,
@@ -32,4 +36,5 @@ DATATYPES = {
     'distances': ValveDisplacement.Distances,
     'normals': ValveDisplacement.Normals,
     'triangle_tags': ValveDisplacement.TriangleTags,
+    'versioninfo': ValveDict,
 }
