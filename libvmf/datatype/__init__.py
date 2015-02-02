@@ -21,10 +21,14 @@ from libvmf.datatype.cordon import ValveCordon
 
 from libvmf.datatype.versioninfo import ValveVersionInformation
 
+from libvmf.datatype.visgroup import ValveVisibilityGroups
+from libvmf.datatype.visgroup import ValveVisibilityGroup
+
 DATATYPES = {
     'entity': ValveEntity,
     'world': ValveWorld,
-    'visgroups': ValveDict,  #Todo, find an example to parse
+    'visgroups': ValveVisibilityGroups,
+    'visgroup': ValveVisibilityGroup,
     'viewsettings': ValveViewSettings,
     'cordon': ValveCordon,
     'cameras': ValveCameras,

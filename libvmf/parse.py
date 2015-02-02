@@ -93,9 +93,9 @@ class VmfParser(dict):
 
                 if line.startswith('{'):
                     if datatype not in self.datatypes:
+                        err = "Unknown datatype [ %s ]" % datatype
                         raise ValveKeyError(
-                            "Unknown datatype [ %s ]"
-                            % datatype
+                            'Ln %s: %s' % (self.i, err)
                         )
                     self.indent += 1
                     value = self._parse(self.datatypes[datatype]())

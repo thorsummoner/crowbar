@@ -33,6 +33,7 @@ class ValveSolid(ValveClass):
         vmf_color = str              # "0 197 158"
         vmf_visgroupshown = int      # "1"
         vmf_visgroupautoshown = int  # "1"
+        vmf_visgroupid = int
 
     vmf_editor = Editor
 

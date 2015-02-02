@@ -9,7 +9,29 @@ sys.path.insert(1, os.path.dirname(os.path.abspath(__file__)))
 from libvmf import parse
 
 FILE = './test_maps/simple_brush.vmf'
-# FILE = './ttt_67thway/src/ttt_67thway.vmf'
+# FILE = './test_maps/ttt_richland/src/ttt_richland.vmf'
+# FILE = './test_maps/ttt_bank/src/ttt_bank.vmf'
+# FILE = './test_maps/ttt_whitehouse/src/ttt_whitehouse.vmf'
+# FILE = './test_maps/ttt_lost_temple/src/ttt_lost_temple.vmf'
+# FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
+# FILE = './test_maps/ttt_minecraftcity/src/ttt_minecraftcity.vmf'
+# FILE = './test_maps/ttt_magma/src/ttt_magma.vmf'
+# FILE = './test_maps/ttt_clue_se/src/ttt_clue_se.vmf'
+# FILE = './test_maps/ttt_datmap/src/ttt_datmap.vmf'
+# FILE = './test_maps/ttt_hotwireslum_final/src/ttt_hotwireslum.vmf'
+# FILE = './test_maps/ttt_fallout/src/ttt_fallout.vmf'
+# FILE = './test_maps/ttt_community_pool_classic/src/ttt_community_pool_classic.vmf'
+# FILE = './test_maps/ttt_canyon/src/ttt_canyon.vmf'
+# FILE = './test_maps/ttt_camel/src/ttt_camel.vmf'
+# FILE = './test_maps/ttt_community_bowling/src/ttt_community_bowling.vmf'
+# FILE = './test_maps/ttt_rooftops/src/ttt_rooftops.vmf'
+# FILE = './test_maps/ttt_terrortrain/src/ttt_terrortrain.vmf'
+# FILE = './test_maps/ttt_hairyhouse/src/ttt_hairyhouse.vmf'
+# FILE = './test_maps/ttt_67thway/src/ttt_67thway.vmf'
+# FILE = './test_maps/ttt_vessel/src/ttt_vessel.vmf'
+# FILE = './test_maps/ttt_bb_teenroom/src/ttt_bb_teenroom.vmf'
+# FILE = './test_maps/ttt_island_2013/src/ttt_island_2013.vmf'
+
 
 class PointsList(list):
     def add_unique(self, value):
@@ -28,7 +50,7 @@ def main():
     for solid in solids:
 
         points_list = PointsList()
-        print('=' * 80)
+        # print('=' * 80)
         faces = list()
         name = 'solid-%i' % solid['id']
         mesh = bpy.data.meshes.new(name)   # create a new mesh
@@ -38,28 +60,28 @@ def main():
 
         for side in solid['side']:
             plane = side['plane']
-            pprint(side['id'])
+            # pprint(side['id'])
             face = list()
             for idx, point in enumerate(plane.split('(')[1:]):
                 point = tuple(point.rstrip(') ').split())
                 point = [float(i) * 0.01 for i in point]
                 point_idx = points_list.add_unique(point)
-                pprint(('point', point, point_idx))
+                # pprint(('point', point, point_idx))
                 face.append(point_idx)
 
-            print('+' * 80)
-            pprint(
-                [points_list[i] for i in face]
-            )
+            # print('+' * 80)
+            # pprint(
+            #     [points_list[i] for i in face]
+            # )
             # inherit_idx = points_list.add_unique(inherit)
             # pprint(('inherit', inherit, inherit_idx))
-            print('+' * 80)
+            # print('+' * 80)
             faces.append(tuple(face))
-            print('-' * 80)
+            # print('-' * 80)
             break;
-        print('=' * 80)
-        pprint(list(points_list))
-        pprint(faces)
+        # print('=' * 80)
+        # pprint(list(points_list))
+        # pprint(faces)
 
         # Fill the mesh with verts, edges, faces
         mesh.from_pydata(list(points_list), [], faces)   # edges or faces should be [], or you ask for problems
