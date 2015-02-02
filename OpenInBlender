@@ -6,7 +6,7 @@ import signal
 
 COMMAND = [
     'blender',
-    # '--background',
+    '--background',
     'blank.blend',
     '--python',
     'bpy_vmf.py'
