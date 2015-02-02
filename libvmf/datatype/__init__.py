@@ -24,7 +24,7 @@ from libvmf.datatype.versioninfo import ValveVersionInformation
 DATATYPES = {
     'entity': ValveEntity,
     'world': ValveWorld,
-    'visgroups': ValveDict,
+    'visgroups': ValveDict,  #Todo, find an example to parse
     'viewsettings': ValveViewSettings,
     'cordon': ValveCordon,
     'cameras': ValveCameras,
