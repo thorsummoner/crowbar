@@ -77,12 +77,14 @@ class VmfParser(dict):
     def _parse(self, output):
         """ Recursive node parser
         """
+        import pdb
         try:
             datatype = 'FIRST_ITERATION_PLACEHOLDER'
             while True:
                 line = next(self.iterator).rstrip('\n\r')
                 self.i += 1
                 if line.endswith('}'):
+                    output.finalize()
                     return output
                 line = line[self.indent:]
                 if 0 == self.i % self.minupdate:

@@ -35,3 +35,6 @@ class ValveSolid(ValveClass):
         vmf_visgroupautoshown = int  # "1"
 
     vmf_editor = Editor
+
+    def finalize(self):
+        pass

@@ -77,6 +77,9 @@ class ValveDict(dict):
         """
         return self.__class__.__name__
 
+    def finalize(self):
+        pass
+
 ValveDict.vmf_datatype = ValveDict
 
 
