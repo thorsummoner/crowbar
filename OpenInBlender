@@ -3,16 +3,29 @@
 import subprocess
 import os
 import signal
+import argparse
 
 COMMAND = [
     'blender',
-    '--background',
-    'blank.blend',
     '--python',
     'bpy_vmf.py'
 ]
 
+DEFAULT_BLEND = 'blank.blend'
+
 def main(command):
+    parser = argparse.ArgumentParser(description='Run Blender')
+    parser.add_argument(
+        '--background', action='store_true'
+    )
+    parser.add_argument(
+        '--blend', default=DEFAULT_BLEND, help='blender file'
+    )
+    args = parser.parse_args()
+
+    command.insert(1, args.blend)
+    if args.background:
+        command.insert(1, '--background')
     try:
         process = subprocess.Popen(command)
         process.wait()
@@ -24,3 +37,5 @@ def main(command):
 
 if __name__ == '__main__':
     main(COMMAND)
+
+
