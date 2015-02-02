@@ -5,6 +5,8 @@ from libvmf.datatype.base import ValveClass
 
 
 class ValveViewSettings(ValveClass):
+    """ viewsettings nodes
+    """
     vmf_bSnapToGrid = int       # "1"
     vmf_bShowGrid = int         # "1"
     vmf_bShowLogicalGrid = int  # "0"

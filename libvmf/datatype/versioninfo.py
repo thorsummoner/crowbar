@@ -5,6 +5,8 @@ from libvmf.datatype.base import ValveClass
 
 
 class ValveVersionInformation(ValveClass):
+    """ verinfo node
+    """
     vmf_editorversion = int  # "400"
     vmf_editorbuild = int    # "6550"
     vmf_mapversion = int     # "1"

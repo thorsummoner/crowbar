@@ -9,6 +9,8 @@ from libvmf.datatype.base import ValveClass
 
 
 class ValveCordon(ValveClass):
+    """ Cordon Node
+    """
     vmf_mins = str    # "(-1024 -1024 -1024)"
     vmf_maxs = str    # "(1024 1024 1024)"
     vmf_active = int  # "0"
