@@ -9,6 +9,14 @@ from libvmf.datatype.entity import ValveEntity
 
 from libvmf.datatype.camera import ValveCameras
 
+from libvmf.datatype.cordon import ValveCordon
+
+from libvmf.datatype.viewsettings import ValveViewSettings
+
+from libvmf.datatype.visgroups import ValveVisibilityGroups
+
+from libvmf.datatype.versioninfo import ValveVersionInformation
+
 
 class ValveWorld(ValveClass):
     """ The World Geometry Node
@@ -29,3 +37,8 @@ class ValveMap(ValveDict):
     vmf_world = ValveWorld
     vmf_entity = ValveEntity
     vmf_cameras = ValveCameras
+    vmf_cordon = ValveCordon
+    vmf_viewsettings = ValveViewSettings
+    vmf_visgroups = ValveVisibilityGroups
+    vmf_versioninfo = ValveVersionInformation
+

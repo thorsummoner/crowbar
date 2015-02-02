@@ -22,5 +22,16 @@ class ValveSolid(ValveClass):
         vmf_vaxis = str  # "[0.0 1.0 0.0 0] 0.25"
         vmf_lightmapscale = int
         vmf_dispinfo = ValveDisplacement
+        vmf_rotation = int  # "0"
 
     vmf_side = Side
+
+    class Editor(ValveClass):
+        """ Editor attribute
+        editor
+        """
+        vmf_color = str              # "0 197 158"
+        vmf_visgroupshown = int      # "1"
+        vmf_visgroupautoshown = int  # "1"
+
+    vmf_editor = Editor
