@@ -84,7 +84,8 @@ class VmfParser(dict):
                 line = next(self.iterator).rstrip('\n\r')
                 self.i += 1
                 if line.endswith('}'):
-                    output.finalize()
+                    if not isinstance(output, list):
+                        output.finalize()
                     return output
                 line = line[self.indent:]
                 if 0 == self.i % self.minupdate:
