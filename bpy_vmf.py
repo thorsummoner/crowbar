@@ -1,7 +1,7 @@
 import bpy
 from sys import argv
 from pprint import pprint
-
+from collections import namedtuple
 import os
 import sys
 sys.path.insert(1, os.path.dirname(os.path.abspath(__file__)))
@@ -13,7 +13,7 @@ FILE = './test_maps/simple_brush.vmf'
 # FILE = './test_maps/ttt_bank/src/ttt_bank.vmf'
 # FILE = './test_maps/ttt_whitehouse/src/ttt_whitehouse.vmf'
 # FILE = './test_maps/ttt_lost_temple/src/ttt_lost_temple.vmf'
-# FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
+FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
 # FILE = './test_maps/ttt_minecraftcity/src/ttt_minecraftcity.vmf'
 # FILE = './test_maps/ttt_magma/src/ttt_magma.vmf'
 # FILE = './test_maps/ttt_clue_se/src/ttt_clue_se.vmf'
@@ -50,6 +50,7 @@ def main():
     for solid in solids:
 
         points_list = PointsList()
+        Point = namedtuple('Point', ['x', 'y', 'z'])
         # print('=' * 80)
         faces = list()
         name = 'solid-%i' % solid['id']
@@ -69,19 +70,22 @@ def main():
                 # pprint(('point', point, point_idx))
                 face.append(point_idx)
 
-            # print('+' * 80)
-            # pprint(
-            #     [points_list[i] for i in face]
-            # )
-            # inherit_idx = points_list.add_unique(inherit)
-            # pprint(('inherit', inherit, inherit_idx))
-            # print('+' * 80)
             faces.append(tuple(face))
-            # print('-' * 80)
-            break;
-        # print('=' * 80)
-        # pprint(list(points_list))
-        # pprint(faces)
+            p, a, q = [
+                Point(*points_list[i])
+                for i in face
+            ]
+
+            center = Point((p.x + q.x) / 2.0, (p.y + q.y) / 2.0, (p.z + q.z) / 2.0)
+
+            forth = Point(
+                center.x - (a.x - center.x), #*2,
+                center.y - (a.y - center.y), #*2,
+                center.z - (a.z - center.z), #*2,
+            )
+            forth_idx = points_list.add_unique(forth)
+
+            faces.append(tuple([face[0], forth_idx, face[2]]))
 
         # Fill the mesh with verts, edges, faces
         mesh.from_pydata(list(points_list), [], faces)   # edges or faces should be [], or you ask for problems
