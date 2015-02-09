@@ -5,6 +5,7 @@ from collections import namedtuple
 import os
 import sys
 sys.path.insert(1, os.path.dirname(os.path.abspath(__file__)))
+import math
 
 from libvmf import parse
 
@@ -32,6 +33,7 @@ FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
 # FILE = './test_maps/ttt_bb_teenroom/src/ttt_bb_teenroom.vmf'
 # FILE = './test_maps/ttt_island_2013/src/ttt_island_2013.vmf'
 
+Point = namedtuple('Point', ['x', 'y', 'z'])
 
 class PointsList(list):
     def add_unique(self, value):
@@ -50,7 +52,6 @@ def main():
     for solid in solids:
 
         points_list = PointsList()
-        Point = namedtuple('Point', ['x', 'y', 'z'])
         # print('=' * 80)
         faces = list()
         name = 'solid-%i' % solid['id']
@@ -76,6 +77,8 @@ def main():
                 for i in face
             ]
 
+            p, a, q = furthest(p, a, q)
+
             center = Point((p.x + q.x) / 2.0, (p.y + q.y) / 2.0, (p.z + q.z) / 2.0)
 
             forth = Point(
@@ -91,4 +94,28 @@ def main():
         mesh.from_pydata(list(points_list), [], faces)   # edges or faces should be [], or you ask for problems
         mesh.update(calc_edges=True)    # Update mesh with new data
 
+def distance(a, b):
+    distance = math.sqrt(
+        (b.x - a.x) ** 2
+        + (b.y - a.y) ** 2
+        + (b.z - a.z) ** 2
+    )
+    return distance
+
+def furthest(a, b, c):
+    dists = [(a, b, c), (b, c, a), (c, a, b)]
+
+    longest = {'distance': 0, 'points': None}
+    for p, q, a in dists:
+        dist = distance(p, q)
+        if dist > longest['distance']:
+            longest = {'distance': dist, 'points': (p, a, q)}
+
+    assert not longest['points'] is None
+
+    return longest['points']
+
 main()
+
+
+
