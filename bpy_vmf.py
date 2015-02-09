@@ -6,15 +6,17 @@ import os
 import sys
 sys.path.insert(1, os.path.dirname(os.path.abspath(__file__)))
 import math
+import itertools
 
 from libvmf import parse
 
+SCALE = 0.01
 FILE = './test_maps/simple_brush.vmf'
 # FILE = './test_maps/ttt_richland/src/ttt_richland.vmf'
 # FILE = './test_maps/ttt_bank/src/ttt_bank.vmf'
 # FILE = './test_maps/ttt_whitehouse/src/ttt_whitehouse.vmf'
 # FILE = './test_maps/ttt_lost_temple/src/ttt_lost_temple.vmf'
-FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
+# FILE = './test_maps/ttt_minecraft/src/ttt_minecraft.vmf'
 # FILE = './test_maps/ttt_minecraftcity/src/ttt_minecraftcity.vmf'
 # FILE = './test_maps/ttt_magma/src/ttt_magma.vmf'
 # FILE = './test_maps/ttt_clue_se/src/ttt_clue_se.vmf'
@@ -66,29 +68,38 @@ def main():
             face = list()
             for idx, point in enumerate(plane.split('(')[1:]):
                 point = tuple(point.rstrip(') ').split())
-                point = [float(i) * 0.01 for i in point]
+                point = [float(i) * SCALE for i in point]
                 point_idx = points_list.add_unique(point)
                 # pprint(('point', point, point_idx))
                 face.append(point_idx)
 
             faces.append(tuple(face))
-            p, a, q = [
-                Point(*points_list[i])
-                for i in face
-            ]
 
-            p, a, q = furthest(p, a, q)
 
-            center = Point((p.x + q.x) / 2.0, (p.y + q.y) / 2.0, (p.z + q.z) / 2.0)
+        extra_faces = list()
+        first = True
+        for plane, point in itertools.product(faces, points_list):
 
-            forth = Point(
-                center.x - (a.x - center.x), #*2,
-                center.y - (a.y - center.y), #*2,
-                center.z - (a.z - center.z), #*2,
-            )
-            forth_idx = points_list.add_unique(forth)
+            if first is False:
+                continue
 
-            faces.append(tuple([face[0], forth_idx, face[2]]))
+            if point in [points_list[point] for point in plane]:
+                continue
+            first = False
+
+            product_left = [a - b for a, b in zip(point, points_list[plane[0]])]
+            dot_product = sum([i*j for i, j in zip(product_left, point)])
+
+            if 0.0 <= dot_product < 0.00001:
+                extra_faces.append(tuple([plane[0], points_list.index(point), plane[2]]))
+                print('-' * 60)
+                pprint(dot_product)
+                pprint((plane, [points_list[point] for point in plane]))
+                pprint(points_list.index(point))
+                pprint(point)
+
+        faces += extra_faces
+
 
         # Fill the mesh with verts, edges, faces
         mesh.from_pydata(list(points_list), [], faces)   # edges or faces should be [], or you ask for problems
