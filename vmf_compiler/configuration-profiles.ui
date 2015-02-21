@@ -48,7 +48,7 @@
               <object class="GtkBox" id="profiles-box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="spacing">10</property>
+                <property name="spacing">2</property>
                 <child>
                   <object class="GtkComboBox" id="profile-combo">
                     <property name="visible">True</property>
@@ -70,10 +70,12 @@
                 </child>
                 <child>
                   <object class="GtkToolbar" id="profiles-toolbar">
+                    <property name="width_request">-1</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="toolbar_style">icons</property>
-                    <property name="icon_size">1</property>
+                    <property name="show_arrow">False</property>
+                    <property name="icon_size">4</property>
                     <child>
                       <object class="GtkToolButton" id="profile-new">
                         <property name="use_action_appearance">False</property>
@@ -129,28 +131,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="shadow_type">in</property>
-                        <child>
-                          <object class="GtkTreeView" id="treeview1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="model">body-store</property>
-                            <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="treeview-selection1"/>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
                     <child>
                       <object class="GtkToolbar" id="edit-pretty-toolbar">
                         <property name="visible">True</property>
@@ -212,14 +192,51 @@
                             <property name="homogeneous">True</property>
                           </packing>
                         </child>
-                        <style>
-                          <class name="inline-toolbar"/>
-                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow" id="scrolledwindow1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vscrollbar_policy">always</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="treeview1">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="model">body-store</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection" id="treeview-selection1"/>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStatusbar" id="statusbar3">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="margin_top">6</property>
+                        <property name="margin_bottom">6</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">2</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -228,6 +245,7 @@
                   <object class="GtkBox" id="tab-edit-pretty-box">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">4</property>
                     <child>
                       <object class="GtkImage" id="image1">
                         <property name="visible">True</property>
@@ -268,6 +286,8 @@
                       <object class="GtkToolbar" id="edit-raw-toolbar">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="toolbar_style">icons</property>
+                        <property name="icon_size">1</property>
                         <child>
                           <object class="GtkToolButton" id="edit-raw-save">
                             <property name="visible">True</property>
@@ -306,6 +326,7 @@
                       <object class="GtkScrolledWindow" id="scrolledwindow2">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="vscrollbar_policy">always</property>
                         <property name="shadow_type">in</property>
                         <child>
                           <object class="GtkTreeView" id="treeview3">
@@ -350,6 +371,7 @@
                   <object class="GtkBox" id="tab-edit-raw-box">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">4</property>
                     <child>
                       <object class="GtkImage" id="image2">
                         <property name="visible">True</property>
@@ -391,6 +413,8 @@
                       <object class="GtkToolbar" id="subproc-tail-toolbar">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="toolbar_style">icons</property>
+                        <property name="icon_size">1</property>
                         <child>
                           <object class="GtkToolButton" id="subproc-exec">
                             <property name="visible">True</property>
@@ -428,6 +452,7 @@
                       <object class="GtkScrolledWindow" id="scrolledwindow3">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="vscrollbar_policy">always</property>
                         <property name="shadow_type">in</property>
                         <child>
                           <object class="GtkTextView" id="textview1">
@@ -468,6 +493,7 @@
                   <object class="GtkBox" id="tab-subproc-tail-box">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">4</property>
                     <child>
                       <object class="GtkImage" id="image3">
                         <property name="visible">True</property>
