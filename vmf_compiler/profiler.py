@@ -1,98 +1,100 @@
-"""docstring for Profiler"""
+#!/usr/bin/env python
+
+"""
+    Gui application interface.
+"""
 
 from gi.repository import Gtk
 import signal
-
+import os
 from profile_selector import ProfileSelector
 import loader
 
+# Todo debug
 from pprint import pprint
 
-class Profiler(Gtk.Window):
-    """docstring for Profiler"""
+class Profiler(object):
+    """
+        Gui application interface.
+    """
+    # pylint: disable=no-member
 
-    profiles = list()
-    profiles_store_class = Gtk.ListStore
-    profiles_store = None
+    UI_PATH = os.path.join(
+        os.path.dirname(__file__),
+        'configuration-profiles.ui'
+    )
+
+    profiles = dict()
 
     def __init__(self):
-        super(Profiler, self).__init__()
+        builder = Gtk.Builder()
+        builder.add_from_file(self.UI_PATH)
+        builder.connect_signals(self.Handler(self))
+        self.builder = builder
 
-        self.set_title="Configuration Profiles"
+        window = builder.get_object('window-main')
+        window.show_all()
 
-        self.set_default_size(240, 80)
+        self._init_profile_selector()
 
-        self.profiles = Profiler.reload_profiles()
+        # raise SystemExit
 
-        self._gui_main()
-        self._bind_events()
+    def _init_profile_selector(self):
+        """
+            Load models into profile selector
+        """
+        self.profiles = loader.reload_profiles()
+        combobox = self.builder.get_object('profile-combo')
 
-
-    def _bind_events(self):
-        """Bind all """
-        self.connect("delete-event", Gtk.main_quit)
-
-    def _gui_main(self):
-        box = Gtk.Box(spacing=10, orientation=Gtk.Orientation.VERTICAL)
-        self.add(box)
-
-        box.pack_start(ProfileSelector(self.profiles), False, False, 0)
-
-    def main(self):
-        """docstring for Main"""
-        signal.signal(signal.SIGINT, signal.SIG_DFL)
-        self.show_all()
-        Gtk.main()
+        combobox.set_model(self.profiles['asListStore'])
+        combobox.set_entry_text_column(0)
+        combobox.set_active(0)
 
     @staticmethod
-    def reload_profiles():
-        """Read and parse all config files.
-        Returns:
-            list: of dicts, the parsed configs named by...
+    def main():
         """
-        raw_configs = loader.read_configs()
+            Gtk.main wrapper.
+        """
+        signal.signal(signal.SIGINT, signal.SIG_DFL)
+        Gtk.main()
 
-        config = {
-            'byName': dict(),
-            'byFileName': dict(),
-            'byFilePath': dict(),
-        }
+    def set_profile(self, profile_dict):
+        treeview = self.builder.get_object('edit-pretty-treeview')
+        treeview.set_model(profile_dict['ListStore'])
 
-        for raw_config in raw_configs:
-            body_lines = raw_config['body'].splitlines()
-            proper_name = body_lines.pop(0).lstrip('# ').rstrip()
-            config_lines = {
-                'ListStore': Gtk.ListStore(bool, str, str),
-                'list_raw': [],
-                'raw': raw_config['body'],
-                'name': proper_name,
-                'file_name': raw_config['name'],
-                'file_path': raw_config['path'],
-            }
-            config['byName'][proper_name] = config_lines
-            config['byFileName'][raw_config['name']] = config_lines
-            config['byFilePath'][raw_config['path']] = config_lines
-            for line in body_lines:
-                # bool, str, str
-                raw_values = [
-                    not line.startswith('#'),
-                    line.lstrip('# '),
-                    line
-                ]
-                config_lines['list_raw'].append(raw_values)
-                config_lines['ListStore'].append(raw_values)
+    class Handler(object):
+        """Gui Event Handler"""
 
-        return config
-            # body_store = Gtk.ListStore(bool, str, str)
-            #     body_store.append(
-            #         [not line.startswith('#'), line.lstrip('# '), line]
-            #     )
+        def __init__(self, profiler):
+            super(Profiler.Handler, self).__init__()
+            self.profiler = profiler
 
-            # return [name, proper_name, body_store, body]
-            # config_store = self.new_config_store(body=body)
-            # if name == PROFILE_DEFAULT:
-            #     self.configs_store.prepend(config_store)
-            #     self.profile.set_active(0)
-            # else:
-            #     self.configs_store.append(config_store)
+        @staticmethod
+        def on_delete_window(*args):
+            """
+                Window Close Action
+            """
+            Gtk.main_quit(*args)
 
+        def on_profile_changed(self, widget):
+            current_text = widget.get_child().get_text()
+            model = widget.get_model()
+            profile_names = [str(i[0]) for i in model]
+
+            active_index = widget.get_active_iter()
+            if active_index is None:
+                if current_text in profile_names:
+                    # Set Option as Selected, and let routine re-run
+                    item_index = profile_names.index(current_text)
+                    widget.set_active(item_index)
+                    return None
+
+                print('User Entered Text: `%s`' % current_text)
+
+            else:
+                # Load Current Item by name
+                # print(str(model[active_index][0]))
+                profile = self.profiler.profiles['byName'][current_text]
+                self.profiler.set_profile(profile)
+
+    # pylint: enable=no-member

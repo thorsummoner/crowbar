@@ -6,11 +6,19 @@
     <columns>
       <!-- column-name enabled -->
       <column type="gbool"/>
-      <!-- column-name line -->
+      <!-- column-name command -->
       <column type="gchar"/>
       <!-- column-name line_raw -->
       <column type="gchar"/>
     </columns>
+  </object>
+  <object class="GtkTreeView" id="treeview3">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="model">body-store</property>
+    <child internal-child="selection">
+      <object class="GtkTreeSelection" id="treeview-selection"/>
+    </child>
   </object>
   <object class="GtkListStore" id="config-store">
     <columns>
@@ -29,6 +37,10 @@
   </object>
   <object class="GtkWindow" id="window-main">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Configuration Profiles</property>
+    <property name="default_width">400</property>
+    <property name="default_height">80</property>
+    <signal name="delete-event" handler="on_delete_window" swapped="no"/>
     <child>
       <object class="GtkBox" id="box-main">
         <property name="visible">True</property>
@@ -55,6 +67,7 @@
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
                     <property name="has_entry">True</property>
+                    <signal name="changed" handler="on_profile_changed" swapped="no"/>
                     <child internal-child="entry">
                       <object class="GtkEntry" id="profile-entry">
                         <property name="can_focus">True</property>
@@ -76,6 +89,19 @@
                     <property name="toolbar_style">icons</property>
                     <property name="show_arrow">False</property>
                     <property name="icon_size">4</property>
+                    <child>
+                      <object class="GtkToolButton" id="profile-refresh">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Refresh Profiles</property>
+                        <property name="use_underline">True</property>
+                        <property name="icon_name">view-refresh</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkToolButton" id="profile-new">
                         <property name="use_action_appearance">False</property>
@@ -206,12 +232,37 @@
                         <property name="vscrollbar_policy">always</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkTreeView" id="treeview1">
+                          <object class="GtkTreeView" id="edit-pretty-treeview">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="model">body-store</property>
+                            <property name="headers_clickable">False</property>
                             <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="treeview-selection1"/>
+                              <object class="GtkTreeSelection" id="treeview-selection1">
+                                <property name="mode">browse</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                                <property name="title" translatable="yes">#</property>
+                                <property name="alignment">0.5</property>
+                                <child>
+                                  <object class="GtkCellRendererToggle" id="cellrenderertoggle1"/>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+                                <property name="resizable">True</property>
+                                <property name="title" translatable="yes">Command</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
                             </child>
                           </object>
                         </child>
@@ -329,13 +380,9 @@
                         <property name="vscrollbar_policy">always</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkTreeView" id="treeview3">
+                          <object class="GtkTextView" id="edit-raw">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="model">body-store</property>
-                            <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="treeview-selection"/>
-                            </child>
                           </object>
                         </child>
                       </object>
