@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+import window
+import os
+
+class TestWindow(window.Window):
+    """
+        Gui application interface.
+    """
+
+    GLADE_FILE = os.path.splitext(__file__)[0] + '.ui'
+
+    def __init__(self):
+        super(TestWindow, self).__init__()
+
+
+    class Handler(window.Window.BaseHandler):
+        """
+            Main Window Event Handler
+        """
+
+
+
+if __name__ == '__main__':
+    exit(TestWindow().main())
