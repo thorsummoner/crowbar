@@ -27,11 +27,11 @@ class Window(Gtk.Window):
                 self.GLADE_FILE
             )
         )
-        builder.connect_signals(self.Handler(self))
         self.builder = builder
+        self.window = builder.get_object(self.ROOT_WINDOW)
+        builder.connect_signals(self.Handler(self))
 
-        window = builder.get_object(self.ROOT_WINDOW)
-        window.show_all()
+        self.window.show_all()
 
     @staticmethod
     def main():
@@ -39,7 +39,9 @@ class Window(Gtk.Window):
             Gtk.main wrapper.
         """
         signal.signal(signal.SIGINT, signal.SIG_DFL)
+        print('Main Enter')
         Gtk.main()
+        print('Main Exit')
 
     class BaseHandler(object):
         """
@@ -49,7 +51,7 @@ class Window(Gtk.Window):
         def __init__(self, parent):
             super(Window.BaseHandler, self).__init__()
             self.parent = parent
-            parent.connect("delete-event", self.on_delete_window)
+            parent.window.connect("delete-event", self.on_delete_window)
 
         @staticmethod
         def on_delete_window(*args):

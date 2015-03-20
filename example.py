@@ -3,18 +3,18 @@
 import window
 import os
 
-class ExampleWindow(window.Window):
+class ExampleWindow(Window):
     """
         Gui application interface.
     """
 
-    GLADE_FILE = os.path.splitext(__file__)[0] + '.ui'
+    GLADE_FILE = os.path.splitext(__file__)[0] + '.glade'
 
     def __init__(self):
         super(ExampleWindow, self).__init__()
 
 
-    class Handler(window.Window.BaseHandler):
+    class Handler(Window.BaseHandler):
         """
             Main Window Event Handler
         """
