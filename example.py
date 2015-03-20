@@ -3,7 +3,7 @@
 import window
 import os
 
-class ExampleWindow(Window):
+class ExampleWindow(window.Window):
     """
         Gui application interface.
     """
@@ -14,7 +14,7 @@ class ExampleWindow(Window):
         super(ExampleWindow, self).__init__()
 
 
-    class Handler(Window.BaseHandler):
+    class Handler(window.Window.BaseHandler):
         """
             Main Window Event Handler
         """
