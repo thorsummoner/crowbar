@@ -1,7 +1,7 @@
 
 import signal
 import json
-from gi.repository import Gtk, Gdk, Gdl
+from gi.repository import Gtk, Gdk
 from lib.Extensions import Extensions
 from importlib import import_module
 from os import path
