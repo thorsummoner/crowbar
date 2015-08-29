@@ -19,6 +19,8 @@ BLUEPRINT = {
     'rice-paper': (231/FULL, 219/FULL, 194/FULL),
 }
 
+SCROLL_INVERT=True
+
 class ExampleWindow(window.Window):
     """
         Gui application interface.
@@ -30,10 +32,11 @@ class ExampleWindow(window.Window):
         super(ExampleWindow, self).__init__()
 
         self.label2 = self.builder.get_object('label2')
+        self.label3 = self.builder.get_object('label3')
 
     class Handler(window.Window.BaseHandler):
         draw_ct = 0
-        # zoom =
+        zoom = 0
         """
             Main Window Event Handler
         """
@@ -48,16 +51,21 @@ class ExampleWindow(window.Window):
             context.fill()
 
             self.border(allocation, context)
+
+            context.set_line_width(0.3)
+            context.set_source_rgb(*BLUEPRINT['white'])
             self.grid(allocation, context, 10)
 
+            context.set_line_width(0.6)
+            context.set_source_rgb(*BLUEPRINT['white'])
+            self.grid(allocation, context, 100)
 
-            # st()
 
         def border(self, allocation, context):
             INSET = 10
             OVERFLOW = 5
             BORDER_WIDTH = 3
-            context.set_source_rgb(1, 1, 1)
+            context.set_source_rgb(*BLUEPRINT['white'])
             context.set_line_width(BORDER_WIDTH)
 
             context.new_path()
@@ -82,19 +90,24 @@ class ExampleWindow(window.Window):
                 y+= step
                 self.line(context, 0, y, allocation.width, y)
 
-            context.set_line_width(0.3)
             context.stroke()
-
-        def scroll(self, viewport, event):
-            drawingarea = viewport.get_child()
-            st()
-
-            self.parent.window.invalidate_rect()
 
         @staticmethod
         def line(context, x1, y1, x2, y2):
             context.move_to(x1, y1)
             context.line_to(x2, y2)
+
+        def scroll(self, viewport, event):
+            if SCROLL_INVERT:
+                event.delta_y * -1
+
+            if 0 < event.delta_y:
+                self.zoom += 1
+            elif 0 > event.delta_y:
+                self.zoom -= 1
+
+            self.parent.label3.set_text('{}'.format(self.zoom))
+            self.parent.window.get_window().invalidate_rect(None, False)
 
 
 
