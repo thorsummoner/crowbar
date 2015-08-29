@@ -1,23 +1,102 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import window
-import os
+
+from gi.repository import Gdk
+
+
+import pprint
+from pprint import pprint as _print
+
+from pdb  import set_trace as st
+
+FULL = 255.0
+BLUEPRINT = {
+    'best-laid-plans': (25/FULL, 60/FULL, 74/FULL),
+    'hame-fun-with-it': (50/FULL, 101/FULL, 152/FULL),
+    'chill-out-dude': (8/FULL, 177/FULL, 235/FULL),
+    'white': (1, 1, 1),
+    'rice-paper': (231/FULL, 219/FULL, 194/FULL),
+}
 
 class ExampleWindow(window.Window):
     """
         Gui application interface.
     """
 
-    GLADE_FILE = os.path.splitext(__file__)[0] + '.glade'
+    GLADE_FILE = 'window.glade'
 
     def __init__(self):
         super(ExampleWindow, self).__init__()
 
+        self.label2 = self.builder.get_object('label2')
 
     class Handler(window.Window.BaseHandler):
+        draw_ct = 0
+        # zoom =
         """
             Main Window Event Handler
         """
+
+        def draw(self, drawingarea, context):
+            self.draw_ct += 1
+            self.draw_ct = self.draw_ct % 1000
+            self.parent.label2.set_text('{:>4}'.format(self.draw_ct))
+            allocation = drawingarea.get_allocation()
+            context.rectangle(0,0, allocation.width, allocation.height)
+            context.set_source_rgb(*BLUEPRINT['hame-fun-with-it'])
+            context.fill()
+
+            self.border(allocation, context)
+            self.grid(allocation, context, 10)
+
+
+            # st()
+
+        def border(self, allocation, context):
+            INSET = 10
+            OVERFLOW = 5
+            BORDER_WIDTH = 3
+            context.set_source_rgb(1, 1, 1)
+            context.set_line_width(BORDER_WIDTH)
+
+            context.new_path()
+            self.line(context, 0+OVERFLOW, INSET, allocation.width-OVERFLOW , INSET)
+            self.line(context, 0+OVERFLOW, allocation.height-INSET, allocation.width-OVERFLOW, allocation.height-INSET)
+
+            self.line(context, INSET, 0+OVERFLOW, INSET, allocation.height-OVERFLOW)
+            self.line(context, allocation.width-INSET, allocation.height-OVERFLOW, allocation.width-INSET, 0+OVERFLOW)
+
+
+            context.stroke()
+
+        def grid(self, allocation, context, step):
+            x = 0
+            y = 0
+
+            while x < allocation.width:
+                x+= step
+                self.line(context, x, 0, x, allocation.height)
+
+            while y < allocation.width:
+                y+= step
+                self.line(context, 0, y, allocation.width, y)
+
+            context.set_line_width(0.3)
+            context.stroke()
+
+        def scroll(self, viewport, event):
+            drawingarea = viewport.get_child()
+            st()
+
+            self.parent.window.invalidate_rect()
+
+        @staticmethod
+        def line(context, x1, y1, x2, y2):
+            context.move_to(x1, y1)
+            context.line_to(x2, y2)
+
+
 
 
 if __name__ == '__main__':
