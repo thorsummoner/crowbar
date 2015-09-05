@@ -20,6 +20,7 @@ BLUEPRINT = {
 }
 
 SCROLL_INVERT=True
+MAX_WORLDSIZE=4096
 
 class ExampleWindow(window.Window):
     """
@@ -31,8 +32,9 @@ class ExampleWindow(window.Window):
     def __init__(self):
         super(ExampleWindow, self).__init__()
 
-        self.label2 = self.builder.get_object('label2')
-        self.label3 = self.builder.get_object('label3')
+        self.drawingarea = self.builder.get_object('drawingarea1')
+        self.label_draw_ct = self.builder.get_object('label_draw_ct')
+        self.label_zoom = self.builder.get_object('label_zoom')
 
     class Handler(window.Window.BaseHandler):
         draw_ct = 0
@@ -44,7 +46,7 @@ class ExampleWindow(window.Window):
         def draw(self, drawingarea, context):
             self.draw_ct += 1
             self.draw_ct = self.draw_ct % 1000
-            self.parent.label2.set_text('{:>4}'.format(self.draw_ct))
+            self.parent.label_draw_ct.set_text('{:>5}'.format(self.draw_ct))
             allocation = drawingarea.get_allocation()
             context.rectangle(0,0, allocation.width, allocation.height)
             context.set_source_rgb(*BLUEPRINT['hame-fun-with-it'])
@@ -101,15 +103,13 @@ class ExampleWindow(window.Window):
             if SCROLL_INVERT:
                 event.delta_y * -1
 
-            if 0 < event.delta_y:
+            if event.delta_y > 0:
                 self.zoom += 1
-            elif 0 > event.delta_y:
+            elif event.delta_y < 0:
                 self.zoom -= 1
 
-            self.parent.label3.set_text('{}'.format(self.zoom))
+            self.parent.label_zoom.set_text('{:>5}'.format(self.zoom))
             self.parent.window.get_window().invalidate_rect(None, False)
-
-
 
 
 if __name__ == '__main__':
