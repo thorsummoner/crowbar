@@ -9,7 +9,7 @@ GRID_HIGHLIGHT = 64
 HIDE_GRID_SMALLER_THAN = 8
 BSP_SPLIT = 1024
 
-class DictView(Gtk.Box):
+class DictView(Gtk.Bin):
 
     COLOR_256 = 256.0
     COLOR_PALETTE = {
@@ -39,8 +39,6 @@ class DictView(Gtk.Box):
             # Frame
             self._frame = Gtk.Frame()
             self._frame.set_shadow_type(Gtk.ShadowType.IN)
-            self._frame.set_vexpand(True)
-            self._frame.set_hexpand(True)
             self.add(self._frame)
 
             # ScrolledWindow
