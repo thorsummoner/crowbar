@@ -3,6 +3,9 @@ from pprint import pprint
 
 from gi.repository import Gtk
 
+import itertools
+import web_colors
+
 DEAFULT_ZOOM = 1024
 GRID_BOUND = 4096
 GRID_HIGHLIGHT = 64
@@ -28,9 +31,10 @@ class DictView(Gtk.Bin):
         'rice-paper': (231/COLOR_256, 219/COLOR_256, 194/COLOR_256),
     }
 
-    def __init__(self, datasource):
+    def __init__(self, viewaxis, datasource):
         super(DictView, self).__init__()
         self.datasource = datasource
+        self.viewaxis = viewaxis
 
         self.offset = {'x': 0, 'y': 0}
         self.zoom_view = DEAFULT_ZOOM
@@ -92,9 +96,12 @@ class DictView(Gtk.Bin):
         context.set_line_width(1)
 
         if 'fill':
-            context.rectangle(0,0, allocation.width, allocation.height)
-            context.set_source_rgb(*self.COLOR_PALETTE['black'])
-            context.fill()
+            self._draw_rectangle(
+                context,
+                0, 0,
+                allocation.width, allocation.height,
+                self.COLOR_PALETTE['black']
+            )
 
         if 'grid':
             context.set_source_rgb(*self.COLOR_PALETTE['grid-axis'])
@@ -122,6 +129,39 @@ class DictView(Gtk.Bin):
             self._draw_line(context, center['x'], 0, center['x'], allocation.height)
             self._draw_line(context, 0, center['y'], allocation.width, center['y'])
 
+        if 'example_geometry':
+            colors = itertools.cycle(web_colors.COLORS_INT)
+            for geometry in self.datasource:
+                color = next(colors)
+                context.set_source_rgb(*color)
+
+                points = [
+                    [geometry[self.viewaxis[0]][0] + center['x'], geometry[self.viewaxis[1]][0] + center['y']],
+                    [geometry[self.viewaxis[0]][1] + center['x'], geometry[self.viewaxis[1]][0] + center['y']],
+                    [geometry[self.viewaxis[0]][1] + center['x'], geometry[self.viewaxis[1]][1] + center['y']],
+                    [geometry[self.viewaxis[0]][0] + center['x'], geometry[self.viewaxis[1]][1] + center['y']],
+                    [geometry[self.viewaxis[0]][0] + center['x'], geometry[self.viewaxis[1]][0] + center['y']],
+                ]
+
+                self._draw_lines(context, points)
+
+                for point in points:
+                    self._draw_rectangle(
+                        context,
+                        point[0] - 4,
+                        point[1] - 4,
+                        8, 8,
+                        self.COLOR_PALETTE['black']
+                    )
+                    self._draw_rectangle(
+                        context,
+                        point[0] - 3,
+                        point[1] - 3,
+                        6, 6,
+                        self.COLOR_PALETTE['white']
+                    )
+
+
 
     @staticmethod
     def _draw_line(context, x1, y1, x2, y2, color=None):
@@ -142,3 +182,11 @@ class DictView(Gtk.Bin):
         for point in points:
             context.line_to(point[0] - 0.5, point[1] - 0.5)
         context.stroke()
+
+    @staticmethod
+    def _draw_rectangle(context, x1, y1, x2, y2, color=None):
+        if color:
+            context.set_source_rgb(*color)
+
+        context.rectangle(x1, y1, x2, y2)
+        context.fill()

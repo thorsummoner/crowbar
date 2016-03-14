@@ -8,7 +8,7 @@ import dictview
 import linkedpanes
 
 GEOMETRY = list()
-GEOMETRY.append(dict(x=-1, y=-1, z=-1, w=2, l=2, h=2))
+GEOMETRY.append(dict(x=(-33, 33), y=(-33, 33), z=(-33, 33)))
 
 def main():
 
@@ -19,8 +19,8 @@ def main():
 
         if 'linkedpanes':
             _linkedpanes = linkedpanes.LinkedPanes(
-                Gtk.Label('Viewport'), dictview.DictView(GEOMETRY),
-                dictview.DictView(GEOMETRY), dictview.DictView(GEOMETRY),
+                Gtk.Label('Viewport'), dictview.DictView(('z', 'y'), GEOMETRY),
+                dictview.DictView(('x', 'z'), GEOMETRY), dictview.DictView(('x', 'y'), GEOMETRY),
             )
             win.add(_linkedpanes)
 
