@@ -31,9 +31,9 @@ class DictView(Gtk.Bin):
         'rice-paper': (231/COLOR_256, 219/COLOR_256, 194/COLOR_256),
     }
 
-    def __init__(self, viewaxis, datasource):
+    def __init__(self, viewaxis, geometry, scroll_lock):
         super(DictView, self).__init__()
-        self.datasource = datasource
+        self.geometry = geometry
         self.viewaxis = viewaxis
 
         self.offset = {'x': 0, 'y': 0}
@@ -46,7 +46,14 @@ class DictView(Gtk.Bin):
             self.add(self._frame)
 
             # ScrolledWindow
-            self._scrolled = Gtk.ScrolledWindow()
+            self._scrolled = (
+                Gtk.ScrolledWindow(
+                    hadjustment=scroll_lock[self.viewaxis[0]],
+                    vadjustment=scroll_lock[self.viewaxis[1]],
+                )
+                if scroll_lock['enabled'] else
+                Gtk.ScrolledWindow()
+            )
             self._scrolled.set_policy(Gtk.PolicyType.ALWAYS, Gtk.PolicyType.ALWAYS)
             self._scrolled.connect('scroll-event', self.on_scroll)
             self._frame.add(self._scrolled)
@@ -131,7 +138,7 @@ class DictView(Gtk.Bin):
 
         if 'example_geometry':
             colors = itertools.cycle(web_colors.COLORS_INT)
-            for geometry in self.datasource:
+            for geometry in self.geometry:
                 color = next(colors)
                 context.set_source_rgb(*color)
 

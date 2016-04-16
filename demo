@@ -10,6 +10,8 @@ import linkedpanes
 GEOMETRY = list()
 GEOMETRY.append(dict(x=(-33, 33), y=(-33, 33), z=(-33, 33)))
 
+DEFAULT_SCROLL_LOCK = True
+
 def main():
 
     if 'gtk':
@@ -18,9 +20,20 @@ def main():
         win.connect("delete-event", Gtk.main_quit)
 
         if 'linkedpanes':
+            pane_data = {
+                'geometry': GEOMETRY,
+                'scroll_lock': {
+                    'enabled': DEFAULT_SCROLL_LOCK,
+                    'x': Gtk.Adjustment(),
+                    'y': Gtk.Adjustment(),
+                    'z': Gtk.Adjustment(),
+                },
+            }
             _linkedpanes = linkedpanes.LinkedPanes(
-                Gtk.Label('Viewport'), dictview.DictView(('z', 'y'), GEOMETRY),
-                dictview.DictView(('x', 'z'), GEOMETRY), dictview.DictView(('x', 'y'), GEOMETRY),
+                Gtk.Label('Viewport'),
+                dictview.DictView(('y', 'x'), **pane_data),
+                dictview.DictView(('x', 'z'), **pane_data),
+                dictview.DictView(('y', 'z'), **pane_data),
             )
             win.add(_linkedpanes)
 
