@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 
 import signal
+import setproctitle
 
 from gi.repository import Gtk
 
@@ -13,6 +14,7 @@ GEOMETRY.append(dict(x=(-33, 33), y=(-33, 33), z=(-33, 33)))
 DEFAULT_SCROLL_LOCK = True
 
 def main():
+    setproctitle.setproctitle('crowbar-demo')
 
     if 'gtk':
         win = Gtk.Window()
