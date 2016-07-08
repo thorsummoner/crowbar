@@ -50,32 +50,31 @@ class Pane(Gtk.Paned):
 
 class LinkedPane(Pane):
 
-    loop = False
+    _lp_user_activated = False
 
     def __init__(self, *args):
         super(LinkedPane, self).__init__(*args)
-        self.connect('button-release-event', self.on_end_resize)
+        self.connect('notify::position', self.on_position)
+        self.connect('button-press-event', self.on_button_press)
+        self.connect('button-release-event', self.on_button_release)
 
-    def on_notify(self, _, gparamspec):
+    def on_position(self, _, gparamspec):
+        if self._lp_user_activated:
+            self.linked.child_on_position(self.props.position)
 
-        if not gparamspec.name == 'position':
-            return
+    def child_on_position(self, position):
+        self.set_position(position)
 
-        if self.loop:
-            self.loop^=True
-            return
+    def on_button_press(self, *_):
+        self._lp_user_activated = True
 
-        self.loop^=True
-
-        self.linked.props.position = self.props.position
-
-    def bind_resize(self, linked):
-        self.connect('notify', self.on_notify)
-        self.linked = linked
-
-    def on_end_resize(self, widget, event):
+    def on_button_release(self, *_):
         """
             Correct real-time positioning mistakes.
             http://stackoverflow.com/a/7892056/1695680
         """
-        self.linked.props.position = self.props.position
+        self._lp_user_activated = False
+        self.linked.set_position(self.props.position)
+
+    def bind_resize(self, linked):
+        self.linked = linked
