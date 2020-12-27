@@ -133,9 +133,11 @@ class Crowbar:
 
                 # block variables
                 extension_name = extension["extension"]
-                extension_gui = crowbar.Extensions(
+                extension = crowbar.Extensions(
                     extension_name
-                ).gui
+                )
+                extension.instance.icons_append_search_path()
+                extension_gui = extension.gui
 
                 # create dock item
                 dock_item = Gdl.DockItem.new(

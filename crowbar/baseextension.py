@@ -57,6 +57,10 @@ class BaseExtension:
 
         return widget
 
+    def icons_append_search_path(self):
+        pass
+
+
 class CoreExtension(BaseExtension):
     pkg_resources_module = 'crowbar'
 

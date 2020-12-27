@@ -83,8 +83,9 @@ class Extensions:
         self.entry_point = ENTRYPOINTS.get(extension_name)
 
         self.module = EXTENSION_MODULES.get_module(self.entry_point.value)
+        self.instance = self.module.INSTANCE
 
-        self.gui = self.module.INSTANCE.main_gtk_widget
+        self.gui = self.instance.main_gtk_widget
 
         if self.gui is None:
             raise AssertionError('self.gui was none after initialization with glade')
