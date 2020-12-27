@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
-  <!-- interface-local-resource-path C:\Users\dylang\Desktop\thorsummoner\crowbar_py\extensions\MapTools -->
   <object class="GtkToolbar" id="MapTools">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
