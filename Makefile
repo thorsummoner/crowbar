@@ -1,4 +1,4 @@
-%.html: %.md; python3 -m markdown < $@ > $^
+%.html: %.md; python3 -m markdown < $^ > $@
 readme.html:
 
 .PHONY: dist

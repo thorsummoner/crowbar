@@ -30,9 +30,10 @@ import pkg_resources
 from gi.repository import Gtk, Gdl
 
 import crowbar
-
 from crowbar import dictview
 from crowbar import linkedpanes
+
+
 
 LOGGER = logging.getLogger('crowbar.crowbar')
 
@@ -89,21 +90,18 @@ class Crowbar:
         """
             install package_data path for gtk use
         """
-        basepath = os.path.realpath(
-            os.path.dirname(os.path.realpath(__file__)) + "/../share/crowbar/icons"
-        )
-        basepath = pkg_resources.resource_filename(
-            "crowbar", "crowbar/package_data/share/crowbar/icons/"
-        )
+        basepath = pkg_resources.resource_filename('crowbar', 'package_data/share/crowbar/icons/')
         # register icon path
         # note: actions described in the following document were attempted
         #    without success.
         #    https://wiki.gnome.org/draftspecs/themableappspecificicons
 
         Gtk.IconTheme.get_default().append_search_path(
-            basepath + "/hicolor/24/mimetypes"
+            os.path.join(basepath, 'hicolor/24/mimetypes')
         )
-        Gtk.IconTheme.get_default().append_search_path(basepath + "/hicolor/24/actions")
+        Gtk.IconTheme.get_default().append_search_path(
+            os.path.join(basepath, 'hicolor/24/actions')
+        )
 
     @staticmethod
     def main():
@@ -215,6 +213,3 @@ class Crowbar:
                     dock_item,
                     Gdl.DockPlacement.LEFT if is_horizontal else Gdl.DockPlacement.TOP,
                 )
-
-if __name__ == '__main__':
-    main()
