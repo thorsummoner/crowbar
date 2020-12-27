@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 #    crowbar - a geometry manipulation program
 #    Copyright (C) 2020  Dylan Scott Grafmyre
@@ -20,10 +21,18 @@
     Copyright (C) 2020  Dylan Scott Grafmyre
 """
 
-from crowbar.crowbar import Crowbar
-from crowbar.extensions import Extensions
+import logging
 
-__all__ = [
-    'Crowbar',
-    'Extensions',
-]
+import crowbar
+
+def main():
+    """
+        init, and pass control to gtk
+    """
+    logging.basicConfig(level=logging.INFO)
+
+    app = crowbar.Crowbar()
+    app.main()
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,2 @@
+recursive-include crowbar/package_data/ *
+recursive-include crowbar/ext/ *

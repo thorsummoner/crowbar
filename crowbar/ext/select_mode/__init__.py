@@ -20,10 +20,10 @@
     Copyright (C) 2020  Dylan Scott Grafmyre
 """
 
-from crowbar.crowbar import Crowbar
-from crowbar.extensions import Extensions
+import crowbar.baseextension as c_be
 
-__all__ = [
-    'Crowbar',
-    'Extensions',
-]
+class SelectMode(c_be.CoreExtension):
+    pkg_resources_prefix = 'ext/select_mode'
+
+INSTANCE = SelectMode()
+get_main_gtk_widget = INSTANCE.main_gtk_widget

@@ -20,10 +20,10 @@
     Copyright (C) 2020  Dylan Scott Grafmyre
 """
 
-from crowbar.crowbar import Crowbar
-from crowbar.extensions import Extensions
+import crowbar.baseextension as c_be
 
-__all__ = [
-    'Crowbar',
-    'Extensions',
-]
+class Textures(c_be.CoreExtension):
+    pkg_resources_prefix = 'ext/textures'
+
+INSTANCE = Textures()
+get_main_gtk_widget = INSTANCE.main_gtk_widget
