@@ -30,6 +30,11 @@ setuptools.setup(
     packages=[
         'crowbar',
 
+        # at time of writing, much of the code is coupled
+        # to gtk, it should all be split out into a
+        # gtk-specific front end module
+        # 'crowbar.gtk',
+
         'crowbar.ext.filter_control',
         'crowbar.ext.map_operations',
         'crowbar.ext.map_tools',

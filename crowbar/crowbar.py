@@ -31,6 +31,9 @@ from gi.repository import Gtk, Gdl
 
 import crowbar
 
+from crowbar import dictview
+from crowbar import linkedpanes
+
 LOGGER = logging.getLogger('crowbar.crowbar')
 
 SETTINGS_PATH = [pkg_resources.resource_filename("crowbar", "package_data/settings/")]
@@ -43,14 +46,43 @@ class Crowbar:
 
     def __init__(self):
         super(Crowbar, self).__init__()
+        self.LOGGER = logging.getLogger('crowbar.crowbar.Crowbar')
 
         self.register_icons()
         self.build()
         self.load_extensions(
             os.path.join(SETTINGS_PATH[0], "default.crowbar-mountpoints")
         )
+
+        self._demo()
         self.window.show_all()
-        self.LOGGER = logging.getLogger('crowbar.crowbar.Crowbar')
+
+
+    def _demo(self):
+        geometry = list()
+        geometry.append(dict(x=(-33, 33), y=(-33, 33), z=(-33, 33)))
+
+        default_scroll_lock = True
+
+        # linked panes
+        pane_data = {
+            'geometry': geometry,
+            'scroll_lock': {
+                'enabled': default_scroll_lock,
+                'x': Gtk.Adjustment(),
+                'y': Gtk.Adjustment(),
+                'z': Gtk.Adjustment(),
+            },
+        }
+        _linkedpanes = linkedpanes.LinkedPanes(
+            Gtk.Label('Viewport'),
+            dictview.DictView(('y', 'x'), **pane_data),
+            dictview.DictView(('x', 'z'), **pane_data),
+            dictview.DictView(('y', 'z'), **pane_data),
+        )
+        linkedpanes_container = self.builder.get_object('linkedpanes_container')
+        linkedpanes_container.add(_linkedpanes)
+
 
     @staticmethod
     def register_icons():
@@ -183,3 +215,6 @@ class Crowbar:
                     dock_item,
                     Gdl.DockPlacement.LEFT if is_horizontal else Gdl.DockPlacement.TOP,
                 )
+
+if __name__ == '__main__':
+    main()
